@@ -1,0 +1,161 @@
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SeoService {
+  private readonly document = inject(DOCUMENT);
+
+  /**
+   * Injeta o script JSON-LD do Schema.org no <head> da aplicação.
+   */
+  injectStructuredData(): void {
+    const scriptId = 'schema-org-structured-data';
+
+    // Evita duplicidade se o script já estiver presente no DOM
+    if (this.document.getElementById(scriptId)) {
+      return;
+    }
+
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        this.getOrganizationSchema(),
+        this.getProductListSchema(),
+        this.getBrewingHowToSchema(),
+      ],
+    };
+
+    const script = this.document.createElement('script');
+    script.id = scriptId;
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    this.document.head.appendChild(script);
+  }
+
+  /**
+   * Schema da Loja / Organização (dados cadastrais, localização e contato)
+   */
+  private getOrganizationSchema(): Record<string, unknown> {
+    return {
+      '@type': ['OnlineStore', 'LocalBusiness'],
+      '@id': 'https://terraegrao.com.br/#organization',
+      name: 'Terra & Grão Cafés Especiais',
+      url: 'https://terraegrao.com.br',
+      logo: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80',
+      description:
+        'Cafés especiais cultivados em micro-lotes de altitude nas montanhas da Serra da Mantiqueira, Minas Gerais.',
+      email: 'atendimento@terraegrao.com.br',
+      priceRange: 'R$ 42,90 - R$ 64,90',
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Minas Gerais',
+        addressCountry: 'BR',
+        streetAddress: 'Serra da Mantiqueira',
+      },
+      paymentAccepted: 'Cartão de Crédito, Boleto Bancário, Pix',
+      currenciesAccepted: 'BRL',
+    };
+  }
+
+  /**
+   * Schema dos Produtos do Catálogo (para rich snippets no Google)
+   */
+  private getProductListSchema(): Record<string, unknown> {
+    const products = [
+      {
+        name: 'Mantiqueira Dourada',
+        price: '44.90',
+        shortTaste: 'Notas de Mel e Frutas Amarelas',
+        image:
+          'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=800&q=80',
+      },
+      {
+        name: 'Reserva do Pouso',
+        price: '46.90',
+        shortTaste: 'Notas de Cacau 70% e Melaço',
+        image:
+          'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80',
+      },
+      {
+        name: 'Flor da Serra',
+        price: '42.90',
+        shortTaste: 'Notas Florais e Bergamota',
+        image:
+          'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=800&q=80',
+      },
+      {
+        name: 'Geisha Edição Especial',
+        price: '64.90',
+        shortTaste: 'Notas de Jasmim e Pêssego Nobre',
+        image:
+          'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+      },
+    ];
+
+    return {
+      '@type': 'ItemList',
+      itemListElement: products.map((product, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Product',
+          name: product.name,
+          image: product.image,
+          description: `${product.name} - Café especial 100% arábica com ${product.shortTaste}. Torra artesanal semanal.`,
+          brand: {
+            '@type': 'Brand',
+            name: 'Terra & Grão',
+          },
+          offers: {
+            '@type': 'Offer',
+            price: product.price,
+            priceCurrency: 'BRL',
+            availability: 'https://schema.org/InStock',
+          },
+        },
+      })),
+    };
+  }
+
+  /**
+   * Schema do Guia de Preparo (HowTo para busca de tutoriais)
+   */
+  private getBrewingHowToSchema(): Record<string, unknown> {
+    return {
+      '@type': 'HowTo',
+      name: 'Como Preparar Café Especial na Hario V60',
+      description:
+        'Guia de proporção e temperatura para extração perfeita de café especial artesanal.',
+      totalTime: 'PT3M',
+      supply: [
+        {
+          '@type': 'HowToSupply',
+          name: '20g de Café Especial Moído',
+        },
+        {
+          '@type': 'HowToSupply',
+          name: '320ml de Água filtrada a 93°C',
+        },
+      ],
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Escaldar o filtro',
+          text: 'Escalde o filtro de papel com água quente e descarte a água da jarra.',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Pré-infusão',
+          text: 'Adicione 20g de pó e despeje 50ml de água para liberar os aromas (30s).',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Extração Contínua',
+          text: 'Despeje o restante da água em círculos lentos até atingir 320ml.',
+        },
+      ],
+    };
+  }
+}

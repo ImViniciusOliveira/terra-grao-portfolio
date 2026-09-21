@@ -1,24 +1,29 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { SeoService } from './core/services/seo.service';
 
 describe('App', () => {
+  let seoService: SeoService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-    })
-      .compileComponents();
+    }).compileComponents();
+
+    seoService = TestBed.inject(SeoService);
   });
 
-  it('should create the app', () => {
+  it('deve criar o componente raiz da aplicacao', () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('deve chamar injectStructuredData do SeoService no ngOnInit', () => {
+    const spy = vi.spyOn(seoService, 'injectStructuredData');
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, terra-grao-web');
+    fixture.detectChanges(); // Aciona ngOnInit
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

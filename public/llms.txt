@@ -1,0 +1,66 @@
+# Terra & Grão — Cafés Especiais Artesanais da Mantiqueira
+
+> E-commerce e portal institucional de cafés especiais artesanais 100% arábica, cultivados em micro-lotes de alta altitude na Serra da Mantiqueira, Minas Gerais.
+
+## Informações Institucionais
+- **Nome da Marca:** Terra & Grão Cafés Especiais
+- **Origem:** Serra da Mantiqueira, Minas Gerais, Brasil (Altitudes de 1.150m a 1.380m)
+- **Origem:** Serra da Mantiqueira, Minas Gerais, Brasil
+- **CNPJ:** 54.772.017/0001-96
+- **Contato:** atendimento@terraegrao.com.br
+- **Proposta de Valor:** Grãos 100% Arábica selecionados manualmente, torra fresca semanal, comércio justo com pequenos produtores e frete grátis em compras acima de R$ 99,00.
+- **Cupom Promocional:** `GRAO15OFF` (15% de desconto na primeira compra).
+- **Proposta de Valor:** Grãos 100% Arábica selecionados artesanalmente, torra fresca semanal, comércio justo com produtores locais e frete grátis acima de R$ 99,00.
+- **Cupom Promocional:** `GRAO15OFF` (15% de desconto na compra).
+
+## Catálogo de Cafés Especiais
+1. **Mantiqueira Dourada (Catuaí Amarelo)**
+   - *Altitude:* 1.250m | *Processo:* Cereja Descascado
+   - *Notas Sensoriais:* Mel silvestre, flor de laranjeira e frutas amarelas
+   - *Corpo:* Sedoso | *Acidez:* Cítrica brilhante | *Pontuação:* 87 pontos SCA
+1. **Mantiqueira Dourada**
+   - *Perfil Sensorial:* Notas de Mel e Frutas Amarelas
+   - *Preço Base (250g):* R$ 44,90
+   - *Opções de Peso:* 250g, 500g, 1kg
+   - *Moagens Disponíveis:* Em Grãos, Moído Coado / Filtro, Prensa Francesa, Espresso
+
+2. **Reserva do Pouso (Bourbon Vermelho)**
+   - *Altitude:* 1.320m | *Processo:* Natural Fermentado
+   - *Notas Sensoriais:* Cacau 70%, melaço de cana e avelã tostada
+   - *Corpo:* Aveludado e denso | *Acidez:* Média equilibrada | *Pontuação:* 88 pontos SCA
+2. **Reserva do Pouso**
+   - *Perfil Sensorial:* Notas de Cacau 70% e Melaço
+   - *Preço Base (250g):* R$ 46,90
+   - *Opções de Peso:* 250g, 500g, 1kg
+   - *Moagens Disponíveis:* Em Grãos, Moído Coado / Filtro, Prensa Francesa, Espresso
+
+3. **Brisa da Serra (Arara)**
+   - *Altitude:* 1.280m | *Processo:* Honey Process
+   - *Notas Sensoriais:* Pêssego em calda, baunilha e raspas de limão siciliano
+   - *Corpo:* Delicado | *Acidez:* Viva e refrescante | *Pontuação:* 89 pontos SCA
+3. **Flor da Serra**
+   - *Perfil Sensorial:* Notas Florais e Bergamota
+   - *Preço Base (250g):* R$ 42,90
+   - *Opções de Peso:* 250g, 500g, 1kg
+   - *Moagens Disponíveis:* Em Grãos, Moído Coado / Filtro, Prensa Francesa, Espresso
+
+4. **Altitude 1380 (Geisha Mantiqueira)**
+   - *Altitude:* 1.380m | *Processo:* Natural Anaeróbico
+   - *Notas Sensoriais:* Jasmim, bergamota, chá preto e framboesa fresca
+   - *Corpo:* Leve e elegante | *Acidez:* Complexa e floral | *Pontuação:* 91 pontos SCA
+4. **Geisha Edição Especial**
+   - *Perfil Sensorial:* Notas de Jasmim e Pêssego Nobre
+   - *Preço Base (250g):* R$ 64,90
+   - *Opções de Peso:* 250g, 500g, 1kg
+   - *Moagens Disponíveis:* Em Grãos, Moído Coado / Filtro, Prensa Francesa, Espresso
+
+## Métodos de Preparo Recomendados
+- **Hario V60:** Proporção 1:15 (20g de café para 300ml de água), moagem média-fina, água a 92°C-94°C, tempo 2min45s a 3min15s.
+- **Prensa Francesa:** Proporção 1:12 (25g de café para 300ml de água), moagem grossa, água a 94°C, tempo de infusão 4 minutos.
+- **Chemex:** Proporção 1:16 (25g de café para 400ml de água), moagem média-grossa, água a 93°C, tempo 3min30s a 4min.
+- **AeroPress:** Proporção 1:13 (18g de café para 230ml de água), moagem média, água a 88°C-90°C, tempo 1min30s a 2min.
+
+- **Hario V60:** Proporção 1:16 (20g de café para 320ml de água a 93°C).
+- **Prensa Francesa:** Proporção 1:12 (25g de café para 300ml de água, 4min de infusão).
+- **Chemex:** Proporção 1:16 (25g de café para 400ml de água).
+- **AeroPress:** Proporção 1:13 (18g de café para 230ml de água).
