@@ -1,3 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+/* Terra & Grão - Fontes Locais & Design Tokens (Tailwind CSS v4) */
 
-@import 'tailwindcss';
+@import "tailwindcss";
+
+/* Newsreader (Display / Serif) */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/newsreader/newsreader-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/newsreader/newsreader-italic-latin.woff2') format('woff2');
+}
+
+/* Plus Jakarta Sans (Body / Sans) */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans/plus-jakarta-sans-latin.woff2') format('woff2');
+}
+
+@theme {
+  /* Paleta Semântica */
+  --color-primary: #2A2725;
+  --color-secondary: #7A746E;
+  --color-accent: #9E5A3C;
+  --color-accent-hover: #84482D;
+  --color-surface: #FAF8F5;
+  --color-surface-alt: #F0ECE4;
+  --color-border: #ECE7DE;
+
+  /* Tipografias */
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+  }
+}
