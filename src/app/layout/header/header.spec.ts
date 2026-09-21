@@ -53,7 +53,7 @@ describe('Header', () => {
     expect(compiled.textContent).toContain('a partir de R$ 199,90 para Sul e Sudeste');
     expect(compiled.textContent).toContain('R$ 259,90 para Norte, Nordeste e Centro-Oeste');
     expect(compiled.textContent).toContain('5% OFF');
-    expect(compiled.textContent).toContain('no PIX ou Boleto');
+    expect(compiled.textContent).toContain('em pagamentos via PIX ou Boleto');
   });
 
   it('deve alternar o estado do tema ao chamar toggleTheme', () => {
