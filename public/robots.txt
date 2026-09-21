@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://terraegrao.com.br/sitemap.xml
-
+# Sitemap Oficial na Vercel
+Sitemap: https://terra-grao.vercel.app/sitemap.xml

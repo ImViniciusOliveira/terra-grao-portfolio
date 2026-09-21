@@ -40,10 +40,10 @@ export class SeoService {
   private getOrganizationSchema(): Record<string, unknown> {
     return {
       '@type': ['OnlineStore', 'LocalBusiness'],
-      '@id': 'https://terraegrao.com.br/#organization',
+      '@id': 'https://terra-grao.vercel.app/#organization',
       name: 'Terra & Grão Cafés Especiais',
-      url: 'https://terraegrao.com.br',
-      logo: '/images/brand-hero.webp',
+      url: 'https://terra-grao.vercel.app',
+      logo: '/images/logo.svg',
       description:
         'Cafés especiais cultivados em micro-lotes de altitude nas montanhas da Serra da Mantiqueira, Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
