@@ -43,7 +43,7 @@ export class SeoService {
       '@id': 'https://terraegrao.com.br/#organization',
       name: 'Terra & Grão Cafés Especiais',
       url: 'https://terraegrao.com.br',
-      logo: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80',
+      logo: '/images/brand-hero.webp',
       description:
         'Cafés especiais cultivados em micro-lotes de altitude nas montanhas da Serra da Mantiqueira, Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
@@ -68,29 +68,25 @@ export class SeoService {
         name: 'Mantiqueira Dourada',
         price: '44.90',
         shortTaste: 'Notas de Mel e Frutas Amarelas',
-        image:
-          'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=800&q=80',
+        image: '/images/coffees/mantiqueira-dourada.webp',
       },
       {
         name: 'Reserva do Pouso',
         price: '46.90',
         shortTaste: 'Notas de Cacau 70% e Melaço',
-        image:
-          'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80',
+        image: '/images/coffees/reserva-do-pouso.webp',
       },
       {
         name: 'Flor da Serra',
         price: '42.90',
         shortTaste: 'Notas Florais e Bergamota',
-        image:
-          'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=800&q=80',
+        image: '/images/coffees/flor-da-serra.webp',
       },
       {
         name: 'Geisha Edição Especial',
         price: '64.90',
         shortTaste: 'Notas de Jasmim e Pêssego Nobre',
-        image:
-          'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+        image: '/images/coffees/geisha-especial.webp',
       },
     ];
 
