@@ -1,9 +1,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { SeoService } from './core/services/seo.service';
 import { Header } from './layout/header/header';
+import { Footer } from './layout/footer/footer';
 
 @Component({
-  imports: [Header],
+  imports: [Header, Footer],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
