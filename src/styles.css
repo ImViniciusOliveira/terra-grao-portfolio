@@ -105,7 +105,7 @@ section {
   }
 }
 
-/* Exceção Única: Apenas o Hero (#hero) ocupa 100% da largura da tela */
+/* Exceção do Hero: 100% largura sem padding */
 section#hero {
   max-width: 100%;
   margin-left: 0;
@@ -114,6 +114,28 @@ section#hero {
   padding-right: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/* Exceção do Banner de Cupom: 100% largura com 32px (2rem) vertical */
+section#cupom-desconto {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Exceção da Newsletter: 100% largura com padding vertical */
+section#newsletter {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 /* --------------------------------------------------------------------------

@@ -5,9 +5,11 @@ import { Footer } from './layout/footer/footer';
 import { Hero } from './features/hero/hero';
 import { Categories } from './features/categories/categories';
 import { Catalog } from './features/catalog/catalog';
+import { CouponBanner } from './features/coupon-banner/coupon-banner';
+import { Newsletter } from './features/newsletter/newsletter';
 
 @Component({
-  imports: [Header, Footer, Hero, Categories, Catalog],
+  imports: [Header, Footer, Hero, Categories, Catalog, CouponBanner, Newsletter],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
