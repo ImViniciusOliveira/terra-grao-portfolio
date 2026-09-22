@@ -3,9 +3,10 @@ import { SeoService } from './core/services/seo.service';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Hero } from './features/hero/hero';
+import { Categories } from './features/categories/categories';
 
 @Component({
-  imports: [Header, Footer, Hero],
+  imports: [Header, Footer, Hero, Categories],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

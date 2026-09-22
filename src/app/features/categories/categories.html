@@ -1,0 +1,67 @@
+<!-- Seção: Categorias Rápidas (5 Itens Ampliados) -->
+<section
+  id="categorias"
+  aria-label="Categorias de Cafés e Métodos"
+  class="bg-bg-main border-b border-border"
+>
+  <!-- Cabeçalho da Seção -->
+  <div class="text-center mb-10 sm:mb-12 lg:mb-14">
+    <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-text-main">
+      Categorias em Destaque
+    </h2>
+  </div>
+
+  <!-- Grade Desktop Ampliada (5 Itens Preenchendo com Destaque Visual) -->
+  <div class="hidden lg:grid lg:grid-cols-5 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 w-full max-w-[1536px] mx-auto items-start">
+    @for (category of categories(); track category.id) {
+      <button
+        type="button"
+        (click)="scrollToSection(category.targetSection)"
+        [attr.aria-label]="'Navegar para ' + category.name"
+        class="group flex flex-col items-center justify-center cursor-pointer select-none outline-none bg-transparent border-0 w-full"
+      >
+        <!-- Círculo Ampliado da Imagem -->
+        <div class="w-44 h-44 lg:w-48 lg:h-48 xl:w-56 xl:h-56 2xl:w-60 2xl:h-60 rounded-full overflow-hidden shadow-xs">
+          <img
+            [src]="category.imageUrl"
+            [alt]="category.name"
+            class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Título Oficial Ampliado e Proporcional -->
+        <span class="mt-5 font-body text-sm xl:text-base font-semibold uppercase tracking-wider text-text-main group-hover:text-primary transition-colors duration-200 text-center">
+          {{ category.name }}
+        </span>
+      </button>
+    }
+  </div>
+
+  <!-- Carrossel Deslizável Touch Ampliado (Mobile e Tablet) -->
+  <div class="flex lg:hidden w-full overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+    @for (category of categories(); track category.id) {
+      <button
+        type="button"
+        (click)="scrollToSection(category.targetSection)"
+        [attr.aria-label]="'Navegar para ' + category.name"
+        class="group shrink-0 snap-center flex flex-col items-center justify-center w-36 sm:w-44 cursor-pointer select-none outline-none bg-transparent border-0"
+      >
+        <!-- Círculo Mobile Ampliado -->
+        <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-xs">
+          <img
+            [src]="category.imageUrl"
+            [alt]="category.name"
+            class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Título Mobile Proporcional -->
+        <span class="mt-3.5 font-body text-xs sm:text-sm font-semibold uppercase tracking-wider text-text-main group-hover:text-primary transition-colors text-center">
+          {{ category.name }}
+        </span>
+      </button>
+    }
+  </div>
+</section>

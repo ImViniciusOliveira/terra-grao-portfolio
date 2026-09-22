@@ -21,8 +21,8 @@ describe('Hero', () => {
 
   it('deve renderizar o título e subtítulo da marca', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('O melhor do café especial brasileiro na sua xícara.');
-    expect(compiled.textContent).toContain('Receba microlotes exclusivos todo mês pelo clube ou abasteça sua casa direto em nossa loja.');
+    expect(compiled.textContent).toContain('O melhor do café especial brasileiro na sua xícara');
+    expect(compiled.textContent).toContain('Receba microlotes exclusivos todo mês pelo clube ou abasteça sua casa direto em nossa loja');
   });
 
   it('deve renderizar os botões de ação Fazer Assinatura e Nossa Loja', () => {

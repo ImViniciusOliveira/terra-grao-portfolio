@@ -24,6 +24,7 @@ export class SeoService {
         this.getOrganizationSchema(),
         this.getProductListSchema(),
         this.getBrewingHowToSchema(),
+        this.getCategoriesNavigationSchema(),
       ],
     };
 
@@ -152,6 +153,31 @@ export class SeoService {
           text: 'Despeje o restante da água em círculos lentos até atingir 320ml.',
         },
       ],
+    };
+  }
+
+  /**
+   * Schema de Navegação de Categorias Principais (para SEO semântico e sitelinks)
+   */
+  private getCategoriesNavigationSchema(): Record<string, unknown> {
+    const categories = [
+      { name: 'Café em Grãos', url: 'https://terra-grao.vercel.app/#catalogo' },
+      { name: 'Café Moído', url: 'https://terra-grao.vercel.app/#catalogo' },
+      { name: 'Cafeteiras & Métodos', url: 'https://terra-grao.vercel.app/#calculadora' },
+      { name: 'Moedores & Acessórios', url: 'https://terra-grao.vercel.app/#catalogo' },
+      { name: 'Kits & Degustação', url: 'https://terra-grao.vercel.app/#catalogo' },
+    ];
+
+    return {
+      '@type': 'ItemList',
+      '@id': 'https://terra-grao.vercel.app/#categories',
+      name: 'Categorias de Cafés Especiais e Acessórios',
+      itemListElement: categories.map((cat, index) => ({
+        '@type': 'SiteNavigationElement',
+        position: index + 1,
+        name: cat.name,
+        url: cat.url,
+      })),
     };
   }
 }
