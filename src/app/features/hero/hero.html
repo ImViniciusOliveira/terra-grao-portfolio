@@ -1,0 +1,60 @@
+<!-- Secao Hero Principal: Banner Institucional & Clube de Assinatura (Full Width) -->
+<section
+  id="hero"
+  aria-label="Apresentação Terra & Grão"
+  class="w-full bg-hero-bg border-b border-border"
+>
+  <div class="mx-auto max-w-[1728px] px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20 xl:py-24">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 xl:gap-24">
+
+      <!-- Lado Esquerdo: Textos Institucionais & Botoes de Acao (55% no Desktop) -->
+      <div class="w-full lg:w-[55%] flex flex-col items-start justify-center">
+        <div class="w-fit max-w-xl xl:max-w-2xl space-y-6 sm:space-y-8">
+          <!-- Titulo e Subtitulo -->
+          <div class="space-y-4">
+            <h1 class="font-serif text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl xl:text-6xl leading-[1.12]">
+              O melhor do café especial brasileiro na sua xícara.
+            </h1>
+            <p class="font-sans text-sm sm:text-base lg:text-lg text-primary leading-relaxed">
+              Receba microlotes exclusivos todo mês pelo clube ou abasteça sua casa direto em nossa loja.
+            </p>
+          </div>
+
+          <!-- Botões de Ação (Fazer Assinatura & Nossa Loja) -->
+          <div class="flex flex-col sm:flex-row items-stretch gap-4 pt-2 w-full">
+            <!-- Botao Primario: Fazer Assinatura -->
+            <button
+              type="button"
+              (click)="scrollToSection('catalogo')"
+              class="w-full sm:flex-1 inline-flex items-center justify-center rounded-[2px] bg-primary py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-bg-main shadow-xs transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] cursor-pointer"
+            >
+              Fazer Assinatura
+            </button>
+
+            <!-- Botao Secundario: Nossa Loja -->
+            <button
+              type="button"
+              (click)="scrollToSection('catalogo')"
+              class="w-full sm:flex-1 inline-flex items-center justify-center rounded-[2px] border-2 border-primary bg-hero-bg py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary transition-all duration-200 hover:border-primary-hover hover:text-primary-hover active:scale-[0.98] cursor-pointer"
+            >
+              Nossa Loja
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado Direito: Imagem Principal Limpa (45% no Desktop) -->
+      <div class="w-full lg:w-[45%] flex items-center justify-center">
+        <div class="w-full overflow-hidden rounded-[2px] border border-border shadow-sm">
+          <img
+            src="/images/brand-hero.webp"
+            alt="Café Especial Terra & Grão"
+            class="h-72 sm:h-96 lg:h-[440px] w-full object-cover object-center transition-transform duration-500 hover:scale-105 transform-gpu [backface-visibility:hidden] will-change-transform"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

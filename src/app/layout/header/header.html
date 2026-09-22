@@ -103,7 +103,14 @@
 
 <!-- Cabeçalho Principal Fixo (Sticky no Topo) -->
 <header
-  class="sticky top-0 z-50 w-full border-b border-border bg-bg-main/95 backdrop-blur-md transition-all duration-300 transform-gpu [backface-visibility:hidden]"
+  class="sticky top-0 z-50 w-full transition-colors duration-300 transform-gpu [backface-visibility:hidden]"
+  [class.bg-bg-main/95]="isScrolled()"
+  [class.backdrop-blur-md]="isScrolled()"
+  [class.border-b]="isScrolled()"
+  [class.border-border]="isScrolled()"
+  [class.shadow-xs]="isScrolled()"
+  [class.bg-hero-bg]="!isScrolled()"
+  [class.border-b-transparent]="!isScrolled()"
 >
   <!-- Barra de Navegação Principal -->
   <nav
@@ -189,8 +196,9 @@
         <button
           type="button"
           (click)="toggleTheme()"
-          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-border bg-transparent text-text-main transition-all duration-300 hover:bg-bg-secondary hover:border-border cursor-pointer select-none"
-          title="Alternar modo claro e escuro"
+          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+          [class.hover:bg-bg-secondary]="isScrolled()"
+          [class.hover:bg-black/10]="!isScrolled()"
         >
           <span class="sr-only">Alternar modo claro e escuro</span>
           @if (!isDarkMode()) {
@@ -242,8 +250,9 @@
         <button
           type="button"
           (click)="scrollToSection('catalogo')"
-          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-border bg-transparent text-text-main transition-all duration-300 hover:bg-bg-secondary hover:border-border cursor-pointer select-none"
-          title="Ver carrinho de compras"
+          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+          [class.hover:bg-bg-secondary]="isScrolled()"
+          [class.hover:bg-black/10]="!isScrolled()"
         >
           <span class="sr-only">Ver carrinho de compras</span>
           <img
@@ -267,8 +276,9 @@
       <button
         type="button"
         (click)="toggleTheme()"
-        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-border bg-transparent text-text-main transition-all duration-300 hover:bg-bg-secondary hover:border-border cursor-pointer select-none"
-        title="Alternar modo claro e escuro"
+        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+        [class.hover:bg-bg-secondary]="isScrolled()"
+        [class.hover:bg-black/10]="!isScrolled()"
       >
         <span class="sr-only">Alternar modo claro e escuro</span>
         @if (!isDarkMode()) {
@@ -320,8 +330,9 @@
       <button
         type="button"
         (click)="scrollToSection('catalogo')"
-        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-border bg-transparent text-text-main transition-all duration-300 hover:bg-bg-secondary hover:border-border cursor-pointer select-none"
-        title="Abrir carrinho"
+        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+        [class.hover:bg-bg-secondary]="isScrolled()"
+        [class.hover:bg-black/10]="!isScrolled()"
       >
         <span class="sr-only">Abrir carrinho</span>
         <img
@@ -337,30 +348,32 @@
         </span>
       </button>
 
-      <!-- Botão Menu Mobile (Circular com Fundo Transparente Idêntico ao Carrinho) -->
+      <!-- Botão Menu Mobile -->
       <button
         type="button"
         (click)="toggleMenu()"
-        class="relative z-[60] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-border bg-transparent text-text-main md:hidden transition-all duration-300 hover:bg-bg-secondary hover:border-border cursor-pointer select-none"
+        class="relative z-[60] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main md:hidden transition-all duration-300 cursor-pointer select-none"
+        [class.hover:bg-bg-secondary]="isScrolled()"
+        [class.hover:bg-black/10]="!isScrolled()"
         aria-label="Abrir menu de navegação"
         [attr.aria-expanded]="isMenuOpen()"
       >
         <span class="relative h-5 w-5">
           <span
-            class="absolute left-0 top-1/2 block h-0.5 w-5 bg-text-main transition-all duration-300"
+            class="absolute left-0 top-1/2 block h-0.5 w-5 bg-primary transition-all duration-300"
             [class.rotate-45]="isMenuOpen()"
             [class.-translate-y-2]="!isMenuOpen()"
             [class.translate-y-0]="isMenuOpen()"
           ></span>
 
           <span
-            class="absolute left-0 top-1/2 block h-0.5 w-5 bg-text-main transition-all duration-300"
+            class="absolute left-0 top-1/2 block h-0.5 w-5 bg-primary transition-all duration-300"
             [class.opacity-0]="isMenuOpen()"
             [class.opacity-100]="!isMenuOpen()"
           ></span>
 
           <span
-            class="absolute left-0 top-1/2 block h-0.5 w-5 bg-text-main transition-all duration-300"
+            class="absolute left-0 top-1/2 block h-0.5 w-5 bg-primary transition-all duration-300"
             [class.-rotate-45]="isMenuOpen()"
             [class.translate-y-2]="!isMenuOpen()"
             [class.translate-y-0]="isMenuOpen()"

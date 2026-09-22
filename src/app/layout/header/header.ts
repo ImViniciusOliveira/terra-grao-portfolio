@@ -5,6 +5,7 @@ import {
   Component,
   effect,
   ElementRef,
+  HostListener,
   inject,
   OnDestroy,
   PLATFORM_ID,
@@ -19,6 +20,9 @@ import gsap from 'gsap';
   templateUrl: './header.html',
   styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'contents',
+  },
 })
 export class Header implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
@@ -32,6 +36,7 @@ export class Header implements OnDestroy {
   readonly isMenuVisible = signal<boolean>(false);
   readonly activeSection = signal<string>('hero');
   readonly isDarkMode = signal<boolean>(false);
+  readonly isScrolled = signal<boolean>(false);
 
   constructor() {
     // 1. Trava o scroll do body quando o menu mobile estiver aberto
@@ -41,11 +46,26 @@ export class Header implements OnDestroy {
       }
     });
 
-    // 2. Inicializa o Scroll Spy com IntersectionObserver no navegador
+    // 2. Inicializa o Scroll Spy no navegador
     if (isPlatformBrowser(this.platformId)) {
       afterNextRender(() => {
         this.initIntersectionObserver();
+        this.checkScrollPosition();
       });
+    }
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.checkScrollPosition();
+  }
+
+  private checkScrollPosition(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const scrolled = window.scrollY > 0;
+      if (this.isScrolled() !== scrolled) {
+        this.isScrolled.set(scrolled);
+      }
     }
   }
 

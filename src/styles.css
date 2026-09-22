@@ -40,6 +40,9 @@
   --color-border: #ECE7DE;
   --color-gold: #FFD54A;
 
+  /* Token Exclusivo do Hero */
+  --color-hero-bg: #EAA858;
+
   /* Tipografias */
   --font-display: 'Newsreader', Georgia, serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -100,6 +103,17 @@ section {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+}
+
+/* Exceção Única: Apenas o Hero (#hero) ocupa 100% da largura da tela */
+section#hero {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* --------------------------------------------------------------------------
