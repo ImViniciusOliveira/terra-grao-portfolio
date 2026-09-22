@@ -20,13 +20,13 @@
             </p>
           </div>
 
-          <!-- Botões de Ação (Fazer Assinatura & Nossa Loja) -->
-          <div class="flex flex-col sm:flex-row items-stretch gap-4 pt-2 w-full">
+          <!-- Botões de Ação (Apenas Desktop lg+) -->
+          <div class="hidden lg:flex flex-row items-stretch gap-4 pt-2 w-full">
             <!-- Botao Primario: Fazer Assinatura -->
             <button
               type="button"
               (click)="scrollToSection('catalogo')"
-              class="w-full sm:flex-1 inline-flex items-center justify-center rounded-[2px] bg-primary py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-bg-main shadow-xs transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] cursor-pointer"
+              class="flex-1 inline-flex items-center justify-center rounded-[2px] bg-primary py-3.5 text-sm font-semibold uppercase tracking-wider text-bg-main shadow-xs transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] cursor-pointer"
             >
               Fazer Assinatura
             </button>
@@ -35,7 +35,7 @@
             <button
               type="button"
               (click)="scrollToSection('catalogo')"
-              class="w-full sm:flex-1 inline-flex items-center justify-center rounded-[2px] border-2 border-primary bg-hero-bg py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary transition-all duration-200 hover:border-primary-hover hover:text-primary-hover active:scale-[0.98] cursor-pointer"
+              class="flex-1 inline-flex items-center justify-center rounded-[2px] border-2 border-primary bg-hero-bg py-3.5 text-sm font-semibold uppercase tracking-wider text-primary transition-all duration-200 hover:border-primary-hover hover:text-primary-hover active:scale-[0.98] cursor-pointer"
             >
               Nossa Loja
             </button>
@@ -49,10 +49,29 @@
           <img
             src="/images/brand-hero.webp"
             alt="Café Especial Terra & Grão"
-            class="h-72 sm:h-96 lg:h-[440px] w-full object-cover object-center transition-transform duration-500 hover:scale-105 transform-gpu [backface-visibility:hidden] will-change-transform"
+            class="h-64 sm:h-80 md:h-96 lg:h-[440px] w-full object-cover object-center transition-transform duration-500 hover:scale-105 transform-gpu [backface-visibility:hidden] will-change-transform"
             loading="eager"
           />
         </div>
+      </div>
+
+      <!-- Botões de Ação (Mobile e Tablet: Abaixo da Imagem) -->
+      <div class="flex lg:hidden flex-col sm:flex-row items-stretch gap-3 sm:gap-4 w-full pt-1">
+        <button
+          type="button"
+          (click)="scrollToSection('catalogo')"
+          class="w-full sm:flex-1 inline-flex items-center justify-center rounded-[2px] bg-primary py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-bg-main shadow-xs transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] cursor-pointer"
+        >
+          Fazer Assinatura
+        </button>
+
+        <button
+          type="button"
+          (click)="scrollToSection('catalogo')"
+          class="w-full sm:flex-1 inline-flex items-center justify-center rounded-[2px] border-2 border-primary bg-hero-bg py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary transition-all duration-200 hover:border-primary-hover hover:text-primary-hover active:scale-[0.98] cursor-pointer"
+        >
+          Nossa Loja
+        </button>
       </div>
 
     </div>

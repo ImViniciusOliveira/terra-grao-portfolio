@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
+import { COFFEE_PRODUCTS } from '../data/coffee-catalog.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +49,7 @@ export class SeoService {
       description:
         'Cafés especiais cultivados em micro-lotes de altitude nas montanhas da Serra da Mantiqueira, Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
-      priceRange: 'R$ 42,90 - R$ 64,90',
+      priceRange: 'R$ 42,90 - R$ 189,90',
       address: {
         '@type': 'PostalAddress',
         addressRegion: 'Minas Gerais',
@@ -64,36 +65,9 @@ export class SeoService {
    * Schema dos Produtos do Catálogo (para rich snippets no Google)
    */
   private getProductListSchema(): Record<string, unknown> {
-    const products = [
-      {
-        name: 'Mantiqueira Dourada',
-        price: '44.90',
-        shortTaste: 'Notas de Mel e Frutas Amarelas',
-        image: '/images/coffees/mantiqueira-dourada.webp',
-      },
-      {
-        name: 'Reserva do Pouso',
-        price: '46.90',
-        shortTaste: 'Notas de Cacau 70% e Melaço',
-        image: '/images/coffees/reserva-do-pouso.webp',
-      },
-      {
-        name: 'Flor da Serra',
-        price: '42.90',
-        shortTaste: 'Notas Florais e Bergamota',
-        image: '/images/coffees/flor-da-serra.webp',
-      },
-      {
-        name: 'Geisha Edição Especial',
-        price: '64.90',
-        shortTaste: 'Notas de Jasmim e Pêssego Nobre',
-        image: '/images/coffees/geisha-especial.webp',
-      },
-    ];
-
     return {
       '@type': 'ItemList',
-      itemListElement: products.map((product, index) => ({
+      itemListElement: COFFEE_PRODUCTS.map((product, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
@@ -107,9 +81,17 @@ export class SeoService {
           },
           offers: {
             '@type': 'Offer',
-            price: product.price,
+            price: product.price.toFixed(2),
             priceCurrency: 'BRL',
             availability: 'https://schema.org/InStock',
+            url: 'https://terra-grao.vercel.app/#catalogo',
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: product.rating,
+            reviewCount: product.reviewsCount ?? 1,
+            bestRating: '5',
+            worstRating: '1',
           },
         },
       })),

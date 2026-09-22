@@ -61,14 +61,16 @@ describe('SeoService', () => {
     expect(store.name).toBe('Terra & Grão Cafés Especiais');
     expect(store.email).toBe('atendimento@terraegrao.com.br');
 
-    // 2. ItemList com 4 cafés
+    // 2. ItemList com 9 cafés e kits
     const itemList = graph.find(
       (item: { '@type': string; name?: string }) =>
         item['@type'] === 'ItemList' && item.name !== 'Categorias de Cafés Especiais e Acessórios'
     );
     expect(itemList).toBeDefined();
-    expect(itemList.itemListElement.length).toBe(4);
+    expect(itemList.itemListElement.length).toBe(9);
     expect(itemList.itemListElement[0].item.name).toBe('Mantiqueira Dourada');
+    expect(itemList.itemListElement[0].item.aggregateRating).toBeDefined();
+    expect(itemList.itemListElement[0].item.aggregateRating.ratingValue).toBe(4.8);
     expect(itemList.itemListElement[1].item.name).toBe('Reserva do Pouso');
     expect(itemList.itemListElement[2].item.name).toBe('Flor da Serra');
     expect(itemList.itemListElement[3].item.name).toBe('Geisha Edição Especial');
