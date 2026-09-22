@@ -4,9 +4,10 @@ import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Hero } from './features/hero/hero';
 import { Categories } from './features/categories/categories';
+import { Catalog } from './features/catalog/catalog';
 
 @Component({
-  imports: [Header, Footer, Hero, Categories],
+  imports: [Header, Footer, Hero, Categories, Catalog],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
