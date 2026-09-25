@@ -1,0 +1,89 @@
+<section id="calculadora" class="bg-bg-main border-t border-border">
+  <div class="max-w-5xl mx-auto px-4 sm:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-medium text-text-main">
+        Como Preparar
+      </h2>
+      <p class="text-xs sm:text-sm text-text-secondary mt-1">
+        Proporção rápida de café, água e temperatura para cada método.
+      </p>
+    </div>
+
+    <!-- Method Selector Tabs -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
+      @for (method of methods; track method.id) {
+        <button
+          type="button"
+          (click)="selectMethod(method.id)"
+          [class]="selectedId() === method.id
+            ? 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-primary border-primary text-bg-main'
+            : 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-bg-secondary border-border text-text-main hover:bg-[#EAE5DC]'"
+        >
+          {{ method.name }}
+        </button>
+      }
+    </div>
+
+    <!-- Calculation Card -->
+    <div class="bg-bg-secondary border border-border rounded-[2px] p-6">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+
+        <!-- Grams Adjustment -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-semibold text-text-main">Quantidade de Café:</span>
+            <span class="font-mono font-bold text-primary">{{ coffeeGrams() }}g</span>
+          </div>
+          <input
+            type="range"
+            min="10"
+            max="50"
+            step="2"
+            [value]="coffeeGrams()"
+            (input)="onSliderChange($event)"
+            class="w-full accent-primary cursor-pointer"
+          />
+          <p class="text-[11px] text-text-secondary">
+            Arraste para ajustar o volume desejado.
+          </p>
+        </div>
+
+        <!-- Result Metrics -->
+        <div class="md:col-span-2 grid grid-cols-3 gap-3 text-center">
+          <div class="bg-bg-main border border-border p-3 rounded-[2px]">
+            <p class="text-[10px] uppercase font-semibold text-text-secondary tracking-wider">Água</p>
+            <p class="font-display text-lg sm:text-xl font-bold text-text-main mt-0.5">
+              {{ calculatedWater() }} ml
+            </p>
+          </div>
+
+          <div class="bg-bg-main border border-border p-3 rounded-[2px]">
+            <p class="text-[10px] uppercase font-semibold text-text-secondary tracking-wider">Temperatura</p>
+            <p class="font-display text-lg sm:text-xl font-bold text-text-main mt-0.5">
+              {{ currentMethod().temperature }}
+            </p>
+          </div>
+
+          <div class="bg-bg-main border border-border p-3 rounded-[2px]">
+            <p class="text-[10px] uppercase font-semibold text-text-secondary tracking-wider">Tempo</p>
+            <p class="font-display text-lg sm:text-xl font-bold text-text-main mt-0.5">
+              {{ currentMethod().extractionTime }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Tip -->
+      <div class="mt-4 pt-4 border-t border-border flex items-center justify-between text-xs text-[#625E5A]">
+        <span><strong>Moagem ideal:</strong> {{ currentMethod().grindRecommendation }}</span>
+        <span class="hidden sm:inline text-text-secondary">{{ currentMethod().description }}</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>

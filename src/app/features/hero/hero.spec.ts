@@ -33,11 +33,10 @@ describe('Hero', () => {
     expect(buttonTexts).toContain('Nossa Loja');
   });
 
-  it('deve renderizar a imagem de destaque da marca', () => {
+  it('deve renderizar a imagem de fundo dos grãos de café', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const img = compiled.querySelector('img[src="/images/brand-hero.webp"]') as HTMLImageElement;
+    const img = compiled.querySelector('img[src="/images/hero-beans-bg-v4.png"]') as HTMLImageElement;
     expect(img).toBeTruthy();
-    expect(img.alt).toContain('Café Especial Terra & Grão');
   });
 
   it('deve invocar scrollToSection ao clicar no botão', () => {

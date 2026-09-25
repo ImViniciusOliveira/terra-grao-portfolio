@@ -7,9 +7,10 @@ import { Categories } from './features/categories/categories';
 import { Catalog } from './features/catalog/catalog';
 import { CouponBanner } from './features/coupon-banner/coupon-banner';
 import { Newsletter } from './features/newsletter/newsletter';
+import { BrewingCalculator } from './features/brewing-calculator/brewing-calculator';
 
 @Component({
-  imports: [Header, Footer, Hero, Categories, Catalog, CouponBanner, Newsletter],
+  imports: [Header, Footer, Hero, Categories, Catalog, CouponBanner, Newsletter, BrewingCalculator],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
