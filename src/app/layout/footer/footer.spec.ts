@@ -56,7 +56,7 @@ describe('Footer', () => {
   it('deve renderizar a secao Atendimento & Empresa com CNPJ e e-mail', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Atendimento & Empresa');
-    expect(compiled.textContent).toContain('Serra da Mantiqueira, Minas Gerais • Brasil');
+    expect(compiled.textContent).toContain('Minas Gerais • Brasil');
     expect(compiled.textContent).toContain('atendimento@terraegrao.com.br');
     expect(compiled.textContent).toContain('CNPJ: 54.772.017/0001-96');
   });

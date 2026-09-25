@@ -8,9 +8,22 @@ import { Catalog } from './features/catalog/catalog';
 import { CouponBanner } from './features/coupon-banner/coupon-banner';
 import { Newsletter } from './features/newsletter/newsletter';
 import { BrewingCalculator } from './features/brewing-calculator/brewing-calculator';
+import { Origin } from './features/origin/origin';
+import { Guarantees } from './features/guarantees/guarantees';
 
 @Component({
-  imports: [Header, Footer, Hero, Categories, Catalog, CouponBanner, Newsletter, BrewingCalculator],
+  imports: [
+    Header,
+    Footer,
+    Hero,
+    Categories,
+    Catalog,
+    CouponBanner,
+    Newsletter,
+    BrewingCalculator,
+    Origin,
+    Guarantees,
+  ],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

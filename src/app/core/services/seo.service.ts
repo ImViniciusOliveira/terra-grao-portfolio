@@ -47,14 +47,14 @@ export class SeoService {
       url: 'https://terra-grao.vercel.app',
       logo: '/images/logo.svg',
       description:
-        'Cafés especiais cultivados em micro-lotes de altitude nas montanhas da Serra da Mantiqueira, Minas Gerais.',
+        'Cafés especiais cultivados em micro-lotes de altitude nas montanhas de Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
       priceRange: 'R$ 42,90 - R$ 189,90',
       address: {
         '@type': 'PostalAddress',
         addressRegion: 'Minas Gerais',
         addressCountry: 'BR',
-        streetAddress: 'Serra da Mantiqueira',
+        streetAddress: 'Minas Gerais',
       },
       paymentAccepted: 'Cartão de Crédito, Boleto Bancário, Pix',
       currenciesAccepted: 'BRL',
