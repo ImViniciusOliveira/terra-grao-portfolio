@@ -51,15 +51,16 @@ describe('Newsletter', () => {
     expect(component.email()).toBe('invalido');
   });
 
-  it('deve limpar o campo de e-mail ao submeter valor valido sem exibir mensagens de alerta', () => {
+  it('deve limpar o campo de e-mail e exibir o card de toast no canto inferior esquerdo ao submeter valor valido', () => {
     component.email.set('cliente@terraegrao.com.br');
     component.onSubmit();
     fixture.detectChanges();
 
     expect(component.email()).toBe('');
+    expect(component.showToast()).toBe(true);
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).not.toContain('E-mail cadastrado com sucesso!');
+    expect(compiled.textContent).toContain('Cadastro realizado com sucesso!');
     expect(compiled.querySelector('input[type="email"]')).toBeTruthy();
   });
 });

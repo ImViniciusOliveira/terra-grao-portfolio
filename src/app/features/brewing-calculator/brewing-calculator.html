@@ -1,5 +1,9 @@
-<section id="calculadora" class="bg-bg-main border-t border-border">
-  <div class="max-w-5xl mx-auto px-4 sm:px-8">
+<section
+  id="calculadora"
+  aria-label="Como Preparar"
+  class="w-full bg-bg-main border-t border-b border-border py-16 sm:py-20 lg:py-24"
+>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
     <!-- Header -->
     <div class="text-center mb-8">
@@ -19,7 +23,7 @@
           (click)="selectMethod(method.id)"
           [class]="selectedId() === method.id
             ? 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-primary border-primary text-bg-main'
-            : 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-bg-secondary border-border text-text-main hover:bg-[#EAE5DC]'"
+            : 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-bg-secondary border-border text-text-main hover:bg-bg-hover'"
         >
           {{ method.name }}
         </button>

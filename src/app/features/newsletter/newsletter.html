@@ -38,4 +38,25 @@
       </form>
     </div>
   </div>
+
+  <!-- Card de Notificação Toast no Canto Inferior Esquerdo -->
+  @if (showToast()) {
+    <div
+      role="status"
+      aria-live="polite"
+      class="fixed bottom-5 left-5 z-50 flex items-center justify-between gap-4 bg-emerald-800 text-white px-4 py-3 rounded-[2px] shadow-lg border border-emerald-700/60 max-w-xs sm:max-w-sm transition-all duration-300 animate-fade-in"
+    >
+      <span class="text-xs sm:text-sm font-semibold font-body tracking-wide">
+        Cadastro realizado com sucesso!
+      </span>
+      <button
+        type="button"
+        (click)="closeToast()"
+        aria-label="Fechar notificação"
+        class="text-emerald-200 hover:text-white transition-colors cursor-pointer text-xs font-bold px-1 py-0.5"
+      >
+        ✕
+      </button>
+    </div>
+  }
 </section>

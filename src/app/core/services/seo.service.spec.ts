@@ -41,7 +41,7 @@ describe('SeoService', () => {
     const parsed = JSON.parse(script.text);
     expect(parsed['@context']).toBe('https://schema.org');
     expect(Array.isArray(parsed['@graph'])).toBe(true);
-    expect(parsed['@graph'].length).toBe(4);
+    expect(parsed['@graph'].length).toBe(5);
   });
 
   it('deve conter schemas validos para OnlineStore/LocalBusiness, ItemList de 4 produtos, HowTo e Categorias', () => {

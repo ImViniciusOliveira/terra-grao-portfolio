@@ -22,6 +22,7 @@ export class SeoService {
     const structuredData = {
       '@context': 'https://schema.org',
       '@graph': [
+        this.getWebSiteSchema(),
         this.getOrganizationSchema(),
         this.getProductListSchema(),
         this.getBrewingHowToSchema(),
@@ -160,6 +161,24 @@ export class SeoService {
         name: cat.name,
         url: cat.url,
       })),
+    };
+  }
+
+  /**
+   * Schema do WebSite (propriedades principais do site)
+   */
+  private getWebSiteSchema(): Record<string, unknown> {
+    return {
+      '@type': 'WebSite',
+      '@id': 'https://terra-grao.vercel.app/#website',
+      url: 'https://terra-grao.vercel.app',
+      name: 'Terra & Grão Cafés Especiais',
+      description:
+        'Cafés especiais artesanais cultivados em micro-lotes de altitude em Minas Gerais.',
+      inLanguage: 'pt-BR',
+      publisher: {
+        '@id': 'https://terra-grao.vercel.app/#organization',
+      },
     };
   }
 }

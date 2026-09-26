@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { SeoService } from './core/services/seo.service';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
@@ -27,6 +27,7 @@ import { Guarantees } from './features/guarantees/guarantees';
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App implements OnInit {
   private readonly seoService = inject(SeoService);

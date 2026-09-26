@@ -37,6 +37,9 @@
   --color-text-muted: #7A746E;
   --color-bg-main: #FAF8F5;
   --color-bg-secondary: #F0ECE4;
+  --color-bg-hover: #EAE5DC;
+  --color-offer-orange: #E07A27;
+  --color-discount-green: #87C116;
   --color-border: #ECE7DE;
   --color-gold: #FFD54A;
 
@@ -74,63 +77,15 @@
 }
 
 /* --------------------------------------------------------------------------
-   Padronização de Containers e Espaçamentos das Seções (Padrão Portfólio)
+   Padronização de Seções Full-Width por Padrão
    -------------------------------------------------------------------------- */
 section {
   width: 100%;
-  max-width: 1728px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;   /* 16px no mobile */
-  padding-right: 1rem;
-  padding-top: 4rem;    /* 64px vertical no mobile */
-  padding-bottom: 4rem;
-}
-
-@media (min-width: 768px) {
-  section {
-    padding-left: 2rem; /* 32px no tablet */
-    padding-right: 2rem;
-    padding-top: 5rem;  /* 80px vertical */
-    padding-bottom: 5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  section {
-    padding-left: 5rem; /* 80px no desktop */
-    padding-right: 5rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-}
-
-/* Seções Full-Width (100% de largura de ponta a ponta da tela) */
-section#hero,
-section#cupom-desconto,
-section#newsletter,
-section#origem,
-section#garantias {
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
-}
-
-section#hero {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-section#cupom-desconto {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-section#newsletter {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 
 /* --------------------------------------------------------------------------

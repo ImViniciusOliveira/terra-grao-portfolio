@@ -34,7 +34,7 @@
             <div class="relative aspect-[4/5] overflow-hidden bg-bg-secondary border border-border/60 mb-2">
               <!-- Badge 'EM OFERTA' (para 15% e 20% - Amarelo/Laranja em Destaque) -->
               @if (getDiscountPercentage(product)) {
-                <span class="absolute top-2 left-2 z-10 bg-[#E07A27] text-white text-xs sm:text-sm font-black uppercase tracking-wide px-3 py-1 sm:py-1.5 select-none shadow-md">
+                <span class="absolute top-2 left-2 z-10 bg-offer-orange text-white text-xs sm:text-sm font-black uppercase tracking-wide px-3 py-1 sm:py-1.5 select-none shadow-md">
                   EM OFERTA
                 </span>
               }
@@ -57,7 +57,7 @@
             </div>
 
             <!-- 5 Estrelas (Maiores e Centralizadas) -->
-            <div class="flex items-center justify-center gap-1 mb-1.5" [attr.aria-label]="'Avaliação ' + product.rating + ' de 5 estrelas'">
+            <div role="img" class="flex items-center justify-center gap-1 mb-1.5" [attr.aria-label]="'Avaliação ' + product.rating + ' de 5 estrelas'">
               <div class="flex items-center -space-x-0.5">
                 @for (star of [1, 2, 3, 4, 5]; track star) {
                   @if (getStarState(product.rating, star) === 'full') {
@@ -112,7 +112,7 @@
                   R$ {{ getCalculatedPrice(product) }}
                 </p>
                 @if (getDiscountPercentage(product)) {
-                  <span class="bg-[#87C116] text-white text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 font-body leading-none select-none shrink-0 shadow-2xs">
+                  <span class="bg-discount-green text-white text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 font-body leading-none select-none shrink-0 shadow-2xs">
                     -{{ getDiscountPercentage(product) }}%
                   </span>
                 }

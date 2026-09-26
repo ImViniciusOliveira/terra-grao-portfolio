@@ -7,8 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
   <link rel="alternate icon" type="image/png" href="/images/logo.png">
+  <link rel="apple-touch-icon" href="/images/logo.png">
+
+  <!-- Preload de Fontes Críticas (Evita FOUT/Layout Shift no LCP) -->
+  <link rel="preload" href="/fonts/newsreader/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/plus-jakarta-sans/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- SEO Primário -->
+  <meta name="theme-color" content="#FAF8F5">
   <meta name="description" content="Cafés especiais artesanais cultivados em micro-lotes de alta altitude em Minas Gerais. 100% arábica, torra fresca semanal e frete grátis acima de R$ 99.">
   <meta name="keywords" content="café especial, café artesanal, grãos de café, café minas gerais, café gourmet, torra fresca, hario v60, espresso, aeropress, prensa francesa">
   <meta name="author" content="Terra & Grão Cafés Especiais">
@@ -22,7 +28,7 @@
   <meta property="og:title" content="Terra & Grão — Cafés Especiais Artesanais">
   <meta property="og:description" content="A essência do campo direto para a sua xícara. Cafés especiais 100% arábica com torra fresca semanal.">
   <meta property="og:url" content="https://terra-grao.vercel.app/">
-  <meta property="og:image" content="/images/brand-hero.webp">
+  <meta property="og:image" content="https://terra-grao.vercel.app/images/brand-hero.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Terra & Grão Cafés Especiais">
@@ -31,7 +37,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Terra & Grão — Cafés Especiais Artesanais">
   <meta name="twitter:description" content="A essência do campo direto para a sua xícara. Cafés especiais 100% arábica com torra fresca e cupom GRAO15OFF.">
-  <meta name="twitter:image" content="/images/brand-hero.webp">
+  <meta name="twitter:image" content="https://terra-grao.vercel.app/images/brand-hero.webp">
 
   <!-- Metatags Geográficas -->
   <meta name="geo.region" content="BR-MG">
