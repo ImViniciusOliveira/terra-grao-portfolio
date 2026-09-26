@@ -48,6 +48,11 @@ export class App implements OnInit {
     this.seoService.injectStructuredData();
 
     if (isPlatformBrowser(this.platformId)) {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+
       injectAnalytics();
       injectSpeedInsights();
     }

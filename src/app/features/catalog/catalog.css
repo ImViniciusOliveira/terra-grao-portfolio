@@ -1,0 +1,9 @@
+/* --------------------------------------------------------------------------
+   Estado Inicial do Catálogo (Prevenção de FOUC / Flashes)
+   -------------------------------------------------------------------------- */
+.catalog-header-anim,
+.catalog-grid-anim {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+

@@ -1,0 +1,68 @@
+/* ==========================================================================
+   ARQUITETURA DE ANIMAÇÃO DO HERO: CSS KEYFRAMES vs GSAP SCROLLTRIGGER
+   ==========================================================================
+
+   POR QUE USAMOS CSS @KEYFRAMES AQUI NO HERO E NÃO GSAP?
+
+   1. EXECUÇÃO EM 0ms (SEM DELAY DE CARREGAMENTO / HIDRATAÇÃO):
+      O Hero é o conteúdo principal acima da dobra (above-the-fold) e a primeira
+      coisa visível no F5 / carregamento da página. Se usássemos JavaScript (GSAP),
+      a animação precisaria aguardar o navegador baixar, analisar e executar o
+      bundle JS do Angular e GSAP (~100ms a 200ms de delay perceptível).
+      Com CSS @keyframes, o motor gráfico C++ do navegador inicia a animação
+      no milissegundo 0 (Frame 1 do paint), criando uma sensação de fluidez instantânea.
+
+   2. ZERO FOUC (FLASH OF UNSTYLED/UNANIMATED CONTENT):
+      Usando `animation-fill-mode: both`, os elementos começam imediatamente no
+      estado inicial invisível (`opacity: 0`) antes do primeiro quadro ser pintado,
+      eliminando qualquer risco dos textos ou imagens piscarem na tela.
+
+   3. SEPARAÇÃO DE RESPONSABILIDADES DA ARQUITETURA:
+      - HERO (Acima da dobra / Primeira impressão): CSS @keyframes puro (0ms delay).
+      - SEÇÕES DE SCROLL (Categorias, Catálogo, etc.): GSAP ScrollTrigger (ativação
+        precisa por porcentagem da tela durante a rolagem do usuário).
+   ========================================================================== */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroSlideLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(60px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 1. Textos e Botões do Lado Esquerdo (Escalonados) */
+.hero-anim-title {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-anim-subtitle {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.hero-anim-buttons {
+  animation: heroFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+/* 2. Embalagem de Café e Xícara do Lado Direito (Direita para Esquerda) */
+.hero-anim-package {
+  animation: heroSlideLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.hero-anim-cup {
+  animation: heroSlideLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+}

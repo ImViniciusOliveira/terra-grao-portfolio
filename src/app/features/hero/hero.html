@@ -27,16 +27,16 @@
         <div class="w-fit max-w-xl xl:max-w-2xl space-y-6 sm:space-y-8">
           <!-- Titulo e Subtitulo -->
           <div class="space-y-4">
-            <h1 class="font-display text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl xl:text-6xl leading-[1.12]">
+            <h1 class="hero-anim-title font-display text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl xl:text-6xl leading-[1.12]">
               O melhor do café especial brasileiro na sua xícara
             </h1>
-            <p class="font-body text-sm sm:text-base lg:text-lg text-primary leading-relaxed">
+            <p class="hero-anim-subtitle font-body text-sm sm:text-base lg:text-lg text-primary leading-relaxed">
               Receba microlotes exclusivos todo mês pelo clube ou abasteça sua casa direto em nossa loja
             </p>
           </div>
 
           <!-- Botões de Ação (Apenas Desktop lg+) -->
-          <div class="hidden lg:flex flex-row items-stretch gap-4 pt-2 w-full">
+          <div class="hero-anim-buttons hidden lg:flex flex-row items-stretch gap-4 pt-2 w-full">
             <!-- Botao Primario: Fazer Assinatura -->
             <button
               type="button"
@@ -65,7 +65,7 @@
         <div class="hero-composition-group relative flex items-center justify-center translate-y-2 lg:translate-y-6">
 
           <!-- 1. EMBALAGEM DE CAFÉ (Atrás, z-0) -->
-          <div class="hero-package-item relative z-0">
+          <div class="hero-anim-package relative z-0">
             <img
               src="/images/hero/coffee-package.png"
               alt="Embalagem de Café Especial Terra & Grão"
@@ -76,7 +76,7 @@
 
           <!-- 2. XÍCARA DE CAFÉ (Na frente, z-10 | Deslocada para a esquerda e para baixo) -->
           <!-- Altere -left-..., -bottom-... ou translate aqui para mover APENAS a xícara -->
-          <div class="hero-cup-item absolute -left-10 sm:-left-14 md:-left-16 -bottom-4 sm:-bottom-6 lg:-bottom-8 z-10">
+          <div class="hero-anim-cup absolute -left-10 sm:-left-14 md:-left-16 -bottom-4 sm:-bottom-6 lg:-bottom-8 z-10">
             <img
               src="/images/hero/coffee-cup.png"
               alt="Xícara de Café Especial"
@@ -90,7 +90,7 @@
       </div>
 
       <!-- Botões de Ação (Mobile e Tablet: Abaixo da Imagem) -->
-      <div class="flex lg:hidden flex-col sm:flex-row items-stretch gap-3 sm:gap-4 w-full pt-1">
+      <div class="hero-anim-buttons flex lg:hidden flex-col sm:flex-row items-stretch gap-3 sm:gap-4 w-full pt-1">
         <button
           type="button"
           (click)="scrollToSection('catalogo')"

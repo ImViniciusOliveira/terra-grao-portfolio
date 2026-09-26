@@ -1,0 +1,8 @@
+/* --------------------------------------------------------------------------
+   Estado Inicial da Calculadora de Preparo (Prevenção de FOUC / Flashes)
+   -------------------------------------------------------------------------- */
+.brewing-calc-anim {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+

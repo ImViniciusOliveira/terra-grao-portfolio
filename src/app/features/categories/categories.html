@@ -15,14 +15,14 @@
           type="button"
           (click)="scrollToSection(category.targetSection)"
           [attr.aria-label]="'Navegar para ' + category.name"
-          class="group flex flex-col items-center justify-center cursor-pointer select-none outline-none bg-transparent border-0 w-full"
+          class="category-card-item group flex flex-col items-center justify-center cursor-pointer select-none outline-none bg-transparent border-0 w-full"
         >
           <!-- Círculo Ampliado da Imagem -->
-          <div class="w-44 h-44 lg:w-48 lg:h-48 xl:w-56 xl:h-56 2xl:w-60 2xl:h-60 rounded-full overflow-hidden shadow-xs">
+          <div class="w-44 h-44 lg:w-48 lg:h-48 xl:w-56 xl:h-56 2xl:w-60 2xl:h-60 rounded-full overflow-hidden shadow-xs transition-transform duration-300 ease-out group-hover:scale-105">
             <img
               [src]="category.imageUrl"
               [alt]="category.name"
-              class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+              class="w-full h-full object-cover object-center"
               loading="lazy"
             />
           </div>
@@ -39,7 +39,7 @@
     <div
       #categoryCarousel
       (scroll)="onScroll($event)"
-      class="flex lg:hidden w-full overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-1"
+      class="flex lg:hidden w-full overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar py-1"
     >
       <!-- Página 1 (3 Primeiros Itens) -->
       <div class="w-full shrink-0 snap-start grid grid-cols-3 gap-1.5 sm:gap-2.5 md:gap-3.5 px-0.5">
@@ -48,14 +48,14 @@
             type="button"
             (click)="scrollToSection(category.targetSection)"
             [attr.aria-label]="'Navegar para ' + category.name"
-            class="group flex flex-col items-center justify-start cursor-pointer select-none outline-none bg-transparent border-0 px-0.5"
+            class="category-card-item group flex flex-col items-center justify-start cursor-pointer select-none outline-none bg-transparent border-0 px-0.5"
           >
             <!-- Círculo da Imagem Bem Maior e Quase Encostando -->
-            <div class="w-full max-w-[124px] sm:max-w-[150px] md:max-w-[180px] aspect-square rounded-full overflow-hidden shadow-xs mx-auto">
+            <div class="w-full max-w-[124px] sm:max-w-[150px] md:max-w-[180px] aspect-square rounded-full overflow-hidden shadow-xs mx-auto transition-transform duration-300 ease-out group-hover:scale-105">
               <img
                 [src]="category.imageUrl"
                 [alt]="category.name"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                class="w-full h-full object-cover object-center"
                 loading="lazy"
               />
             </div>
@@ -75,14 +75,14 @@
             type="button"
             (click)="scrollToSection(category.targetSection)"
             [attr.aria-label]="'Navegar para ' + category.name"
-            class="group flex flex-col items-center justify-start cursor-pointer select-none outline-none bg-transparent border-0 px-0.5"
+            class="category-card-item group flex flex-col items-center justify-start cursor-pointer select-none outline-none bg-transparent border-0 px-0.5"
           >
             <!-- Círculo da Imagem Bem Maior e Quase Encostando -->
-            <div class="w-full max-w-[124px] sm:max-w-[150px] md:max-w-[180px] aspect-square rounded-full overflow-hidden shadow-xs mx-auto">
+            <div class="w-full max-w-[124px] sm:max-w-[150px] md:max-w-[180px] aspect-square rounded-full overflow-hidden shadow-xs mx-auto transition-transform duration-300 ease-out group-hover:scale-105">
               <img
                 [src]="category.imageUrl"
                 [alt]="category.name"
-                class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                class="w-full h-full object-cover object-center"
                 loading="lazy"
               />
             </div>

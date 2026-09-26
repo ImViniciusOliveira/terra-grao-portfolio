@@ -1,4 +1,19 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export interface OriginHighlight {
   readonly id: string;
@@ -17,7 +32,90 @@ export interface OriginHighlight {
   styleUrl: './origin.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Origin {
+export class Origin implements OnDestroy {
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private mm?: gsap.MatchMedia;
+
+  constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      afterNextRender(() => {
+        this.initScrollAnimation();
+      });
+    }
+  }
+
+  private initScrollAnimation(): void {
+    this.mm = gsap.matchMedia(this.elementRef.nativeElement);
+    const items =
+      this.elementRef.nativeElement.querySelectorAll('.origin-anim');
+
+    if (items.length === 0) return;
+
+    // Desktop: center 70%
+    this.mm.add('(min-width: 1024px)', () => {
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: 0.12,
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'center 70%',
+          },
+        }
+      );
+    });
+
+    // Tablet: top 55%
+    this.mm.add('(min-width: 768px) and (max-width: 1023px)', () => {
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: 0.12,
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'top 55%',
+          },
+        }
+      );
+    });
+
+    // Mobile: top 55%
+    this.mm.add('(max-width: 767px)', () => {
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: 0.12,
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'top 55%',
+          },
+        }
+      );
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.mm?.revert();
+  }
   readonly highlights: readonly OriginHighlight[] = [
     {
       id: 'secagem',

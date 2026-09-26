@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -10,9 +11,14 @@ import {
   signal,
   ViewChild,
 } from '@angular/core';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { COFFEE_PRODUCTS } from '../../core/data/coffee-catalog.mock';
 import { CoffeeProduct, ProductTabCategory } from '../../core/models/coffee.interface';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export interface CatalogTab {
   readonly id: ProductTabCategory;
@@ -28,17 +34,77 @@ export interface CatalogTab {
 })
 export class Catalog implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
   @ViewChild('productGrid') productGrid?: ElementRef<HTMLDivElement>;
+  private mm?: gsap.MatchMedia;
 
   readonly products = signal<readonly CoffeeProduct[]>(COFFEE_PRODUCTS);
   readonly activeTab = signal<ProductTabCategory>('destaque');
   readonly visibleCount = signal<number>(5);
   private revealInterval?: ReturnType<typeof setInterval>;
 
+  constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      afterNextRender(() => {
+        this.initScrollAnimation();
+      });
+    }
+  }
+
+  private initScrollAnimation(): void {
+    this.mm = gsap.matchMedia(this.elementRef.nativeElement);
+    const header = this.elementRef.nativeElement.querySelector('.catalog-header-anim');
+    const grid = this.elementRef.nativeElement.querySelector('.catalog-grid-anim');
+    const items = [header, grid].filter(Boolean);
+
+    if (items.length === 0) return;
+
+    // Desktop: center 75%
+    this.mm.add('(min-width: 1024px)', () => {
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: 0.14,
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'center 75%',
+          },
+        }
+      );
+    });
+
+    // Mobile & Tablet: top 40%
+    this.mm.add('(max-width: 1023px)', () => {
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: 0.14,
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'top 40%',
+          },
+        }
+      );
+    });
+  }
+
   ngOnDestroy(): void {
     if (this.revealInterval) {
       clearInterval(this.revealInterval);
     }
+    this.mm?.revert();
   }
 
   readonly tabs: readonly CatalogTab[] = [
@@ -119,10 +185,8 @@ export class Catalog implements OnDestroy {
             }
           });
         }
-      } else {
-        if (this.revealInterval) {
-          clearInterval(this.revealInterval);
-        }
+      } else if (this.revealInterval) {
+        clearInterval(this.revealInterval);
       }
     };
 

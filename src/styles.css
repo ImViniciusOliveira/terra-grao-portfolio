@@ -54,7 +54,6 @@
 @layer base {
   html {
     font-family: var(--font-body);
-    scroll-behavior: smooth;
     background-color: var(--color-bg-main);
     color: var(--color-text-main);
   }
@@ -275,4 +274,3 @@ input[type="range"]:hover::-moz-range-thumb {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-

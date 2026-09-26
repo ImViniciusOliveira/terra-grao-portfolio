@@ -8,7 +8,7 @@
     <h2 class="sr-only">Nossos Cafés Especiais e Edições Limitadas</h2>
 
     <!-- Menu de Abas no Topo (EM DESTAQUE • RAROS E PREMIADOS • KITS) -->
-    <div class="flex items-center justify-center gap-6 sm:gap-10 mb-6 overflow-x-auto no-scrollbar">
+    <div class="catalog-header-anim flex items-center justify-center gap-6 sm:gap-10 mb-6 overflow-x-auto no-scrollbar">
       @for (tab of tabs; track tab.id) {
         <button
           type="button"
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Grade de Produtos com Largura Fixa e Alinhamento à Esquerda (5 colunas no desktop, sem gap) -->
-    <div #productGrid class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
+    <div #productGrid class="catalog-grid-anim grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
       @for (product of filteredProducts(); track product.id; let i = $index) {
         @if (i < visibleCount()) {
           <div class="product-card relative bg-transparent border border-transparent p-2.5 sm:p-3 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(42,39,37,0.12)] hover:border-border/70 hover:z-10 transition-[shadow,border-color] duration-300">

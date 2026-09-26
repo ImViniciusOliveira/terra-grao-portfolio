@@ -147,8 +147,9 @@
         <li>
           <a
             (click)="scrollToSection('catalogo')"
-            class="cursor-pointer py-1 transition-colors duration-200"
+            class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'catalogo'"
+            [class.-translate-y-[2px]]="activeSection() === 'catalogo'"
             [class.text-text-secondary]="activeSection() !== 'catalogo'"
             [class.hover:text-primary]="activeSection() !== 'catalogo'"
           >
@@ -159,8 +160,9 @@
         <li>
           <a
             (click)="scrollToSection('calculadora')"
-            class="cursor-pointer py-1 transition-colors duration-200"
+            class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'calculadora'"
+            [class.-translate-y-[2px]]="activeSection() === 'calculadora'"
             [class.text-text-secondary]="activeSection() !== 'calculadora'"
             [class.hover:text-primary]="activeSection() !== 'calculadora'"
           >
@@ -171,8 +173,9 @@
         <li>
           <a
             (click)="scrollToSection('origem')"
-            class="cursor-pointer py-1 transition-colors duration-200"
+            class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'origem'"
+            [class.-translate-y-[2px]]="activeSection() === 'origem'"
             [class.text-text-secondary]="activeSection() !== 'origem'"
             [class.hover:text-primary]="activeSection() !== 'origem'"
           >
@@ -183,8 +186,9 @@
         <li>
           <a
             (click)="scrollToSection('garantias')"
-            class="cursor-pointer py-1 transition-colors duration-200"
+            class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'garantias'"
+            [class.-translate-y-[2px]]="activeSection() === 'garantias'"
             [class.text-text-secondary]="activeSection() !== 'garantias'"
             [class.hover:text-primary]="activeSection() !== 'garantias'"
           >

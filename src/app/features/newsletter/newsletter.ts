@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -10,7 +11,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 @Component({
   selector: 'app-newsletter',
@@ -21,8 +27,10 @@ import gsap from 'gsap';
 })
 export class Newsletter implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
   private autoHideTimeout?: ReturnType<typeof setTimeout>;
   private toastTimeline?: gsap.core.Timeline;
+  private mm?: gsap.MatchMedia;
 
   @ViewChild('toastCard') toastCard?: ElementRef<HTMLElement>;
 
@@ -31,11 +39,65 @@ export class Newsletter implements OnDestroy {
   readonly isToastError = signal(false);
   readonly toastMessage = signal('Cadastro realizado com sucesso!');
 
+  constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      afterNextRender(() => {
+        this.initScrollAnimation();
+      });
+    }
+  }
+
+  private initScrollAnimation(): void {
+    this.mm = gsap.matchMedia(this.elementRef.nativeElement);
+    const card = this.elementRef.nativeElement.querySelector('.newsletter-card-anim');
+
+    if (!card) return;
+
+    // Desktop: bottom 90% (dispara com o card 100% visivel)
+    this.mm.add('(min-width: 1024px)', () => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'bottom 90%',
+          },
+        }
+      );
+    });
+
+    // Mobile & Tablet: center 80% (dispara pelo meio)
+    this.mm.add('(max-width: 1023px)', () => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: 'power2.out',
+          clearProps: 'transform',
+          scrollTrigger: {
+            trigger: this.elementRef.nativeElement,
+            start: 'center 80%',
+          },
+        }
+      );
+    });
+  }
+
   ngOnDestroy(): void {
     if (this.autoHideTimeout) {
       clearTimeout(this.autoHideTimeout);
     }
     this.toastTimeline?.kill();
+    this.mm?.revert();
   }
 
   onEmailInput(event: Event): void {

@@ -1,0 +1,8 @@
+/* --------------------------------------------------------------------------
+   Estado Inicial do Banner de Cupom (Prevenção de FOUC / Flashes)
+   -------------------------------------------------------------------------- */
+.coupon-banner-card {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+

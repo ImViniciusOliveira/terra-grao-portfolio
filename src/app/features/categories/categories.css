@@ -1,0 +1,12 @@
+/* --------------------------------------------------------------------------
+   Estado Inicial dos Cards de Categorias (Prevenção de FOUC / Flashes)
+   --------------------------------------------------------------------------
+   Garante que os cards iniciem 100% invisíveis no CSS no Frame 0.
+   Quando o usuário rolar e atingir a porcentagem da tela (top 70%),
+   o GSAP ScrollTrigger executa a animação de revelação da esquerda para a direita.
+   -------------------------------------------------------------------------- */
+.category-card-item {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+

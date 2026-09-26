@@ -13,6 +13,14 @@
   <link rel="preload" href="/fonts/newsreader/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/plus-jakarta-sans/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
+  <!-- Garante que em todo recarregamento (F5) a pagina sempre comece no topo (0, 0) -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+
   <!-- SEO Primário -->
   <meta name="theme-color" content="#FAF8F5">
   <meta name="description" content="Cafés especiais artesanais cultivados em micro-lotes de alta altitude em Minas Gerais. 100% arábica, torra fresca semanal e frete grátis acima de R$ 99.">
