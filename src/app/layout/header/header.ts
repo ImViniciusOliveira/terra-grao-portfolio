@@ -49,12 +49,14 @@ export class Header implements OnDestroy {
     });
 
     if (isPlatformBrowser(this.platformId)) {
-      // Carrega preferencia salva do tema
+      // Carrega preferencia salva do tema (Padrao: sempre Modo Claro na 1ª visita)
       const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
-      const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      if (savedTheme === 'dark') {
         this.isDarkMode.set(true);
         document.documentElement.classList.add('dark');
+      } else {
+        this.isDarkMode.set(false);
+        document.documentElement.classList.remove('dark');
       }
 
       afterNextRender(() => {
