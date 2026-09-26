@@ -162,3 +162,89 @@ section {
     box-shadow: 0 -2px 0 0 var(--color-primary-hover), 0 2px 0 0 var(--color-primary-hover);
   }
 }
+
+/* --------------------------------------------------------------------------
+   Estilização Customizada do Slider de Range (input[type="range"])
+   -------------------------------------------------------------------------- */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  height: 24px;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+/* Trilho no WebKit (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #D5CFC5; /* Cor fixa da linha */
+  border-radius: 9999px;
+}
+
+/* Manipulador / Bolinha no WebKit */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: none;
+  box-shadow: 0 2px 6px rgba(42, 39, 37, 0.25);
+  cursor: grab;
+  margin-top: -6px;
+  transition: width 0.15s ease, height 0.15s ease, margin-top 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: var(--color-primary-hover);
+  width: 22px;
+  height: 22px;
+  margin-top: -8px; /* Mantem a centralizacao vertical exata (3px - 11px = -8px) sem desfoque */
+  box-shadow: 0 3px 8px rgba(42, 39, 37, 0.35);
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+}
+
+/* Trilho no Firefox */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #D5CFC5;
+  border-radius: 9999px;
+}
+
+/* Manipulador / Bolinha no Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: none;
+  box-shadow: 0 2px 6px rgba(42, 39, 37, 0.25);
+  cursor: grab;
+  transition: width 0.15s ease, height 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background: var(--color-primary-hover);
+  width: 22px;
+  height: 22px;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  cursor: grabbing;
+  width: 20px;
+  height: 20px;
+}

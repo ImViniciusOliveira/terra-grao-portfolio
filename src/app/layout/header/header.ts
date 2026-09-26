@@ -58,37 +58,49 @@ export class Header implements OnDestroy {
   }
 
   @HostListener('window:scroll')
+  @HostListener('window:resize')
   onWindowScroll(): void {
     this.checkScrollPosition();
   }
 
   private checkScrollPosition(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const currentScrollY = window.scrollY;
-      const scrolled = currentScrollY > 0;
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
-      if (this.isScrolled() !== scrolled) {
-        this.isScrolled.set(scrolled);
-      }
+    const currentScrollY = window.scrollY;
+    this.updateScrolledState(currentScrollY);
+    this.updateHeaderVisibility(currentScrollY);
+    this.lastScrollY = Math.max(0, currentScrollY);
+  }
 
-      // Auto-hide header ao rolar para baixo, reexibir ao rolar para cima (Mobile / Tablet / Desktop)
-      if (currentScrollY > 80) {
-        if (currentScrollY > this.lastScrollY + 5) {
-          if (!this.isHeaderHidden()) {
-            this.isHeaderHidden.set(true);
-          }
-        } else if (currentScrollY < this.lastScrollY - 5) {
-          if (this.isHeaderHidden()) {
-            this.isHeaderHidden.set(false);
-          }
-        }
-      } else {
-        if (this.isHeaderHidden()) {
-          this.isHeaderHidden.set(false);
-        }
-      }
+  private updateScrolledState(currentScrollY: number): void {
+    const scrolled = currentScrollY > 0;
 
-      this.lastScrollY = Math.max(0, currentScrollY);
+    if (this.isScrolled() !== scrolled) {
+      this.isScrolled.set(scrolled);
+    }
+  }
+
+  private updateHeaderVisibility(currentScrollY: number): void {
+    const isMobileOrTablet = window.innerWidth < 1024;
+    const shouldHandleVisibility = isMobileOrTablet && currentScrollY > 80;
+
+    if (!shouldHandleVisibility) {
+      this.setHeaderHidden(false);
+      return;
+    }
+
+    if (currentScrollY > this.lastScrollY + 5) {
+      this.setHeaderHidden(true);
+    } else if (currentScrollY < this.lastScrollY - 5) {
+      this.setHeaderHidden(false);
+    }
+  }
+
+  private setHeaderHidden(hidden: boolean): void {
+    if (this.isHeaderHidden() !== hidden) {
+      this.isHeaderHidden.set(hidden);
     }
   }
 

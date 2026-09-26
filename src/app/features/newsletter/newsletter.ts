@@ -24,10 +24,12 @@ export class Newsletter implements OnDestroy {
   private autoHideTimeout?: ReturnType<typeof setTimeout>;
   private toastTimeline?: gsap.core.Timeline;
 
-  @ViewChild('toastCard') toastCard?: ElementRef<HTMLDivElement>;
+  @ViewChild('toastCard') toastCard?: ElementRef<HTMLElement>;
 
   readonly email = signal('');
   readonly showToast = signal(false);
+  readonly isToastError = signal(false);
+  readonly toastMessage = signal('Cadastro realizado com sucesso!');
 
   ngOnDestroy(): void {
     if (this.autoHideTimeout) {
@@ -43,11 +45,17 @@ export class Newsletter implements OnDestroy {
 
   onSubmit(): void {
     const emailVal = this.email().trim();
-    if (!emailVal || !emailVal.includes('@')) {
-      return;
+    const isValid = emailVal.length > 0 && emailVal.includes('@');
+
+    if (isValid) {
+      this.email.set('');
+      this.isToastError.set(false);
+      this.toastMessage.set('Cadastro realizado com sucesso!');
+    } else {
+      this.isToastError.set(true);
+      this.toastMessage.set('Por favor, digite um e-mail válido.');
     }
 
-    this.email.set('');
     if (this.autoHideTimeout) {
       clearTimeout(this.autoHideTimeout);
     }

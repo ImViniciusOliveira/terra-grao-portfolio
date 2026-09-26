@@ -1,9 +1,16 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
+  inject,
+  OnDestroy,
+  PLATFORM_ID,
   signal,
+  ViewChild,
 } from '@angular/core';
+import gsap from 'gsap';
 import { COFFEE_PRODUCTS } from '../../core/data/coffee-catalog.mock';
 import { CoffeeProduct, ProductTabCategory } from '../../core/models/coffee.interface';
 
@@ -19,9 +26,20 @@ export interface CatalogTab {
   styleUrl: './catalog.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Catalog {
+export class Catalog implements OnDestroy {
+  private readonly platformId = inject(PLATFORM_ID);
+  @ViewChild('productGrid') productGrid?: ElementRef<HTMLDivElement>;
+
   readonly products = signal<readonly CoffeeProduct[]>(COFFEE_PRODUCTS);
   readonly activeTab = signal<ProductTabCategory>('destaque');
+  readonly visibleCount = signal<number>(5);
+  private revealInterval?: ReturnType<typeof setInterval>;
+
+  ngOnDestroy(): void {
+    if (this.revealInterval) {
+      clearInterval(this.revealInterval);
+    }
+  }
 
   readonly tabs: readonly CatalogTab[] = [
     { id: 'destaque', label: 'EM DESTAQUE' },
@@ -59,7 +77,62 @@ export class Catalog {
   readonly addedStatus = signal<Record<string, boolean>>({});
 
   setTab(tab: ProductTabCategory): void {
+    if (this.activeTab() === tab) return;
+
+    if (this.revealInterval) {
+      clearInterval(this.revealInterval);
+    }
+
+    this.visibleCount.set(0);
     this.activeTab.set(tab);
+
+    const total = this.filteredProducts().length;
+    let count = 0;
+
+    const revealNext = () => {
+      if (count < total) {
+        count++;
+        this.visibleCount.set(count);
+
+        if (isPlatformBrowser(this.platformId)) {
+          requestAnimationFrame(() => {
+            const gridEl = this.productGrid?.nativeElement;
+            if (!gridEl) return;
+            const cards = gridEl.querySelectorAll('.product-card');
+            const newCard = cards[count - 1];
+            if (newCard) {
+              const tl = gsap.timeline();
+              // Fade-in ultra rapido: atinge 100% de opacidade na metade da subida (~150ms)
+              tl.fromTo(
+                newCard,
+                { opacity: 0 },
+                { opacity: 1, duration: 0.15, ease: 'power1.out' },
+                0
+              );
+              // Movimento de subida: desce 20px e sobe ate o ponto final em 350ms
+              tl.fromTo(
+                newCard,
+                { y: 20 },
+                { y: 0, duration: 0.35, ease: 'power2.out' },
+                0
+              );
+            }
+          });
+        }
+      } else {
+        if (this.revealInterval) {
+          clearInterval(this.revealInterval);
+        }
+      }
+    };
+
+    // Revela e anima o 1º card imediatamente
+    revealNext();
+
+    // Dispara o proximo card a cada 65ms (sem esperar a animacao do anterior terminar)
+    this.revealInterval = setInterval(() => {
+      revealNext();
+    }, 65);
   }
 
   getSelectedSize(productId: string): string {

@@ -17,6 +17,7 @@
       </p>
 
       <form
+        novalidate
         (ngSubmit)="onSubmit()"
         class="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto"
       >
@@ -39,25 +40,28 @@
     </div>
   </div>
 
-  <!-- Card de Notificação Toast no Canto Inferior Esquerdo (Animado via GSAP) -->
+  <!-- Card de Notificação Toast (Sucesso Verde / Erro Vermelho com GSAP) -->
   @if (showToast()) {
-    <div
+    <output
       #toastCard
-      role="status"
       aria-live="polite"
-      class="fixed bottom-6 left-4 right-4 sm:left-6 sm:right-auto z-[9999] flex items-center justify-between gap-3 bg-emerald-900 text-white px-4 py-3.5 rounded-[2px] shadow-2xl border border-emerald-700/80 max-w-none sm:max-w-sm"
+      [class]="isToastError()
+        ? 'flex fixed bottom-6 left-4 right-4 sm:left-6 sm:right-auto sm:w-[340px] z-[9999] items-center justify-between gap-3 bg-red-900 text-white px-4 py-3.5 rounded-[2px] shadow-2xl border border-red-700/80'
+        : 'flex fixed bottom-6 left-4 right-4 sm:left-6 sm:right-auto sm:w-[340px] z-[9999] items-center justify-between gap-3 bg-emerald-900 text-white px-4 py-3.5 rounded-[2px] shadow-2xl border border-emerald-700/80'"
     >
       <span class="text-xs sm:text-sm font-semibold font-body tracking-wide">
-        Cadastro realizado com sucesso!
+        {{ toastMessage() }}
       </span>
       <button
         type="button"
         (click)="closeToast()"
         aria-label="Fechar notificação"
-        class="text-emerald-200 hover:text-white transition-colors cursor-pointer text-xs font-bold px-1 py-0.5"
+        [class]="isToastError()
+          ? 'text-red-200 hover:text-white transition-colors cursor-pointer text-xs font-bold px-1 py-0.5 ml-3'
+          : 'text-emerald-200 hover:text-white transition-colors cursor-pointer text-xs font-bold px-1 py-0.5 ml-3'"
       >
         ✕
       </button>
-    </div>
+    </output>
   }
 </section>

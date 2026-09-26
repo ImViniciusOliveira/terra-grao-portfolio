@@ -105,8 +105,8 @@
 
 <!-- Cabeçalho Principal Fixo (Smart Auto-Hide no Scroll) -->
 <header
-  class="sticky top-0 z-50 w-full transition-all duration-300 transform-gpu [backface-visibility:hidden]"
-  [class.-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
+  class="sticky top-0 z-50 w-full transition-transform duration-300 transform-gpu [backface-visibility:hidden]"
+  [class.max-lg:-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
   [class.translate-y-0]="!isHeaderHidden() || isMenuOpen()"
   [class.bg-bg-main/95]="isScrolled()"
   [class.backdrop-blur-md]="isScrolled()"

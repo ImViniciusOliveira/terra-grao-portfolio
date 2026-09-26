@@ -38,6 +38,7 @@ describe('Catalog', () => {
 
   it('deve alternar para a aba RAROS E PREMIADOS exibindo 3 produtos com avaliações', () => {
     component.setTab('premiados');
+    component.visibleCount.set(3);
     fixture.detectChanges();
 
     expect(component.activeTab()).toBe('premiados');
@@ -52,6 +53,7 @@ describe('Catalog', () => {
 
   it('deve alternar para a aba KITS exibindo 1 produto', () => {
     component.setTab('kits');
+    component.visibleCount.set(1);
     fixture.detectChanges();
 
     expect(component.activeTab()).toBe('kits');
