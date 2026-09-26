@@ -22,8 +22,8 @@
           type="button"
           (click)="selectMethod(method.id)"
           [class]="selectedId() === method.id
-            ? 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-primary border-primary text-bg-main'
-            : 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-bg-secondary border-border text-text-main hover:bg-bg-hover'"
+            ? 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-primary border-primary text-bg-main cursor-default'
+            : 'py-2 px-3 text-xs font-semibold rounded-[2px] border text-center transition-colors bg-bg-secondary border-border text-text-main hover:bg-bg-hover cursor-pointer'"
         >
           {{ method.name }}
         </button>
@@ -38,10 +38,11 @@
         <!-- Grams Adjustment -->
         <div class="space-y-2">
           <div class="flex justify-between items-center text-xs">
-            <span class="font-semibold text-text-main">Quantidade de Café:</span>
+            <label for="coffee-grams" class="font-semibold text-text-main">Quantidade de Café:</label>
             <span class="font-mono font-bold text-primary">{{ coffeeGrams() }}g</span>
           </div>
           <input
+            id="coffee-grams"
             type="range"
             min="10"
             max="50"

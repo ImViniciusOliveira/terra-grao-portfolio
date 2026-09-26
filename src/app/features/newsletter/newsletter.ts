@@ -43,7 +43,7 @@ export class Newsletter implements OnDestroy {
 
   onSubmit(): void {
     const emailVal = this.email().trim();
-    if (!emailVal || !emailVal.includes('@')) {
+    if (!emailVal?.includes('@')) {
       return;
     }
 

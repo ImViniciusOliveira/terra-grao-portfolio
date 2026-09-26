@@ -26,9 +26,10 @@
     </div>
 
     <!-- Grade de Produtos com Largura Fixa e Alinhamento à Esquerda (5 colunas no desktop, sem gap) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
-      @for (product of filteredProducts(); track product.id) {
-        <div class="relative bg-transparent border border-transparent p-2.5 sm:p-3 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(42,39,37,0.12)] hover:border-border/70 hover:z-10 transition-all duration-300">
+    <div #productGrid class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
+      @for (product of filteredProducts(); track product.id; let i = $index) {
+        @if (i < visibleCount()) {
+          <div class="product-card relative bg-transparent border border-transparent p-2.5 sm:p-3 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(42,39,37,0.12)] hover:border-border/70 hover:z-10 transition-[shadow,border-color] duration-300">
           <div>
             <!-- Foto do Produto (Retângulo em Pé - Aspect 4/5 com Badges de Oferta e Cashback) -->
             <div class="relative aspect-[4/5] overflow-hidden bg-bg-secondary border border-border/60 mb-2">
@@ -57,8 +58,8 @@
             </div>
 
             <!-- 5 Estrelas (Maiores e Centralizadas) -->
-            <div role="img" class="flex items-center justify-center gap-1 mb-1.5" [attr.aria-label]="'Avaliação ' + product.rating + ' de 5 estrelas'">
-              <div class="flex items-center -space-x-0.5">
+            <div class="flex items-center justify-center gap-1 mb-1.5">
+              <div class="flex items-center -space-x-0.5" aria-hidden="true">
                 @for (star of [1, 2, 3, 4, 5]; track star) {
                   @if (getStarState(product.rating, star) === 'full') {
                     <!-- Estrela Dourada Cheia -->
@@ -92,21 +93,21 @@
               </span>
             </div>
 
-            <!-- Nome do Item (Proporcional e Centralizado) -->
-            <h3 class="font-display text-base sm:text-lg font-bold text-text-main leading-snug mb-0.5 text-center">
+            <!-- Nome do Item (Altura Fixa de 2.75rem para 2 Linhas) -->
+            <h3 class="font-display text-base sm:text-lg font-bold text-text-main leading-snug mb-0.5 text-center h-[2.75rem] flex items-center justify-center">
               {{ product.name }}
             </h3>
           </div>
 
           <!-- Linha Inferior: Preço (Valores puros + Badge % #87C116 + Pix/Boleto) à Esquerda e Botão Comprar à Direita (Sem Linha Divisória) -->
           <div class="flex items-center justify-between gap-2.5 mt-1">
-            <!-- Bloco de Preço -->
+            <!-- Bloco de Preço com Altura de Risca Reservada -->
             <div class="min-w-0">
-              @if (getOriginalPrice(product)) {
-                <p class="text-[11px] sm:text-xs text-text-muted/60 line-through leading-none mb-0.5">
+              <p class="text-[11px] sm:text-xs text-text-muted/60 line-through leading-none mb-0.5 min-h-[16px]">
+                @if (getOriginalPrice(product)) {
                   R$ {{ getOriginalPrice(product) }}
-                </p>
-              }
+                }
+              </p>
               <div class="flex items-center gap-1.5 flex-wrap">
                 <p class="text-lg sm:text-xl font-bold text-primary font-display leading-tight">
                   R$ {{ getCalculatedPrice(product) }}
@@ -133,6 +134,7 @@
           </div>
         </div>
       }
+    }
     </div>
   </div>
 </section>
