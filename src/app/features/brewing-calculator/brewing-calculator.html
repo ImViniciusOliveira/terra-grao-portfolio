@@ -49,11 +49,8 @@
             step="2"
             [value]="coffeeGrams()"
             (input)="onSliderChange($event)"
-            class="w-full accent-primary cursor-pointer"
+            class="w-full cursor-grab active:cursor-grabbing"
           />
-          <p class="text-[11px] text-text-secondary">
-            Arraste para ajustar o volume desejado.
-          </p>
         </div>
 
         <!-- Result Metrics -->
