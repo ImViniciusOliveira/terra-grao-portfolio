@@ -1,0 +1,72 @@
+<section
+  id="cupom-desconto"
+  aria-labelledby="coupon-heading"
+  class="w-full bg-bg-secondary border-y border-border py-8"
+>
+  <div class="mx-auto max-w-[1728px] w-full px-4 sm:px-6 lg:px-8">
+    <div
+      class="max-w-6xl lg:max-w-7xl mx-auto bg-primary text-bg-main p-6 sm:p-8 lg:p-10 rounded-[2px] border border-[#84482D] shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+    >
+      <div class="space-y-1.5 max-w-2xl">
+        <h2
+          id="coupon-heading"
+          class="font-display text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight text-[#FAF8F5]"
+        >
+          Ganhe 15% OFF no seu primeiro pedido
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base text-[#F0ECE4]/90 font-body">
+          Aproveite esse cupom com desconto exclusivo na sua primeira compra.
+        </p>
+      </div>
+
+      <div
+        class="flex items-center space-x-3 bg-bg-main text-text-main px-4 sm:px-5 py-2.5 sm:py-3 rounded-[2px] border border-border shrink-0 shadow-xs"
+      >
+        <span
+          class="text-sm sm:text-base font-mono font-bold tracking-widest text-primary select-all"
+        >
+          {{ couponCode() }}
+        </span>
+
+        <button
+          type="button"
+          (click)="copyCoupon()"
+          [attr.aria-label]="copied() ? 'Cupom copiado' : 'Copiar cupom ' + couponCode()"
+          [title]="copied() ? 'Cupom copiado!' : 'Copiar cupom'"
+          class="p-1 text-text-muted hover:text-primary transition-colors cursor-pointer rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-center"
+        >
+          @if (copied()) {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 text-green-700"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          } @else {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 text-text-muted hover:text-primary transition-colors"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

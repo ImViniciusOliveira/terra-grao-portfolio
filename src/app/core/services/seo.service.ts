@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
+import { COFFEE_PRODUCTS } from '../data/coffee-catalog.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -21,9 +22,11 @@ export class SeoService {
     const structuredData = {
       '@context': 'https://schema.org',
       '@graph': [
+        this.getWebSiteSchema(),
         this.getOrganizationSchema(),
         this.getProductListSchema(),
         this.getBrewingHowToSchema(),
+        this.getCategoriesNavigationSchema(),
       ],
     };
 
@@ -45,14 +48,14 @@ export class SeoService {
       url: 'https://terra-grao.vercel.app',
       logo: '/images/logo.svg',
       description:
-        'Cafés especiais cultivados em micro-lotes de altitude nas montanhas da Serra da Mantiqueira, Minas Gerais.',
+        'Cafés especiais cultivados em micro-lotes de altitude nas montanhas de Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
-      priceRange: 'R$ 42,90 - R$ 64,90',
+      priceRange: 'R$ 42,90 - R$ 189,90',
       address: {
         '@type': 'PostalAddress',
         addressRegion: 'Minas Gerais',
         addressCountry: 'BR',
-        streetAddress: 'Serra da Mantiqueira',
+        streetAddress: 'Minas Gerais',
       },
       paymentAccepted: 'Cartão de Crédito, Boleto Bancário, Pix',
       currenciesAccepted: 'BRL',
@@ -63,36 +66,9 @@ export class SeoService {
    * Schema dos Produtos do Catálogo (para rich snippets no Google)
    */
   private getProductListSchema(): Record<string, unknown> {
-    const products = [
-      {
-        name: 'Mantiqueira Dourada',
-        price: '44.90',
-        shortTaste: 'Notas de Mel e Frutas Amarelas',
-        image: '/images/coffees/mantiqueira-dourada.webp',
-      },
-      {
-        name: 'Reserva do Pouso',
-        price: '46.90',
-        shortTaste: 'Notas de Cacau 70% e Melaço',
-        image: '/images/coffees/reserva-do-pouso.webp',
-      },
-      {
-        name: 'Flor da Serra',
-        price: '42.90',
-        shortTaste: 'Notas Florais e Bergamota',
-        image: '/images/coffees/flor-da-serra.webp',
-      },
-      {
-        name: 'Geisha Edição Especial',
-        price: '64.90',
-        shortTaste: 'Notas de Jasmim e Pêssego Nobre',
-        image: '/images/coffees/geisha-especial.webp',
-      },
-    ];
-
     return {
       '@type': 'ItemList',
-      itemListElement: products.map((product, index) => ({
+      itemListElement: COFFEE_PRODUCTS.map((product, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
@@ -106,9 +82,17 @@ export class SeoService {
           },
           offers: {
             '@type': 'Offer',
-            price: product.price,
+            price: product.price.toFixed(2),
             priceCurrency: 'BRL',
             availability: 'https://schema.org/InStock',
+            url: 'https://terra-grao.vercel.app/#catalogo',
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: product.rating,
+            reviewCount: product.reviewsCount ?? 1,
+            bestRating: '5',
+            worstRating: '1',
           },
         },
       })),
@@ -152,6 +136,49 @@ export class SeoService {
           text: 'Despeje o restante da água em círculos lentos até atingir 320ml.',
         },
       ],
+    };
+  }
+
+  /**
+   * Schema de Navegação de Categorias Principais (para SEO semântico e sitelinks)
+   */
+  private getCategoriesNavigationSchema(): Record<string, unknown> {
+    const categories = [
+      { name: 'Café em Grãos', url: 'https://terra-grao.vercel.app/#catalogo' },
+      { name: 'Café Moído', url: 'https://terra-grao.vercel.app/#catalogo' },
+      { name: 'Cafeteiras & Métodos', url: 'https://terra-grao.vercel.app/#calculadora' },
+      { name: 'Moedores & Acessórios', url: 'https://terra-grao.vercel.app/#catalogo' },
+      { name: 'Kits & Degustação', url: 'https://terra-grao.vercel.app/#catalogo' },
+    ];
+
+    return {
+      '@type': 'ItemList',
+      '@id': 'https://terra-grao.vercel.app/#categories',
+      name: 'Categorias de Cafés Especiais e Acessórios',
+      itemListElement: categories.map((cat, index) => ({
+        '@type': 'SiteNavigationElement',
+        position: index + 1,
+        name: cat.name,
+        url: cat.url,
+      })),
+    };
+  }
+
+  /**
+   * Schema do WebSite (propriedades principais do site)
+   */
+  private getWebSiteSchema(): Record<string, unknown> {
+    return {
+      '@type': 'WebSite',
+      '@id': 'https://terra-grao.vercel.app/#website',
+      url: 'https://terra-grao.vercel.app',
+      name: 'Terra & Grão Cafés Especiais',
+      description:
+        'Cafés especiais artesanais cultivados em micro-lotes de altitude em Minas Gerais.',
+      inLanguage: 'pt-BR',
+      publisher: {
+        '@id': 'https://terra-grao.vercel.app/#organization',
+      },
     };
   }
 }

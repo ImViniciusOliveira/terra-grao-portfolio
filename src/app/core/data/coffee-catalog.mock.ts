@@ -1,12 +1,17 @@
 import { CoffeeProduct } from '../models/coffee.interface';
 
 export const COFFEE_PRODUCTS: readonly CoffeeProduct[] = [
+  // 1. EM DESTAQUE (5 Itens)
   {
     id: 'mantiqueira-dourada',
     name: 'Mantiqueira Dourada',
     price: 44.9,
+    originalPrice: 52.82,
+    rating: 4.8,
+    reviewsCount: 42,
     shortTaste: 'Notas de Mel e Frutas Amarelas',
     image: '/images/coffees/mantiqueira-dourada.webp',
+    category: 'destaque',
     sizes: [
       { weight: '250g', priceMultiplier: 1.0 },
       { weight: '500g', priceMultiplier: 1.85 },
@@ -23,8 +28,11 @@ export const COFFEE_PRODUCTS: readonly CoffeeProduct[] = [
     id: 'reserva-do-pouso',
     name: 'Reserva do Pouso',
     price: 46.9,
+    rating: 4.5,
+    reviewsCount: 28,
     shortTaste: 'Notas de Cacau 70% e Melaço',
     image: '/images/coffees/reserva-do-pouso.webp',
+    category: 'destaque',
     sizes: [
       { weight: '250g', priceMultiplier: 1.0 },
       { weight: '500g', priceMultiplier: 1.85 },
@@ -41,8 +49,12 @@ export const COFFEE_PRODUCTS: readonly CoffeeProduct[] = [
     id: 'flor-da-serra',
     name: 'Flor da Serra',
     price: 42.9,
+    originalPrice: 50.47,
+    rating: 4.7,
+    reviewsCount: 35,
     shortTaste: 'Notas Florais e Bergamota',
     image: '/images/coffees/flor-da-serra.webp',
+    category: 'destaque',
     sizes: [
       { weight: '250g', priceMultiplier: 1.0 },
       { weight: '500g', priceMultiplier: 1.85 },
@@ -59,8 +71,11 @@ export const COFFEE_PRODUCTS: readonly CoffeeProduct[] = [
     id: 'geisha-mantiqueira',
     name: 'Geisha Edição Especial',
     price: 64.9,
+    rating: 5.0,
+    reviewsCount: 19,
     shortTaste: 'Notas de Jasmim e Pêssego Nobre',
     image: '/images/coffees/geisha-especial.webp',
+    category: 'destaque',
     sizes: [
       { weight: '250g', priceMultiplier: 1.0 },
       { weight: '500g', priceMultiplier: 1.85 },
@@ -71,6 +86,115 @@ export const COFFEE_PRODUCTS: readonly CoffeeProduct[] = [
       'Moído Coado / Filtro',
       'Prensa Francesa',
       'Espresso',
+    ],
+  },
+  {
+    id: 'bourbon-amarelo-mantiqueira',
+    name: 'Bourbon Amarelo Reserva',
+    price: 48.9,
+    originalPrice: 61.13,
+    rating: 4.9,
+    reviewsCount: 47,
+    shortTaste: 'Notas de Caramelo Doce e Frutas Cítricas',
+    image: '/images/coffees/mantiqueira-dourada.webp',
+    category: 'destaque',
+    sizes: [
+      { weight: '250g', priceMultiplier: 1.0 },
+      { weight: '500g', priceMultiplier: 1.85 },
+      { weight: '1kg', priceMultiplier: 3.5 },
+    ],
+    grindTypes: [
+      'Em Grãos',
+      'Moído Coado / Filtro',
+      'Prensa Francesa',
+      'Espresso',
+    ],
+  },
+
+  // 2. RAROS E PREMIADOS (3 Itens)
+  {
+    id: 'jacu-bird-mantiqueira',
+    name: 'Café Jacu Bird Mantiqueira',
+    price: 119.9,
+    originalPrice: 149.88,
+    rating: 4.9,
+    reviewsCount: 14,
+    shortTaste: 'Exótico, Frutado & Acidez Doce Rara',
+    image: '/images/coffees/geisha-especial.webp',
+    category: 'premiados',
+    sizes: [
+      { weight: '100g', priceMultiplier: 1.0 },
+      { weight: '250g', priceMultiplier: 2.2 },
+      { weight: '500g', priceMultiplier: 4.1 },
+    ],
+    grindTypes: [
+      'Em Grãos',
+      'Moído Coado / Filtro',
+      'Prensa Francesa',
+      'Espresso',
+    ],
+  },
+  {
+    id: 'santa-rita-salada-frutas',
+    name: 'Café Santa Rita Salada de Frutas',
+    price: 68.9,
+    rating: 4.8,
+    reviewsCount: 89,
+    shortTaste: 'Notas Vivas de Frutas Tropicais e Mirtilo',
+    image: '/images/coffees/flor-da-serra.webp',
+    category: 'premiados',
+    sizes: [
+      { weight: '250g', priceMultiplier: 1.0 },
+      { weight: '500g', priceMultiplier: 1.85 },
+      { weight: '1kg', priceMultiplier: 3.5 },
+    ],
+    grindTypes: [
+      'Em Grãos',
+      'Moído Coado / Filtro',
+      'Prensa Francesa',
+      'Espresso',
+    ],
+  },
+  {
+    id: 'mantiqueira-classico-premiado',
+    name: 'Café Mantiqueira Clássico Premiado',
+    price: 74.9,
+    rating: 4.6,
+    reviewsCount: 56,
+    shortTaste: 'Notas de Nozes Tostadas, Caramelo e Chocolate Nobre',
+    image: '/images/coffees/reserva-do-pouso.webp',
+    category: 'premiados',
+    sizes: [
+      { weight: '250g', priceMultiplier: 1.0 },
+      { weight: '500g', priceMultiplier: 1.85 },
+      { weight: '1kg', priceMultiplier: 3.5 },
+    ],
+    grindTypes: [
+      'Em Grãos',
+      'Moído Coado / Filtro',
+      'Prensa Francesa',
+      'Espresso',
+    ],
+  },
+
+  // 3. KITS (1 Item)
+  {
+    id: 'kit-barista-hario-v60',
+    name: 'Kit Barista Hario V60 & Café Mantiqueira',
+    price: 189.9,
+    originalPrice: 237.38,
+    rating: 4.9,
+    reviewsCount: 23,
+    shortTaste: 'Cafeteira V60 Acrílica + 40 Filtros + Café Especial 250g',
+    image: '/images/brand-hero.webp',
+    category: 'kits',
+    sizes: [
+      { weight: 'Kit Completo', priceMultiplier: 1.0 },
+    ],
+    grindTypes: [
+      'Em Grãos',
+      'Moído Coado / Filtro',
+      'Prensa Francesa',
     ],
   },
 ];

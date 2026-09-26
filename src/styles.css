@@ -37,8 +37,14 @@
   --color-text-muted: #7A746E;
   --color-bg-main: #FAF8F5;
   --color-bg-secondary: #F0ECE4;
+  --color-bg-hover: #EAE5DC;
+  --color-offer-orange: #E07A27;
+  --color-discount-green: #87C116;
   --color-border: #ECE7DE;
   --color-gold: #FFD54A;
+
+  /* Token Exclusivo do Hero */
+  --color-hero-bg: #EAA858;
 
   /* Tipografias */
   --font-display: 'Newsreader', Georgia, serif;
@@ -71,53 +77,88 @@
 }
 
 /* --------------------------------------------------------------------------
-   Padronização de Containers e Espaçamentos das Seções (Padrão Portfólio)
+   Padronização de Seções Full-Width por Padrão
    -------------------------------------------------------------------------- */
 section {
   width: 100%;
-  max-width: 1728px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;   /* 16px no mobile */
-  padding-right: 1rem;
-  padding-top: 4rem;    /* 64px vertical no mobile */
-  padding-bottom: 4rem;
-}
-
-@media (min-width: 768px) {
-  section {
-    padding-left: 2rem; /* 32px no tablet */
-    padding-right: 2rem;
-    padding-top: 5rem;  /* 80px vertical */
-    padding-bottom: 5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  section {
-    padding-left: 5rem; /* 80px no desktop */
-    padding-right: 5rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* --------------------------------------------------------------------------
-   Estilização da Barra de Rolagem (Scrollbar)
+   Estilização da Barra de Rolagem (Scrollbar Customizada Terra & Grão)
    -------------------------------------------------------------------------- */
-::-webkit-scrollbar {
-  width: 8px;
+/* 1. Remove setas de extremidade (top/bottom scroll buttons) */
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--color-bg-main);
+/* 2. Regras para Mobile e Tablet (< 1024px) */
+@media (max-width: 1023px) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-bg-secondary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: var(--color-bg-secondary) !important;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary) !important;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0 -2px 0 0 var(--color-primary), 0 2px 0 0 var(--color-primary);
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 2px;
-}
+/* 3. Regras Específicas do Desktop (>= 1024px) - Restaurado exatamente como aprovado */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  /* Invisível por padrão quando inativo */
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: transparent !important;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent !important;
+    border-radius: 2px;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Surge bege claro + terracota ao mover o mouse ou rolar a página */
+  html:hover ::-webkit-scrollbar-track,
+  html:hover ::-webkit-scrollbar-corner {
+    background: var(--color-bg-secondary) !important;
+  }
+
+  html:hover ::-webkit-scrollbar-thumb {
+    background: var(--color-primary) !important;
+    box-shadow: 0 -2px 0 0 var(--color-primary), 0 2px 0 0 var(--color-primary);
+  }
+
+  ::-webkit-scrollbar-thumb:hover,
+  ::-webkit-scrollbar-thumb:active {
+    background: var(--color-primary-hover) !important;
+    box-shadow: 0 -2px 0 0 var(--color-primary-hover), 0 2px 0 0 var(--color-primary-hover);
+  }
 }

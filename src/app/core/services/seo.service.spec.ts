@@ -41,10 +41,10 @@ describe('SeoService', () => {
     const parsed = JSON.parse(script.text);
     expect(parsed['@context']).toBe('https://schema.org');
     expect(Array.isArray(parsed['@graph'])).toBe(true);
-    expect(parsed['@graph'].length).toBe(3);
+    expect(parsed['@graph'].length).toBe(5);
   });
 
-  it('deve conter schemas validos para OnlineStore/LocalBusiness, ItemList de 4 produtos e HowTo', () => {
+  it('deve conter schemas validos para OnlineStore/LocalBusiness, ItemList de 4 produtos, HowTo e Categorias', () => {
     service.injectStructuredData();
 
     const script = document.getElementById('schema-org-structured-data') as HTMLScriptElement;
@@ -61,11 +61,16 @@ describe('SeoService', () => {
     expect(store.name).toBe('Terra & Grão Cafés Especiais');
     expect(store.email).toBe('atendimento@terraegrao.com.br');
 
-    // 2. ItemList com 4 cafés
-    const itemList = graph.find((item: { '@type': string }) => item['@type'] === 'ItemList');
+    // 2. ItemList com 9 cafés e kits
+    const itemList = graph.find(
+      (item: { '@type': string; name?: string }) =>
+        item['@type'] === 'ItemList' && item.name !== 'Categorias de Cafés Especiais e Acessórios'
+    );
     expect(itemList).toBeDefined();
-    expect(itemList.itemListElement.length).toBe(4);
+    expect(itemList.itemListElement.length).toBe(9);
     expect(itemList.itemListElement[0].item.name).toBe('Mantiqueira Dourada');
+    expect(itemList.itemListElement[0].item.aggregateRating).toBeDefined();
+    expect(itemList.itemListElement[0].item.aggregateRating.ratingValue).toBe(4.8);
     expect(itemList.itemListElement[1].item.name).toBe('Reserva do Pouso');
     expect(itemList.itemListElement[2].item.name).toBe('Flor da Serra');
     expect(itemList.itemListElement[3].item.name).toBe('Geisha Edição Especial');
@@ -74,6 +79,15 @@ describe('SeoService', () => {
     const howTo = graph.find((item: { '@type': string }) => item['@type'] === 'HowTo');
     expect(howTo).toBeDefined();
     expect(howTo.name).toContain('Hario V60');
+
+    // 4. ItemList de Categorias
+    const categoriesSchema = graph.find(
+      (item: { '@type': string; name?: string }) =>
+        item['@type'] === 'ItemList' && item.name === 'Categorias de Cafés Especiais e Acessórios'
+    );
+    expect(categoriesSchema).toBeDefined();
+    expect(categoriesSchema.itemListElement.length).toBe(5);
+    expect(categoriesSchema.itemListElement[0].name).toBe('Café em Grãos');
   });
 
   it('nao deve duplicar o script caso injectStructuredData seja chamado mais de uma vez', () => {

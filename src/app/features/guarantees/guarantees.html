@@ -1,0 +1,37 @@
+<!-- Secao Garantias e Diferenciais (Full Width Background) -->
+<section
+  id="garantias"
+  aria-label="Compromisso de Qualidade"
+  class="w-full bg-bg-main border-t border-b border-border py-16 sm:py-20 lg:py-24"
+>
+  <div class="mx-auto max-w-[1728px] px-4 sm:px-6 lg:px-12">
+    <!-- Cabecalho da Secao -->
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+      <h2 class="font-display text-3xl font-bold tracking-tight text-text-main sm:text-4xl lg:text-5xl">
+        Compromisso de Qualidade
+      </h2>
+    </div>
+
+    <!-- Grid de 4 Cards de Garantias -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (item of guaranteeItems; track item.id) {
+        <div class="p-6 sm:p-8 rounded-[2px] bg-bg-secondary flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl sm:text-4xl" aria-hidden="true">{{ item.icon }}</span>
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-[2px]">
+                {{ item.badge }}
+              </span>
+            </div>
+            <h3 class="font-display text-lg sm:text-xl font-bold text-primary">
+              {{ item.title }}
+            </h3>
+            <p class="font-body text-xs sm:text-sm text-text-secondary leading-relaxed">
+              {{ item.description }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
