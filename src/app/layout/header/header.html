@@ -1,6 +1,6 @@
 <!-- Barra de Frete Grátis (No topo da página, rola junto com o conteúdo) -->
 <aside class="bg-primary h-9 flex items-center border-b border-primary-hover select-none w-full overflow-hidden">
-  <div class="mx-auto max-w-[1728px] w-full overflow-hidden flex items-center h-full">
+  <div class="mx-auto max-w-[2500px] w-full overflow-hidden flex items-center h-full">
     <div class="animate-marquee flex items-center whitespace-nowrap text-xs md:text-sm font-medium text-bg-main">
     <!-- Grupo 1 (Primeira Metade da Esteira) -->
     <div class="flex items-center gap-2 px-8">
@@ -103,9 +103,11 @@
   </div>
 </aside>
 
-<!-- Cabeçalho Principal Fixo (Sticky no Topo) -->
+<!-- Cabeçalho Principal Fixo (Smart Auto-Hide no Scroll) -->
 <header
-  class="sticky top-0 z-50 w-full transition-colors duration-300 transform-gpu [backface-visibility:hidden]"
+  class="sticky top-0 z-50 w-full transition-all duration-300 transform-gpu [backface-visibility:hidden]"
+  [class.-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
+  [class.translate-y-0]="!isHeaderHidden() || isMenuOpen()"
   [class.bg-bg-main/95]="isScrolled()"
   [class.backdrop-blur-md]="isScrolled()"
   [class.border-b]="isScrolled()"

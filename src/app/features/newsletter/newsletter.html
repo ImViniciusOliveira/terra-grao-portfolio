@@ -39,12 +39,12 @@
     </div>
   </div>
 
-  <!-- Card de Notificação Toast no Canto Inferior Esquerdo -->
+  <!-- Card de Notificação Toast no Canto Inferior Esquerdo (Visível em Mobile, Tablet e Desktop) -->
   @if (showToast()) {
     <div
       role="status"
       aria-live="polite"
-      class="fixed bottom-5 left-5 z-50 flex items-center justify-between gap-4 bg-emerald-800 text-white px-4 py-3 rounded-[2px] shadow-lg border border-emerald-700/60 max-w-xs sm:max-w-sm transition-all duration-300 animate-fade-in"
+      class="fixed bottom-6 left-4 right-4 sm:left-6 sm:right-auto z-[9999] flex items-center justify-between gap-3 bg-emerald-900 text-white px-4 py-3.5 rounded-[2px] shadow-2xl border border-emerald-700/80 max-w-none sm:max-w-sm transition-all duration-300 animate-fade-in"
     >
       <span class="text-xs sm:text-sm font-semibold font-body tracking-wide">
         Cadastro realizado com sucesso!
