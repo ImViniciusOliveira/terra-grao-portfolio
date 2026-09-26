@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
+import { inject as injectAnalytics } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 import { SeoService } from './core/services/seo.service';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
@@ -30,10 +40,16 @@ import { Guarantees } from './features/guarantees/guarantees';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App implements OnInit {
+  private readonly platformId = inject(PLATFORM_ID);
   private readonly seoService = inject(SeoService);
   protected readonly title = signal('terra-grao-web');
 
   ngOnInit(): void {
     this.seoService.injectStructuredData();
+
+    if (isPlatformBrowser(this.platformId)) {
+      injectAnalytics();
+      injectSpeedInsights();
+    }
   }
 }
