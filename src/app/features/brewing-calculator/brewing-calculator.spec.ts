@@ -43,7 +43,7 @@ describe('BrewingCalculator', () => {
 
   it('should default to V60 with 20g and calculate 320ml water', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const waterValue = compiled.querySelectorAll('.font-display.font-bold')[0];
+    const waterValue = compiled.querySelectorAll('p.font-display.font-bold')[0];
     expect(waterValue?.textContent?.trim()).toContain('320 ml');
   });
 
@@ -55,7 +55,7 @@ describe('BrewingCalculator', () => {
     slider.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const waterValue = compiled.querySelectorAll('.font-display.font-bold')[0];
+    const waterValue = compiled.querySelectorAll('p.font-display.font-bold')[0];
     expect(waterValue?.textContent?.trim()).toContain('480 ml');
   });
 
@@ -68,10 +68,10 @@ describe('BrewingCalculator', () => {
     fixture.detectChanges();
 
     // Prensa has ratio 15, default 20g → 300ml
-    const waterValue = compiled.querySelectorAll('.font-display.font-bold')[0];
+    const waterValue = compiled.querySelectorAll('p.font-display.font-bold')[0];
     expect(waterValue?.textContent?.trim()).toContain('300 ml');
 
-    const tempValue = compiled.querySelectorAll('.font-display.font-bold')[1];
+    const tempValue = compiled.querySelectorAll('p.font-display.font-bold')[1];
     expect(tempValue?.textContent?.trim()).toContain('94°C');
   });
 });

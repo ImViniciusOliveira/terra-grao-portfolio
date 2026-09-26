@@ -5,12 +5,8 @@
   class="bg-bg-main py-12 sm:py-16 lg:py-20"
 >
   <div class="mx-auto max-w-[1536px] px-4 sm:px-6 lg:px-8">
-    <!-- Cabeçalho da Seção -->
-    <div class="text-center mb-10 sm:mb-12 lg:mb-14">
-      <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-text-main">
-        Categorias em Destaque
-      </h2>
-    </div>
+    <!-- Cabeçalho Acessível (Invisível Visualmente) -->
+    <h2 class="sr-only">Categorias em Destaque</h2>
 
     <!-- Grade Desktop Ampliada (5 Itens Preenchendo com Destaque Visual) -->
     <div class="hidden lg:grid lg:grid-cols-5 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 w-full items-start">
@@ -101,7 +97,7 @@
     </div>
 
     <!-- Indicador em 2 Pontos (Preto Ativo e Cinza Inativo) -->
-    <div role="group" class="flex lg:hidden items-center justify-center gap-2 mt-5 sm:mt-6" aria-label="Indicador de páginas de categorias">
+    <div class="flex lg:hidden items-center justify-center gap-2 mt-5 sm:mt-6" aria-label="Indicador de páginas de categorias">
       <button
         type="button"
         (click)="scrollToPage(0, categoryCarousel)"

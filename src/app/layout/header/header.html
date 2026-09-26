@@ -108,8 +108,7 @@
   class="sticky top-0 z-50 w-full transition-transform duration-300 transform-gpu [backface-visibility:hidden]"
   [class.max-lg:-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
   [class.translate-y-0]="!isHeaderHidden() || isMenuOpen()"
-  [class.bg-bg-main/95]="isScrolled()"
-  [class.backdrop-blur-md]="isScrolled()"
+  [class.bg-bg-main]="isScrolled()"
   [class.border-b]="isScrolled()"
   [class.border-border]="isScrolled()"
   [class.shadow-xs]="isScrolled()"
@@ -133,7 +132,7 @@
       />
       <!-- Texto do Logo (Oculto no Mobile para liberar espaço aos botões) -->
       <div class="hidden md:flex flex-col">
-        <span class="font-display text-xl md:text-2xl font-bold uppercase tracking-[0.14em] text-text-main leading-tight whitespace-nowrap">
+        <span class="font-display text-xl md:text-2xl font-bold uppercase tracking-[0.14em] text-black leading-tight whitespace-nowrap">
           Terra &amp; Grão
         </span>
         <span class="font-body text-[10px] font-normal uppercase tracking-[0.2em] text-primary whitespace-nowrap">
@@ -200,7 +199,7 @@
         <button
           type="button"
           (click)="toggleTheme()"
-          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
           [class.hover:bg-bg-secondary]="isScrolled()"
           [class.hover:bg-black/10]="!isScrolled()"
         >
@@ -253,8 +252,7 @@
         <!-- Botão do Carrinho Desktop -->
         <button
           type="button"
-          (click)="scrollToSection('catalogo')"
-          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+          class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
           [class.hover:bg-bg-secondary]="isScrolled()"
           [class.hover:bg-black/10]="!isScrolled()"
         >
@@ -280,7 +278,7 @@
       <button
         type="button"
         (click)="toggleTheme()"
-        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
         [class.hover:bg-bg-secondary]="isScrolled()"
         [class.hover:bg-black/10]="!isScrolled()"
       >
@@ -333,8 +331,7 @@
       <!-- Botão Carrinho Mobile -->
       <button
         type="button"
-        (click)="scrollToSection('catalogo')"
-        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
+        class="group relative flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main transition-all duration-300 cursor-pointer select-none"
         [class.hover:bg-bg-secondary]="isScrolled()"
         [class.hover:bg-black/10]="!isScrolled()"
       >
@@ -356,7 +353,7 @@
       <button
         type="button"
         (click)="toggleMenu()"
-        class="relative z-[60] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary hover:border-transparent bg-transparent text-text-main md:hidden transition-all duration-300 cursor-pointer select-none"
+        class="relative z-[60] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main md:hidden transition-all duration-300 cursor-pointer select-none"
         [class.hover:bg-bg-secondary]="isScrolled()"
         [class.hover:bg-black/10]="!isScrolled()"
         aria-label="Abrir menu de navegação"

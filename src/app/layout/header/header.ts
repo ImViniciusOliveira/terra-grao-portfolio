@@ -48,8 +48,15 @@ export class Header implements OnDestroy {
       }
     });
 
-    // 2. Inicializa o Scroll Spy no navegador
     if (isPlatformBrowser(this.platformId)) {
+      // Carrega preferencia salva do tema
+      const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+      const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        this.isDarkMode.set(true);
+        document.documentElement.classList.add('dark');
+      }
+
       afterNextRender(() => {
         this.initIntersectionObserver();
         this.checkScrollPosition();
@@ -289,10 +296,26 @@ export class Header implements OnDestroy {
   }
 
   /**
-   * Alterna entre modo claro e escuro (mock de interface)
+   * Alterna entre modo claro e escuro real
    */
   toggleTheme(): void {
-    this.isDarkMode.update((dark) => !dark);
+    this.isDarkMode.update((dark) => {
+      const nextState = !dark;
+      if (isPlatformBrowser(this.platformId)) {
+        if (nextState) {
+          document.documentElement.classList.add('dark');
+          if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('theme', 'dark');
+          }
+        } else {
+          document.documentElement.classList.remove('dark');
+          if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('theme', 'light');
+          }
+        }
+      }
+      return nextState;
+    });
   }
 
   /**

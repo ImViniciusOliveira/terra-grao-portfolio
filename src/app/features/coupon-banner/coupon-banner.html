@@ -1,7 +1,7 @@
 <section
   id="cupom-desconto"
   aria-labelledby="coupon-heading"
-  class="w-full bg-bg-secondary border-y border-border py-8"
+  class="w-full bg-bg-secondary py-8"
 >
   <div class="mx-auto max-w-[1728px] w-full px-4 sm:px-6 lg:px-8">
     <div
@@ -19,8 +19,12 @@
         </p>
       </div>
 
-      <div
-        class="flex items-center space-x-3 bg-bg-main text-text-main px-4 sm:px-5 py-2.5 sm:py-3 rounded-[2px] border border-border shrink-0 shadow-xs"
+      <button
+        type="button"
+        (click)="copyCoupon()"
+        [attr.aria-label]="copied() ? 'Cupom copiado' : 'Copiar cupom ' + couponCode()"
+        [title]="copied() ? 'Cupom copiado!' : 'Clique para copiar o cupom'"
+        class="flex items-center space-x-3 bg-bg-secondary text-text-main px-4 sm:px-5 py-2.5 sm:py-3 rounded-[2px] border border-border shrink-0 shadow-xs cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         <span
           class="text-sm sm:text-base font-mono font-bold tracking-widest text-primary select-all"
@@ -28,13 +32,7 @@
           {{ couponCode() }}
         </span>
 
-        <button
-          type="button"
-          (click)="copyCoupon()"
-          [attr.aria-label]="copied() ? 'Cupom copiado' : 'Copiar cupom ' + couponCode()"
-          [title]="copied() ? 'Cupom copiado!' : 'Copiar cupom'"
-          class="p-1 text-text-muted hover:text-primary transition-colors cursor-pointer rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-center"
-        >
+        <span class="p-1 text-text-muted hover:text-primary transition-colors flex items-center justify-center">
           @if (copied()) {
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +50,7 @@
           } @else {
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-4 h-4 text-text-muted hover:text-primary transition-colors"
+              class="w-4 h-4 text-text-muted transition-colors"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -65,8 +63,8 @@
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
           }
-        </button>
-      </div>
+        </span>
+      </button>
     </div>
   </div>
 </section>

@@ -77,6 +77,29 @@
 }
 
 /* --------------------------------------------------------------------------
+   Tokens de Cores para o Modo Escuro (.dark) - Inversão Direta dos Tokens Oficiais
+   -------------------------------------------------------------------------- */
+.dark {
+  --color-bg-main: #211E1C;
+  --color-bg-secondary: #2A2725;
+  --color-bg-hover: #35312E;
+  --color-text-main: #FAF8F5;
+  --color-text-secondary: #D5CFC5;
+  --color-text-muted: #A8A29E;
+  --color-border: #3A3532;
+  --color-primary: #9E5A3C;
+  --color-primary-hover: #84482D;
+  --color-hero-bg: #2E1E16;
+}
+
+/* Inversão perfeita de cores no Hero durante o Modo Escuro */
+.dark #hero {
+  --color-hero-bg: #2E1E16;
+  --color-primary: #EAA858;
+  --color-primary-hover: #F0B86F;
+}
+
+/* --------------------------------------------------------------------------
    Padronização de Seções Full-Width por Padrão
    -------------------------------------------------------------------------- */
 section {
@@ -243,8 +266,13 @@ input[type="range"]:hover::-moz-range-thumb {
   height: 22px;
 }
 
-input[type="range"]:active::-moz-range-thumb {
-  cursor: grabbing;
-  width: 20px;
-  height: 20px;
+
+/* Utility class to hide scrollbars cleanly without Angular template binding conflicts */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
