@@ -35,7 +35,7 @@ describe('Hero', () => {
 
   it('deve renderizar a imagem de fundo dos grãos de café', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const img = compiled.querySelector('img[src="/images/hero/beans-bg.png"]') as HTMLImageElement;
+    const img = compiled.querySelector('img[src="/images/hero/beans-bg.webp"]') as HTMLImageElement;
     expect(img).toBeTruthy();
   });
 
