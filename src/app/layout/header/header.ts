@@ -37,6 +37,8 @@ export class Header implements OnDestroy {
   readonly activeSection = signal<string>('hero');
   readonly isDarkMode = signal<boolean>(false);
   readonly isScrolled = signal<boolean>(false);
+  readonly isHeaderHidden = signal<boolean>(false);
+  private lastScrollY = 0;
 
   constructor() {
     // 1. Trava o scroll do body quando o menu mobile estiver aberto
@@ -62,10 +64,31 @@ export class Header implements OnDestroy {
 
   private checkScrollPosition(): void {
     if (isPlatformBrowser(this.platformId)) {
-      const scrolled = window.scrollY > 0;
+      const currentScrollY = window.scrollY;
+      const scrolled = currentScrollY > 0;
+
       if (this.isScrolled() !== scrolled) {
         this.isScrolled.set(scrolled);
       }
+
+      // Auto-hide header ao rolar para baixo, reexibir ao rolar para cima (Mobile / Tablet / Desktop)
+      if (currentScrollY > 80) {
+        if (currentScrollY > this.lastScrollY + 5) {
+          if (!this.isHeaderHidden()) {
+            this.isHeaderHidden.set(true);
+          }
+        } else if (currentScrollY < this.lastScrollY - 5) {
+          if (this.isHeaderHidden()) {
+            this.isHeaderHidden.set(false);
+          }
+        }
+      } else {
+        if (this.isHeaderHidden()) {
+          this.isHeaderHidden.set(false);
+        }
+      }
+
+      this.lastScrollY = Math.max(0, currentScrollY);
     }
   }
 
