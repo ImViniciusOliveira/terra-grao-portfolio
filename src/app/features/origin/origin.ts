@@ -11,7 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -46,13 +46,17 @@ export class Origin implements OnDestroy {
   }
 
   private initScrollAnimation(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
     const items =
       this.elementRef.nativeElement.querySelectorAll('.origin-anim');
 
     if (items.length === 0) return;
 
-    // Desktop: center 70%
+    // Desktop: top 70% (dispara suavemente quando o topo da secao entra na tela)
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         items,
@@ -66,7 +70,7 @@ export class Origin implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'center 70%',
+            start: 'top 70%',
           },
         }
       );

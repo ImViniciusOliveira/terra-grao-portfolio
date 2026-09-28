@@ -15,7 +15,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { BREWING_METHODS } from '../../core/data/brewing-methods.mock';
 import { BrewingMethodId } from '../../core/models/brewing.interface';
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -43,13 +43,17 @@ export class BrewingCalculator implements OnDestroy {
   }
 
   private initScrollAnimation(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
     const card =
       this.elementRef.nativeElement.querySelector('.brewing-calc-anim');
 
     if (!card) return;
 
-    // Desktop: bottom 90% (dispara com o card 100% visivel)
+    // Desktop: top 75% (dispara suavemente quando o topo da calculadora entra na tela)
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         card,
@@ -62,13 +66,13 @@ export class BrewingCalculator implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'bottom 90%',
+            start: 'top 75%',
           },
         }
       );
     });
 
-    // Mobile & Tablet: center 80% (dispara pelo meio)
+    // Mobile & Tablet: top 70% (dispara pelo topo)
     this.mm.add('(max-width: 1023px)', () => {
       gsap.fromTo(
         card,
@@ -81,7 +85,7 @@ export class BrewingCalculator implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'center 80%',
+            start: 'top 70%',
           },
         }
       );

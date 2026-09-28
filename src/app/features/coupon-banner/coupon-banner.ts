@@ -12,7 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -40,13 +40,17 @@ export class CouponBanner implements OnDestroy {
   }
 
   private initAnimation(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
     const card =
       this.elementRef.nativeElement.querySelector('.coupon-banner-card');
 
     if (!card) return;
 
-    // Desktop: bottom 90% (dispara com o card 100% visivel na tela)
+    // Desktop: top 75% (dispara suavemente quando o topo do banner entra na tela)
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         card,
@@ -60,13 +64,13 @@ export class CouponBanner implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'bottom 90%',
+            start: 'top 75%',
           },
         }
       );
     });
 
-    // Mobile & Tablet: center 80% (dispara pelo meio)
+    // Mobile & Tablet: top 70% (dispara pelo topo do banner)
     this.mm.add('(max-width: 1023px)', () => {
       gsap.fromTo(
         card,
@@ -80,7 +84,7 @@ export class CouponBanner implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'center 80%',
+            start: 'top 70%',
           },
         }
       );

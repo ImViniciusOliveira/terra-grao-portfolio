@@ -16,7 +16,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { COFFEE_PRODUCTS } from '../../core/data/coffee-catalog.mock';
 import { CoffeeProduct, ProductTabCategory } from '../../core/models/coffee.interface';
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -52,6 +52,10 @@ export class Catalog implements OnDestroy {
   }
 
   private initScrollAnimation(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
     const header = this.elementRef.nativeElement.querySelector('.catalog-header-anim');
     const grid = this.elementRef.nativeElement.querySelector('.catalog-grid-anim');
@@ -59,7 +63,7 @@ export class Catalog implements OnDestroy {
 
     if (items.length === 0) return;
 
-    // Desktop: center 75%
+    // Desktop: top 70% (dispara suavemente quando o topo da secao entra na tela)
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         items,
@@ -73,7 +77,7 @@ export class Catalog implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'center 75%',
+            start: 'top 70%',
           },
         }
       );

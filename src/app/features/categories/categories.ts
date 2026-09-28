@@ -15,7 +15,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { QUICK_CATEGORIES } from '../../core/data/categories.mock';
 import { QuickCategory } from '../../core/models/category.interface';
 
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -46,13 +46,17 @@ export class Categories implements OnDestroy {
   }
 
   private initAnimation(): void {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
     const cardItems =
       this.elementRef.nativeElement.querySelectorAll('.category-card-item');
 
     if (cardItems.length === 0) return;
 
-    // Desktop: bottom 90% (dispara com card 100% visivel)
+    // Desktop: top 75% (dispara suavemente quando o topo entra 25% na tela)
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         cardItems,
@@ -66,7 +70,7 @@ export class Categories implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: this.elementRef.nativeElement,
-            start: 'bottom 90%',
+            start: 'top 75%',
           },
         }
       );
@@ -92,7 +96,7 @@ export class Categories implements OnDestroy {
       );
     });
 
-    // Mobile: dispara exatamente quando os cards/textos chegarem no centro (50%) da tela
+    // Mobile: top 70% direto no card para disparo preciso
     this.mm.add('(max-width: 767px)', () => {
       const mobileTrigger =
         this.elementRef.nativeElement.querySelector('.category-card-item') ||
@@ -110,7 +114,7 @@ export class Categories implements OnDestroy {
           clearProps: 'transform',
           scrollTrigger: {
             trigger: mobileTrigger,
-            start: 'center 50%',
+            start: 'top 70%',
           },
         }
       );
