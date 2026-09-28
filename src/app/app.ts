@@ -20,6 +20,7 @@ import { Newsletter } from './features/newsletter/newsletter';
 import { BrewingCalculator } from './features/brewing-calculator/brewing-calculator';
 import { Origin } from './features/origin/origin';
 import { Guarantees } from './features/guarantees/guarantees';
+import { WhatsAppButton } from './layout/whatsapp-button/whatsapp-button';
 
 @Component({
   imports: [
@@ -33,6 +34,7 @@ import { Guarantees } from './features/guarantees/guarantees';
     BrewingCalculator,
     Origin,
     Guarantees,
+    WhatsAppButton,
   ],
   selector: 'app-root',
   styleUrl: './app.css',

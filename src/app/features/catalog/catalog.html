@@ -25,8 +25,8 @@
       }
     </div>
 
-    <!-- Grade de Produtos com Largura Fixa e Alinhamento à Esquerda (5 colunas no desktop, sem gap) -->
-    <div #productGrid class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
+    <!-- Grade de Produtos (1 coluna mobile, 2 colunas tablet, 5 colunas desktop) -->
+    <div #productGrid class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0">
       @for (product of filteredProducts(); track product.id; let i = $index) {
         @if (i < visibleCount()) {
           <div class="product-card relative bg-transparent border border-transparent p-2.5 sm:p-3 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(42,39,37,0.12)] hover:border-border/70 hover:z-10 transition-[shadow,border-color] duration-300">

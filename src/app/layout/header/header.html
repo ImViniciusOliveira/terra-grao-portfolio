@@ -105,15 +105,17 @@
 
 <!-- Cabeçalho Principal Fixo (Smart Auto-Hide no Scroll) -->
 <header
-  class="sticky top-0 z-50 w-full transition-transform duration-300 transform-gpu [backface-visibility:hidden]"
+  class="sticky top-0 z-50 w-full transition-colors duration-300 transform-gpu [backface-visibility:hidden]"
   [class.max-lg:-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
   [class.translate-y-0]="!isHeaderHidden() || isMenuOpen()"
-  [class.bg-bg-main]="isScrolled()"
-  [class.border-b]="isScrolled()"
-  [class.border-border]="isScrolled()"
-  [class.shadow-xs]="isScrolled()"
-  [class.bg-hero-bg]="!isScrolled()"
-  [class.border-b-transparent]="!isScrolled()"
+  [class.bg-transparent]="isMenuOpen()"
+  [class.border-b-transparent]="isMenuOpen() || !isScrolled()"
+  [class.shadow-none]="isMenuOpen()"
+  [class.bg-bg-main]="isScrolled() && !isMenuOpen()"
+  [class.border-b]="isScrolled() && !isMenuOpen()"
+  [class.border-border]="isScrolled() && !isMenuOpen()"
+  [class.shadow-xs]="isScrolled() && !isMenuOpen()"
+  [class.bg-hero-bg]="!isScrolled() && !isMenuOpen()"
 >
   <!-- Barra de Navegação Principal -->
   <nav
@@ -130,8 +132,8 @@
         alt="Logotipo Oficial Terra & Grão"
         class="h-10 md:h-11 w-auto transition-transform duration-200 group-hover:scale-105 transform-gpu [backface-visibility:hidden] will-change-transform"
       />
-      <!-- Texto do Logo (Oculto no Mobile para liberar espaço aos botões) -->
-      <div class="hidden md:flex flex-col">
+      <!-- Texto do Logo (Oculto no Mobile/Tablet para liberar espaço aos botões) -->
+      <div class="hidden lg:flex flex-col">
         <span class="font-display text-xl md:text-2xl font-bold uppercase tracking-[0.14em] text-black leading-tight whitespace-nowrap">
           Terra &amp; Grão
         </span>
@@ -142,7 +144,7 @@
     </a>
 
     <!-- Desktop: Links de Navegação e Ações (Tema + Carrinho) -->
-    <div class="hidden md:flex items-center gap-6 lg:gap-8">
+    <div class="hidden lg:flex items-center gap-6 xl:gap-8">
       <ul class="flex items-center gap-4 lg:gap-8 font-body text-xs font-semibold uppercase tracking-wider">
         <li>
           <a
@@ -276,8 +278,8 @@
       </div>
     </div>
 
-    <!-- Ações Mobile (Tema, Carrinho e Botão Hambúrguer Padrão Portfólio) -->
-    <div class="flex items-center gap-2 sm:gap-3 md:hidden shrink-0">
+    <!-- Ações Mobile/Tablet (Tema, Carrinho e Botão Hambúrguer Padrão Portfólio) -->
+    <div class="flex items-center gap-2 sm:gap-3 lg:hidden shrink-0">
       <!-- Botão Alternar Tema Mobile -->
       <button
         type="button"
@@ -357,7 +359,7 @@
       <button
         type="button"
         (click)="toggleMenu()"
-        class="relative z-[60] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main md:hidden transition-all duration-300 cursor-pointer select-none"
+        class="relative z-[60] flex h-[52px] w-[52px] items-center justify-center rounded-full border border-primary/40 hover:border-transparent bg-transparent text-text-main lg:hidden transition-all duration-300 cursor-pointer select-none"
         [class.hover:bg-bg-secondary]="isScrolled()"
         [class.hover:bg-black/10]="!isScrolled()"
         aria-label="Abrir menu de navegação"
@@ -393,9 +395,9 @@
 @if (isMenuVisible()) {
   <div
     #menuOverlay
-    class="mobile-menu-overlay fixed inset-0 z-40 bg-bg-main md:hidden flex flex-col items-center justify-center px-6"
+    class="mobile-menu-overlay fixed inset-0 z-40 bg-hero-bg lg:hidden flex flex-col items-center justify-center px-6"
   >
-    <nav aria-label="Navegação mobile" class="flex flex-col items-center gap-6 text-center">
+    <nav aria-label="Navegação mobile" class="flex flex-col items-center gap-7 text-center">
       <a
         (click)="scrollToSection('catalogo')"
         class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary"
@@ -426,14 +428,6 @@
         [class.text-primary]="activeSection() === 'garantias'"
       >
         Garantias
-      </a>
-
-      <!-- CTA Mobile -->
-      <a
-        (click)="scrollToSection('catalogo')"
-        class="mobile-menu-item mt-4 inline-flex items-center justify-center cursor-pointer rounded-[2px] bg-primary px-8 py-3 text-xs font-semibold uppercase tracking-wider text-bg-main shadow-sm transition-all hover:bg-primary-hover active:scale-95"
-      >
-        Ver Catálogo Completo
       </a>
     </nav>
   </div>
