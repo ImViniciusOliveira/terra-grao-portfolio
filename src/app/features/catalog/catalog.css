@@ -1,8 +1,5 @@
-/* --------------------------------------------------------------------------
-   Estado Inicial do Catálogo (Prevenção de FOUC / Flashes)
-   -------------------------------------------------------------------------- */
-.catalog-header-anim,
-.catalog-grid-anim {
+.catalog-tab-btn,
+.product-card {
   opacity: 0;
   will-change: opacity, transform;
 }

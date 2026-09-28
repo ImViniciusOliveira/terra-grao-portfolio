@@ -57,50 +57,95 @@ export class Catalog implements OnDestroy {
     }
 
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
-    const header = this.elementRef.nativeElement.querySelector('.catalog-header-anim');
-    const grid = this.elementRef.nativeElement.querySelector('.catalog-grid-anim');
-    const items = [header, grid].filter(Boolean);
+    const tabButtons =
+      this.elementRef.nativeElement.querySelectorAll('.catalog-tab-btn');
+    const productCards =
+      this.elementRef.nativeElement.querySelectorAll('.product-card');
 
-    if (items.length === 0) return;
+    if (tabButtons.length === 0 && productCards.length === 0) return;
 
     // Desktop: top 70% (dispara suavemente quando o topo da secao entra na tela)
     this.mm.add('(min-width: 1024px)', () => {
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          ease: 'power2.out',
-          stagger: 0.14,
-          clearProps: 'transform',
-          scrollTrigger: {
-            trigger: this.elementRef.nativeElement,
-            start: 'top 70%',
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.elementRef.nativeElement,
+          start: 'top 70%',
+        },
+      });
+
+      // 1. Abas/Links aparecem um por vez da esquerda para a direita
+      if (tabButtons.length > 0) {
+        tl.fromTo(
+          tabButtons,
+          { opacity: 0, x: -35 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+            stagger: 0.12,
+            clearProps: 'transform',
+          }
+        );
+      }
+
+      // 2. Cards de produto sobem de baixo para cima da esquerda para a direita (overlap fluido sem esperar o fim das abas)
+      if (productCards.length > 0) {
+        tl.fromTo(
+          productCards,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: 'power2.out',
+            stagger: 0.12,
+            clearProps: 'transform',
           },
-        }
-      );
+          '-=0.2'
+        );
+      }
     });
 
     // Mobile & Tablet: top 40%
     this.mm.add('(max-width: 1023px)', () => {
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          ease: 'power2.out',
-          stagger: 0.14,
-          clearProps: 'transform',
-          scrollTrigger: {
-            trigger: this.elementRef.nativeElement,
-            start: 'top 40%',
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.elementRef.nativeElement,
+          start: 'top 40%',
+        },
+      });
+
+      if (tabButtons.length > 0) {
+        tl.fromTo(
+          tabButtons,
+          { opacity: 0, x: -25 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.45,
+            ease: 'power2.out',
+            stagger: 0.1,
+            clearProps: 'transform',
+          }
+        );
+      }
+
+      if (productCards.length > 0) {
+        tl.fromTo(
+          productCards,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.55,
+            ease: 'power2.out',
+            stagger: 0.1,
+            clearProps: 'transform',
           },
-        }
-      );
+          '-=0.15'
+        );
+      }
     });
   }
 
