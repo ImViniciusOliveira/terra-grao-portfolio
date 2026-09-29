@@ -102,6 +102,15 @@
   --color-dark-espresso: #2A2725;
 }
 
+/* Ícone do caminhão no letreiro de frete grátis */
+.truck-icon {
+  color: #FAF8F5;
+}
+
+.dark .truck-icon {
+  color: #2A2725;
+}
+
 /* Inversão perfeita de cores no Hero durante o Modo Escuro */
 .dark #hero {
   --color-hero-bg: #2E1E16;

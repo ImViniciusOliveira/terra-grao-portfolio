@@ -50,16 +50,15 @@ export class Header implements OnDestroy {
 
     if (isPlatformBrowser(this.platformId)) {
       // Carrega preferencia salva do tema (Padrao: sempre Modo Claro na 1ª visita)
-      const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
-      if (savedTheme === 'dark') {
-        this.isDarkMode.set(true);
-        document.documentElement.classList.add('dark');
-      } else {
-        this.isDarkMode.set(false);
-        document.documentElement.classList.remove('dark');
-      }
+      const isDark = document.documentElement.classList.contains('dark');
+      this.isDarkMode.set(isDark);
 
       afterNextRender(() => {
+        if (typeof window !== 'undefined' && 'scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+        setTimeout(() => window.scrollTo(0, 0), 0);
         this.initIntersectionObserver();
         this.checkScrollPosition();
       });
@@ -309,14 +308,10 @@ export class Header implements OnDestroy {
       if (isPlatformBrowser(this.platformId)) {
         if (nextState) {
           document.documentElement.classList.add('dark');
-          if (typeof localStorage !== 'undefined') {
-            localStorage.setItem('theme', 'dark');
-          }
+          document.cookie = 'theme=dark; path=/; max-age=31536000; SameSite=Lax';
         } else {
           document.documentElement.classList.remove('dark');
-          if (typeof localStorage !== 'undefined') {
-            localStorage.setItem('theme', 'light');
-          }
+          document.cookie = 'theme=light; path=/; max-age=31536000; SameSite=Lax';
         }
       }
       return nextState;

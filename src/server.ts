@@ -38,13 +38,31 @@ app.use(
 /**
  * Handle all other requests by rendering the Angular application.
  */
-app.use((req, res, next) => {
-  angularApp
-    .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
-    .catch(next);
+app.use(async (req, res, next) => {
+  try {
+    const response = await angularApp.handle(req);
+    if (!response) {
+      return next();
+    }
+
+    const cookieHeader = req.headers.cookie || '';
+    if (cookieHeader.includes('theme=dark')) {
+      const html = await response.text();
+      const updatedHtml = html.replace('<html lang="pt-BR">', '<html lang="pt-BR" class="dark">');
+      res.status(response.status);
+      response.headers.forEach((val, key) => {
+        if (key.toLowerCase() !== 'content-length') {
+          res.setHeader(key, val);
+        }
+      });
+      res.send(updatedHtml);
+      return;
+    }
+
+    await writeResponseToNodeResponse(response, res);
+  } catch (err) {
+    next(err);
+  }
 });
 
 /**
