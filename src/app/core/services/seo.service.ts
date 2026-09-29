@@ -46,7 +46,9 @@ export class SeoService {
       '@id': 'https://terra-grao.vercel.app/#organization',
       name: 'Terra & Grão Cafés Especiais',
       url: 'https://terra-grao.vercel.app',
-      logo: '/images/logo.svg',
+      logo: 'https://terra-grao.vercel.app/images/logo.svg',
+      image: 'https://terra-grao.vercel.app/images/brand-hero.webp',
+      telephone: '+55-35-99999-9999',
       description:
         'Cafés especiais cultivados em micro-lotes de altitude nas montanhas de Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
@@ -57,9 +59,11 @@ export class SeoService {
       ],
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Serra da Mantiqueira',
+        addressLocality: 'Carmo de Minas',
         addressRegion: 'Minas Gerais',
+        postalCode: '37472-000',
         addressCountry: 'BR',
-        streetAddress: 'Minas Gerais',
       },
       paymentAccepted: 'Cartão de Crédito, Boleto Bancário, Pix',
       currenciesAccepted: 'BRL',
@@ -72,6 +76,8 @@ export class SeoService {
   private getProductListSchema(): Record<string, unknown> {
     return {
       '@type': 'ItemList',
+      url: 'https://terra-grao.vercel.app/#catalogo',
+      numberOfItems: COFFEE_PRODUCTS.length,
       itemListElement: COFFEE_PRODUCTS.map((product, index) => ({
         '@type': 'ListItem',
         position: index + 1,
@@ -80,12 +86,14 @@ export class SeoService {
           name: product.name,
           image: product.image,
           description: `${product.name} - Café especial 100% arábica com ${product.shortTaste}. Torra artesanal semanal.`,
+          url: 'https://terra-grao.vercel.app/#catalogo',
           brand: {
             '@type': 'Brand',
             name: 'Terra & Grão',
           },
           offers: {
             '@type': 'Offer',
+            validFrom: '2026-01-01',
             price: product.price.toFixed(2),
             priceCurrency: 'BRL',
             priceValidUntil: '2026-12-31',
