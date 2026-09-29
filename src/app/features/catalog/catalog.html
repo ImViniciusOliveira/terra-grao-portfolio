@@ -41,7 +41,7 @@
             <div class="relative aspect-[4/5] overflow-hidden bg-bg-secondary border border-border/60 mb-2">
               <!-- Selo Promocional: Em Oferta -->
               @if (getDiscountPercentage(product)) {
-                <span class="absolute top-2 left-2 z-10 bg-offer-orange text-bg-main text-xs sm:text-sm font-black uppercase tracking-wide px-3 py-1 sm:py-1.5 select-none shadow-md">
+                <span class="absolute top-2 left-2 z-10 bg-offer-orange text-stone-950 text-xs sm:text-sm font-black uppercase tracking-wide px-3 py-1 sm:py-1.5 select-none shadow-md">
                   EM OFERTA
                 </span>
               }
@@ -49,9 +49,9 @@
               <!-- Selo Promocional: Cashback Especial -->
               @if (getDiscountPercentage(product) && getDiscountPercentage(product)! >= 20) {
                 <div class="absolute top-2 right-2 z-10 bg-text-main text-bg-main rounded-full w-14 h-14 sm:w-16 sm:h-16 flex flex-col items-center justify-center text-center select-none shadow-lg border border-gold/40">
-                  <span class="text-[10px] sm:text-xs font-black text-amber-400 leading-tight">5% de</span>
-                  <span class="text-[9px] sm:text-[10px] font-bold tracking-tight uppercase leading-none text-stone-200">cash</span>
-                  <span class="text-[9px] sm:text-[10px] font-bold tracking-tight uppercase leading-none text-stone-200">back</span>
+                  <span class="text-[10px] sm:text-xs font-black text-amber-300 leading-tight">5% de</span>
+                  <span class="text-[10px] sm:text-[11px] font-bold tracking-tight uppercase leading-none text-white">cash</span>
+                  <span class="text-[10px] sm:text-[11px] font-bold tracking-tight uppercase leading-none text-white">back</span>
                 </div>
               }
 
@@ -122,12 +122,12 @@
                   R$ {{ getCalculatedPrice(product) }}
                 </p>
                 @if (getDiscountPercentage(product)) {
-                  <span class="bg-discount-green text-bg-main text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 font-body leading-none select-none shrink-0 shadow-2xs">
+                  <span class="bg-discount-green text-stone-950 text-[10px] sm:text-[11px] font-extrabold px-1.5 py-0.5 font-body leading-none select-none shrink-0 shadow-2xs">
                     -{{ getDiscountPercentage(product) }}%
                   </span>
                 }
               </div>
-              <p class="text-[11px] sm:text-xs font-semibold text-text-main/80 mt-0.5 font-body">
+              <p class="text-[11px] sm:text-xs font-semibold text-text-secondary mt-0.5 font-body">
                 R$ {{ getPixPrice(product) }} no pix ou boleto
               </p>
             </div>

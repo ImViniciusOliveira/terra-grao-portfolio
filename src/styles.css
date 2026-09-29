@@ -32,8 +32,8 @@
 
 @theme {
   /* Paleta Semântica Profissional */
-  --color-primary: #9E5A3C;
-  --color-primary-hover: #A85E3E;
+  --color-primary: #914E30;
+  --color-primary-hover: #7E4227;
   --color-text-main: #2A2725;
   --color-text-secondary: #625E5A;
   --color-text-muted: #5C5650;
@@ -48,6 +48,11 @@
 
   /* Token Exclusivo do Hero */
   --color-hero-bg: #EAA858;
+
+  /* Tokens de Badges e Marcas */
+  --color-badge-text: #6E3821;
+  --color-badge-bg: #E4DCD0;
+  --color-whatsapp-brand: #25D366;
 
   /* Tipografias */
   --font-display: 'Newsreader', Georgia, serif;
@@ -102,6 +107,8 @@
   --color-primary-hover: #A85E3E;
   --color-hero-bg: #2E1E16;
   --color-dark-espresso: #2A2725;
+  --color-badge-text: #FDE68A;
+  --color-badge-bg: #3A2F29;
 }
 
 /* Ícone do caminhão no letreiro de frete grátis */
