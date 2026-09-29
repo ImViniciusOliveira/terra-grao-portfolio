@@ -78,73 +78,81 @@ export class SeoService {
       '@type': 'ItemList',
       url: 'https://terra-grao.vercel.app/#catalogo',
       numberOfItems: COFFEE_PRODUCTS.length,
-      itemListElement: COFFEE_PRODUCTS.map((product, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Product',
-          name: product.name,
-          image: product.image,
-          description: `${product.name} - Café especial 100% arábica com ${product.shortTaste}. Torra artesanal semanal.`,
-          url: 'https://terra-grao.vercel.app/#catalogo',
-          brand: {
-            '@type': 'Brand',
-            name: 'Terra & Grão',
-          },
-          offers: {
-            '@type': 'Offer',
-            validFrom: '2026-01-01',
-            price: product.price.toFixed(2),
-            priceCurrency: 'BRL',
-            priceValidUntil: '2026-12-31',
-            itemCondition: 'https://schema.org/NewCondition',
-            availability: 'https://schema.org/InStock',
-            url: 'https://terra-grao.vercel.app/#catalogo',
-            hasMerchantReturnPolicy: {
-              '@type': 'MerchantReturnPolicy',
-              applicableCountry: 'BR',
-              returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-              merchantReturnDays: 7,
-              returnMethod: 'https://schema.org/ReturnByMail',
-              returnFees: 'https://schema.org/FreeReturn',
+      itemListElement: COFFEE_PRODUCTS.map((product, index) => {
+        const productUrl = `https://terra-grao.vercel.app/#produto-${product.id}`;
+        const imageUrl = product.image.startsWith('http')
+          ? product.image
+          : `https://terra-grao.vercel.app${product.image}`;
+
+        return {
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Product',
+            '@id': productUrl,
+            name: product.name,
+            image: imageUrl,
+            description: `${product.name} - Café especial 100% arábica com ${product.shortTaste}. Torra artesanal semanal.`,
+            url: productUrl,
+            brand: {
+              '@type': 'Brand',
+              name: 'Terra & Grão',
             },
-            shippingDetails: {
-              '@type': 'OfferShippingDetails',
-              shippingRate: {
-                '@type': 'MonetaryAmount',
-                value: '0.00',
-                currency: 'BRL',
+            offers: {
+              '@type': 'Offer',
+              validFrom: '2026-01-01',
+              price: product.price.toFixed(2),
+              priceCurrency: 'BRL',
+              priceValidUntil: '2026-12-31',
+              itemCondition: 'https://schema.org/NewCondition',
+              availability: 'https://schema.org/InStock',
+              url: productUrl,
+              hasMerchantReturnPolicy: {
+                '@type': 'MerchantReturnPolicy',
+                applicableCountry: 'BR',
+                returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+                merchantReturnDays: 7,
+                returnMethod: 'https://schema.org/ReturnByMail',
+                returnFees: 'https://schema.org/FreeReturn',
               },
-              shippingDestination: {
-                '@type': 'DefinedRegion',
-                addressCountry: 'BR',
-              },
-              deliveryTime: {
-                '@type': 'ShippingDeliveryTime',
-                handlingTime: {
-                  '@type': 'QuantitativeValue',
-                  minValue: 1,
-                  maxValue: 2,
-                  unitCode: 'DAY',
+              shippingDetails: {
+                '@type': 'OfferShippingDetails',
+                shippingRate: {
+                  '@type': 'MonetaryAmount',
+                  value: '0.00',
+                  currency: 'BRL',
                 },
-                transitTime: {
-                  '@type': 'QuantitativeValue',
-                  minValue: 2,
-                  maxValue: 5,
-                  unitCode: 'DAY',
+                shippingDestination: {
+                  '@type': 'DefinedRegion',
+                  addressCountry: 'BR',
+                },
+                deliveryTime: {
+                  '@type': 'ShippingDeliveryTime',
+                  handlingTime: {
+                    '@type': 'QuantitativeValue',
+                    minValue: 1,
+                    maxValue: 2,
+                    unitCode: 'DAY',
+                  },
+                  transitTime: {
+                    '@type': 'QuantitativeValue',
+                    minValue: 2,
+                    maxValue: 5,
+                    unitCode: 'DAY',
+                  },
                 },
               },
             },
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: product.rating,
+              reviewCount: product.reviewsCount ?? 1,
+              bestRating: '5',
+              worstRating: '1',
+            },
           },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: product.rating,
-            reviewCount: product.reviewsCount ?? 1,
-            bestRating: '5',
-            worstRating: '1',
-          },
-        },
-      })),
+        };
+      }),
     };
   }
 
