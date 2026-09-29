@@ -1,39 +1,66 @@
 {
-  "specVersion": "1.0.0",
-  "name": "Terra & Grão Cafés Especiais",
-  "description": "E-commerce e portal institucional de cafés especiais artesanais 100% arábica da Serra da Mantiqueira, Minas Gerais.",
-  "homepage": "https://terra-grao.vercel.app",
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Terra & Grão Cafés Especiais",
+    "url": "https://terra-grao.vercel.app"
+  },
   "documentation": {
     "llmsTxt": "https://terra-grao.vercel.app/llms.txt"
   },
   "entries": [
     {
+      "identifier": "urn:air:terra-grao.vercel.app:catalog",
+      "displayName": "Catálogo de Cafés Especiais",
       "id": "catalog",
       "name": "Catálogo de Cafés Especiais",
-      "description": "Seleção de microlotes de cafés especiais 100% arábica em grãos e moídos artesanais.",
+      "type": "text/html",
       "url": "https://terra-grao.vercel.app/#catalogo",
-      "type": "catalog"
+      "description": "Seleção de microlotes de cafés especiais 100% arábica em grãos e moídos artesanais.",
+      "representativeQueries": [
+        "comprar café especial",
+        "café em grãos da serra da mantiqueira",
+        "melhores cafés artesanais minas gerais"
+      ]
     },
     {
+      "identifier": "urn:air:terra-grao.vercel.app:brewing-calculator",
+      "displayName": "Calculadora de Extração de Café",
       "id": "brewing-calculator",
       "name": "Calculadora de Extração de Café",
-      "description": "Ferramenta interativa de proporções para métodos de preparo (Hario V60, Prensa Francesa, Chemex, AeroPress).",
+      "type": "text/html",
       "url": "https://terra-grao.vercel.app/#calculadora",
-      "type": "tool"
+      "description": "Ferramenta interativa de proporções para métodos de preparo (Hario V60, Prensa Francesa, Chemex, AeroPress).",
+      "representativeQueries": [
+        "calcular proporção de café e água",
+        "como preparar café na hario v60",
+        "receita para prensa francesa e aeropress"
+      ]
     },
     {
+      "identifier": "urn:air:terra-grao.vercel.app:origin",
+      "displayName": "Nossa História e Origem Terroir",
       "id": "origin",
       "name": "Nossa História e Origem Terroir",
-      "description": "Informações sobre produtores parceiros na Serra da Mantiqueira e rastreabilidade dos grãos.",
+      "type": "text/html",
       "url": "https://terra-grao.vercel.app/#origem",
-      "type": "article"
+      "description": "Informações sobre produtores parceiros na Serra da Mantiqueira e rastreabilidade dos grãos.",
+      "representativeQueries": [
+        "origem do café terra e grão",
+        "produtores de café da serra da mantiqueira"
+      ]
     },
     {
+      "identifier": "urn:air:terra-grao.vercel.app:guarantees",
+      "displayName": "Garantias e Política da Loja",
       "id": "guarantees",
       "name": "Garantias e Política da Loja",
-      "description": "Informações sobre torra fresca semanal, envio seguro e satisfação garantida.",
+      "type": "text/html",
       "url": "https://terra-grao.vercel.app/#garantias",
-      "type": "documentation"
+      "description": "Informações sobre torra fresca semanal, envio seguro e satisfação garantida.",
+      "representativeQueries": [
+        "política de envio e frete grátis",
+        "garantia de torra fresca de café"
+      ]
     }
   ]
 }
