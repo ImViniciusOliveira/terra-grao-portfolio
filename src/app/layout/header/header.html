@@ -124,12 +124,15 @@
   >
     <!-- Logotipo Oficial T&G -->
     <a
-      (click)="scrollToSection('hero')"
+      href="#hero"
+      (click)="scrollToSection('hero', $event)"
       class="relative z-[60] flex items-center gap-3 cursor-pointer group select-none shrink-0"
     >
       <img
         src="/images/logo.svg"
         alt="Logotipo Oficial Terra & Grão"
+        width="44"
+        height="44"
         class="h-10 md:h-11 w-auto transition-transform duration-200 group-hover:scale-105 transform-gpu [backface-visibility:hidden] will-change-transform"
       />
       <!-- Texto do Logo (Oculto no Mobile/Tablet para liberar espaço aos botões) -->
@@ -148,7 +151,8 @@
       <ul class="flex items-center gap-4 lg:gap-8 font-body text-xs font-semibold uppercase tracking-wider">
         <li>
           <a
-            (click)="scrollToSection('catalogo')"
+            href="#catalogo"
+            (click)="scrollToSection('catalogo', $event)"
             class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'catalogo'"
             [class.-translate-y-[2px]]="activeSection() === 'catalogo'"
@@ -161,7 +165,8 @@
 
         <li>
           <a
-            (click)="scrollToSection('calculadora')"
+            href="#calculadora"
+            (click)="scrollToSection('calculadora', $event)"
             class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'calculadora'"
             [class.-translate-y-[2px]]="activeSection() === 'calculadora'"
@@ -174,7 +179,8 @@
 
         <li>
           <a
-            (click)="scrollToSection('origem')"
+            href="#origem"
+            (click)="scrollToSection('origem', $event)"
             class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'origem'"
             [class.-translate-y-[2px]]="activeSection() === 'origem'"
@@ -187,7 +193,8 @@
 
         <li>
           <a
-            (click)="scrollToSection('garantias')"
+            href="#garantias"
+            (click)="scrollToSection('garantias', $event)"
             class="inline-block cursor-pointer py-1 transition-all duration-200 hover:-translate-y-[2px]"
             [class.text-primary]="activeSection() === 'garantias'"
             [class.-translate-y-[2px]]="activeSection() === 'garantias'"
@@ -399,32 +406,36 @@
   >
     <nav aria-label="Navegação mobile" class="flex flex-col items-center gap-7 text-center">
       <a
-        (click)="scrollToSection('catalogo')"
-        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary"
+        href="#catalogo"
+        (click)="scrollToSection('catalogo', $event)"
+        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary min-h-[48px] flex items-center justify-center"
         [class.text-primary]="activeSection() === 'catalogo'"
       >
         Nossos Cafés
       </a>
 
       <a
-        (click)="scrollToSection('calculadora')"
-        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary"
+        href="#calculadora"
+        (click)="scrollToSection('calculadora', $event)"
+        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary min-h-[48px] flex items-center justify-center"
         [class.text-primary]="activeSection() === 'calculadora'"
       >
         Como Preparar
       </a>
 
       <a
-        (click)="scrollToSection('origem')"
-        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary"
+        href="#origem"
+        (click)="scrollToSection('origem', $event)"
+        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary min-h-[48px] flex items-center justify-center"
         [class.text-primary]="activeSection() === 'origem'"
       >
         Nossa História
       </a>
 
       <a
-        (click)="scrollToSection('garantias')"
-        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary"
+        href="#garantias"
+        (click)="scrollToSection('garantias', $event)"
+        class="mobile-menu-item cursor-pointer font-display text-2xl font-bold uppercase tracking-wider py-2 text-text-main transition-colors hover:text-primary min-h-[48px] flex items-center justify-center"
         [class.text-primary]="activeSection() === 'garantias'"
       >
         Garantias

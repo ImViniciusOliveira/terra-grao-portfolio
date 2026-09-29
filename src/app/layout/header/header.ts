@@ -253,7 +253,10 @@ export class Header implements OnDestroy {
   /**
    * Rola suavemente até a seção com compensação da altura do header
    */
-  scrollToSection(sectionId: string): void {
+  scrollToSection(sectionId: string, event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
     this.activeSection.set(sectionId);
 
     const performScroll = () => {

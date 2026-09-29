@@ -1,7 +1,13 @@
 # Terra & Grão — Cafés Especiais Artesanais da Mantiqueira
 
 > E-commerce e portal institucional de cafés especiais artesanais 100% arábica, cultivados em micro-lotes de alta altitude na Serra da Mantiqueira, Minas Gerais.
-> Website Oficial: https://terra-grao.vercel.app
+
+## Links
+- [Terra & Grão Website Oficial](https://terra-grao.vercel.app/): Página principal do e-commerce Terra & Grão Cafés Especiais.
+- [Catálogo de Cafés Especiais](https://terra-grao.vercel.app/#catalogo): Lista completa de grãos, microlotes premiados e kits barista.
+- [Guia de Extração e Calculadora de Preparo](https://terra-grao.vercel.app/#calculadora): Ferramenta para cálculo de proporção de café e água (V60, Prensa Francesa, Chemex e Aeropress).
+- [História e Origem Terroir](https://terra-grao.vercel.app/#origem): Informações sobre os produtores parceiros na Serra da Mantiqueira, colheita manual e rastreabilidade SCAA 84+.
+- [Garantias e Política da Loja](https://terra-grao.vercel.app/#garantias): Informações sobre torra semanal fresca, envio seguro e devoluções.
 
 ## Informações Institucionais
 - **Nome da Marca:** Terra & Grão Cafés Especiais

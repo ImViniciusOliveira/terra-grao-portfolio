@@ -22,7 +22,10 @@ export class Footer {
   /**
    * Rola suavemente ate uma secao da pagina pelo ID
    */
-  scrollToSection(sectionId: string): void {
+  scrollToSection(sectionId: string, event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
