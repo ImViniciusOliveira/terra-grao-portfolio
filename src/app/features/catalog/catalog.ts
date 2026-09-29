@@ -64,7 +64,7 @@ export class Catalog implements OnDestroy {
 
     if (tabButtons.length === 0 && productCards.length === 0) return;
 
-    // Desktop: top 70% (dispara suavemente quando o topo da secao entra na tela)
+    // Desktop: dispara a animação quando o topo da seção atinge 70% da viewport
     this.mm.add('(min-width: 1024px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -73,7 +73,7 @@ export class Catalog implements OnDestroy {
         },
       });
 
-      // 1. Abas/Links aparecem um por vez da esquerda para a direita
+      // Entrada em cascata horizontal das abas de categoria (da esquerda para a direita)
       if (tabButtons.length > 0) {
         tl.fromTo(
           tabButtons,
@@ -89,7 +89,7 @@ export class Catalog implements OnDestroy {
         );
       }
 
-      // 2. Cards de produto sobem de baixo para cima da esquerda para a direita (overlap fluido sem esperar o fim das abas)
+      // Entrada em cascata vertical dos cards de produto (com sobreposição fluida de timeline)
       if (productCards.length > 0) {
         tl.fromTo(
           productCards,
@@ -107,7 +107,7 @@ export class Catalog implements OnDestroy {
       }
     });
 
-    // Mobile & Tablet: top 40%
+    // Mobile e Tablet: dispara a animação quando o topo da seção atinge 40% da viewport
     this.mm.add('(max-width: 1023px)', () => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -217,14 +217,14 @@ export class Catalog implements OnDestroy {
             const newCard = cards[count - 1];
             if (newCard) {
               const tl = gsap.timeline();
-              // Fade-in ultra rapido: atinge 100% de opacidade na metade da subida (~150ms)
+              // Fade-in ultrarrápido: atinge 100% de opacidade na metade da subida (~150ms)
               tl.fromTo(
                 newCard,
                 { opacity: 0 },
                 { opacity: 1, duration: 0.15, ease: 'power1.out' },
                 0
               );
-              // Movimento de subida: desce 20px e sobe ate o ponto final em 350ms
+              // Movimento de subida: desce 20px e sobe até o ponto final em 350ms
               tl.fromTo(
                 newCard,
                 { y: 20 },
@@ -242,7 +242,7 @@ export class Catalog implements OnDestroy {
     // Revela e anima o 1º card imediatamente
     revealNext();
 
-    // Dispara o proximo card a cada 65ms (sem esperar a animacao do anterior terminar)
+    // Dispara o próximo card a cada 65ms (sem esperar a animação do anterior terminar)
     this.revealInterval = setInterval(() => {
       revealNext();
     }, 65);

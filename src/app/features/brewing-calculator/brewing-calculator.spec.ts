@@ -15,23 +15,23 @@ describe('BrewingCalculator', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('deve ser instanciado com sucesso', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render section with id calculadora', () => {
+  it('deve renderizar a seção com o id calculadora', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const section = compiled.querySelector('section#calculadora');
     expect(section).toBeTruthy();
   });
 
-  it('should render title Como Preparar', () => {
+  it('deve renderizar o título Como Preparar', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const h2 = compiled.querySelector('h2');
     expect(h2?.textContent?.trim()).toContain('Como Preparar');
   });
 
-  it('should render 4 method tabs', () => {
+  it('deve renderizar as 4 abas de métodos de preparo', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const buttons = compiled.querySelectorAll('button');
     expect(buttons.length).toBe(4);
@@ -41,13 +41,13 @@ describe('BrewingCalculator', () => {
     expect(buttons[3].textContent?.trim()).toBe('AeroPress');
   });
 
-  it('should default to V60 with 20g and calculate 320ml water', () => {
+  it('deve iniciar por padrão na Hario V60 com 20g e calcular 320ml de água', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const waterValue = compiled.querySelectorAll('p.font-display.font-bold')[0];
     expect(waterValue?.textContent?.trim()).toContain('320 ml');
   });
 
-  it('should update water when slider changes', () => {
+  it('deve atualizar o volume de água ao alterar o valor do slider', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const slider = compiled.querySelector('input[type="range"]') as HTMLInputElement;
 
@@ -59,15 +59,15 @@ describe('BrewingCalculator', () => {
     expect(waterValue?.textContent?.trim()).toContain('480 ml');
   });
 
-  it('should switch method when tab is clicked', () => {
+  it('deve alternar o método de preparo ao clicar na aba correspondente', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const buttons = compiled.querySelectorAll('button');
 
-    // Click Prensa Francesa
+    // Clica na Prensa Francesa
     buttons[1].click();
     fixture.detectChanges();
 
-    // Prensa has ratio 15, default 20g → 300ml
+    // Proporção da Prensa Francesa é 1:15 (20g de café → 300ml de água)
     const waterValue = compiled.querySelectorAll('p.font-display.font-bold')[0];
     expect(waterValue?.textContent?.trim()).toContain('300 ml');
 

@@ -35,7 +35,7 @@ describe('Footer', () => {
     expect(compiled.textContent).toContain('Ambiente 100% Seguro & Criptografado');
   });
 
-  it('deve renderizar a secao Nossos Cafés com formatos de compra reais', () => {
+  it('deve renderizar a seção Nossos Cafés com formatos de compra reais', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Nossos Cafés');
     expect(compiled.textContent).toContain('Café em Grãos');
@@ -44,7 +44,7 @@ describe('Footer', () => {
     expect(compiled.textContent).toContain('Kits de Cafés');
   });
 
-  it('deve renderizar a secao Minha Conta & Links', () => {
+  it('deve renderizar a seção Minha Conta & Links', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Minha Conta & Links');
     expect(compiled.textContent).toContain('Minha Conta');
@@ -53,7 +53,7 @@ describe('Footer', () => {
     expect(compiled.textContent).toContain('Trocas e Devoluções');
   });
 
-  it('deve renderizar a secao Atendimento & Empresa com CNPJ e e-mail', () => {
+  it('deve renderizar a seção Atendimento & Empresa com CNPJ e e-mail', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Atendimento & Empresa');
     expect(compiled.textContent).toContain('Minas Gerais • Brasil');

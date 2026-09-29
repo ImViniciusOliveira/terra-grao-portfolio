@@ -135,7 +135,7 @@ export class Newsletter implements OnDestroy {
         this.toastTimeline?.kill();
         this.toastTimeline = gsap.timeline();
 
-        // Entrada: Desliza suavemente de cima para baixo (y: -24px -> 0) com fade-in rapido
+        // Entrada: Desliza suavemente de cima para baixo (y: -24px -> 0) com fade-in rápido
         this.toastTimeline.fromTo(
           el,
           { opacity: 0, y: -24 },
@@ -164,7 +164,7 @@ export class Newsletter implements OnDestroy {
           },
         });
 
-        // Saida: Desvanecimento suave (fade-out) sem se mover
+        // Saída: Desvanecimento suave (fade-out) sem alteração de posição
         this.toastTimeline.to(el, {
           opacity: 0,
           duration: 0.3,

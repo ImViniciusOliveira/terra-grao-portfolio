@@ -33,7 +33,7 @@ describe('Header', () => {
     expect(component.isMenuOpen()).toBe(false);
   });
 
-  it('deve atualizar a secao ativa ao chamar scrollToSection', () => {
+  it('deve atualizar a seção ativa ao chamar scrollToSection', () => {
     component.scrollToSection('catalogo');
     expect(component.activeSection()).toBe('catalogo');
 
@@ -41,13 +41,13 @@ describe('Header', () => {
     expect(component.activeSection()).toBe('calculadora');
   });
 
-  it('deve renderizar o logotipo e o subtitulo da marca no template', () => {
+  it('deve renderizar o logotipo e o subtítulo da marca no template', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Terra & Grão');
     expect(compiled.textContent).toContain('Cafés Especiais');
   });
 
-  it('deve renderizar a barra de frete gratis com as faixas de valores por regiao e desconto no PIX', () => {
+  it('deve renderizar a barra de frete grátis com as faixas de valores por região e desconto no PIX', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Frete grátis');
     expect(compiled.textContent).toContain('a partir de R$ 199,90 para Sul e Sudeste');

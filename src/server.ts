@@ -13,19 +13,7 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
-
-/**
- * Serve static files from /browser
+ * Servidor de arquivos estáticos da pasta /browser
  */
 app.use(
   express.static(browserDistFolder, {
@@ -36,7 +24,7 @@ app.use(
 );
 
 /**
- * Handle all other requests by rendering the Angular application.
+ * Middleware de renderização do Angular SSR com interceptação de tema via Cookie
  */
 app.use(async (req, res, next) => {
   try {
@@ -45,6 +33,7 @@ app.use(async (req, res, next) => {
       return next();
     }
 
+    // Intercepta a requisição HTTP: se contiver o cookie theme=dark, injeta class="dark" na tag html
     const cookieHeader = req.headers.cookie || '';
     if (cookieHeader.includes('theme=dark')) {
       const html = await response.text();
@@ -66,8 +55,7 @@ app.use(async (req, res, next) => {
 });
 
 /**
- * Start the server if this module is the main entry point, or it is ran via PM2.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ * Inicialização do servidor Node/Express (porta padrão: 4000)
  */
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
   const port = process.env['PORT'] || 4000;
@@ -76,11 +64,11 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
       throw error;
     }
 
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    console.log(`Servidor Node Express ativo em http://localhost:${port}`);
   });
 }
 
 /**
- * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
+ * Manipulador de requisições exportado para o Angular CLI dev-server ou rotas serverless
  */
 export const reqHandler = createNodeRequestHandler(app);

@@ -41,7 +41,7 @@ describe('Newsletter', () => {
     expect(component.email()).toBe('contato@cafeespecial.com');
   });
 
-  it('nao deve limpar o email se for invalido ou vazio', () => {
+  it('não deve limpar o e-mail se for inválido ou vazio', () => {
     component.email.set('');
     component.onSubmit();
     expect(component.email()).toBe('');
@@ -51,7 +51,7 @@ describe('Newsletter', () => {
     expect(component.email()).toBe('invalido');
   });
 
-  it('deve limpar o campo de e-mail e exibir o card de toast no canto inferior esquerdo ao submeter valor valido', () => {
+  it('deve limpar o campo de e-mail e exibir o card de toast no canto inferior esquerdo ao submeter valor válido', () => {
     component.email.set('cliente@terraegrao.com.br');
     component.onSubmit();
     fixture.detectChanges();

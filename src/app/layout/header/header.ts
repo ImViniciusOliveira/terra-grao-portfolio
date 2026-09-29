@@ -41,7 +41,7 @@ export class Header implements OnDestroy {
   private lastScrollY = 0;
 
   constructor() {
-    // 1. Trava o scroll do body quando o menu mobile estiver aberto
+    // Trava a rolagem da página quando o menu mobile estiver aberto
     effect(() => {
       if (isPlatformBrowser(this.platformId)) {
         document.body.style.overflow = this.isMenuOpen() ? 'hidden' : '';
@@ -49,7 +49,7 @@ export class Header implements OnDestroy {
     });
 
     if (isPlatformBrowser(this.platformId)) {
-      // Carrega preferencia salva do tema (Padrao: sempre Modo Claro na 1ª visita)
+      // Inicializa o estado reativo do tema com base na classe 'dark' do elemento HTML
       const isDark = document.documentElement.classList.contains('dark');
       this.isDarkMode.set(isDark);
 

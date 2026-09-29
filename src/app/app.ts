@@ -18,10 +18,13 @@ import { Catalog } from './features/catalog/catalog';
 import { CouponBanner } from './features/coupon-banner/coupon-banner';
 import { Newsletter } from './features/newsletter/newsletter';
 import { BrewingCalculator } from './features/brewing-calculator/brewing-calculator';
-import { Origin } from './features/origin/origin';
+import { OurHistory } from './features/our-history/our-history';
 import { Guarantees } from './features/guarantees/guarantees';
 import { WhatsAppButton } from './layout/whatsapp-button/whatsapp-button';
 
+// --------------------------------------------------------------------------
+// Componente Raiz da Aplicação
+// --------------------------------------------------------------------------
 @Component({
   imports: [
     Header,
@@ -32,7 +35,7 @@ import { WhatsAppButton } from './layout/whatsapp-button/whatsapp-button';
     CouponBanner,
     Newsletter,
     BrewingCalculator,
-    Origin,
+    OurHistory,
     Guarantees,
     WhatsAppButton,
   ],
@@ -47,14 +50,17 @@ export class App implements OnInit {
   protected readonly title = signal('terra-grao-web');
 
   ngOnInit(): void {
+    // Injeta dados estruturados Schema.org para SEO e Rich Snippets
     this.seoService.injectStructuredData();
 
     if (isPlatformBrowser(this.platformId)) {
+      // Garante que o carregamento da página inicie sempre no topo (F5 / navegação)
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
       window.scrollTo(0, 0);
 
+      // Inicializa ferramentas de monitoramento de performance e métricas
       injectAnalytics();
       injectSpeedInsights();
     }

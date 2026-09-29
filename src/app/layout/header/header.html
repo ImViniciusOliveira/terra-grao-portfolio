@@ -1,4 +1,6 @@
-<!-- Barra de Frete Grátis (No topo da página, rola junto com o conteúdo) -->
+<!-- --------------------------------------------------------------------------
+   Barra de Frete Grátis (Letreiro Rotativo no Topo)
+   -------------------------------------------------------------------------- -->
 <aside class="bg-primary h-9 flex items-center border-b border-primary-hover select-none w-full overflow-hidden">
   <div class="mx-auto max-w-[2500px] w-full overflow-hidden flex items-center h-full">
     <div class="animate-marquee flex items-center whitespace-nowrap text-xs md:text-sm font-medium text-bg-main">
@@ -169,7 +171,9 @@
   </div>
 </aside>
 
-<!-- Cabeçalho Principal Fixo (Smart Auto-Hide no Scroll) -->
+<!-- --------------------------------------------------------------------------
+   Cabeçalho Principal Fixo (Smart Auto-Hide no Scroll)
+   -------------------------------------------------------------------------- -->
 <header
   class="sticky top-0 z-50 w-full transform-gpu [backface-visibility:hidden]"
   [class.max-lg:-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
@@ -201,7 +205,7 @@
         height="44"
         class="h-10 md:h-11 w-auto transition-transform duration-200 group-hover:scale-105 transform-gpu [backface-visibility:hidden] will-change-transform"
       />
-      <!-- Texto do Logo (Oculto no Mobile/Tablet para liberar espaço aos botões) -->
+      <!-- Logotipo em Texto -->
       <div class="hidden lg:flex flex-col">
         <span class="font-display text-xl md:text-2xl font-bold uppercase tracking-[0.14em] text-text-main leading-tight whitespace-nowrap">
           Terra &amp; Grão
@@ -212,7 +216,9 @@
       </div>
     </a>
 
-    <!-- Desktop: Links de Navegação e Ações (Tema + Carrinho) -->
+    <!-- ------------------------------------------------------------------------
+       Desktop: Links de Navegação e Ações (Tema & Carrinho)
+       ------------------------------------------------------------------------ -->
     <div class="hidden lg:flex items-center gap-6 xl:gap-8">
       <ul class="flex items-center gap-4 lg:gap-8 font-body text-xs font-semibold uppercase tracking-wider">
         <li>
@@ -268,7 +274,7 @@
         </li>
       </ul>
 
-      <!-- Ações Desktop: Alternância de Tema & Carrinho -->
+      <!-- Ações Desktop: Alternância de Tema e Carrinho -->
       <div class="flex items-center gap-3 shrink-0">
         <!-- Botão Alternar Tema (Light / Dark) -->
         <button
@@ -347,7 +353,9 @@
       </div>
     </div>
 
-    <!-- Ações Mobile/Tablet (Tema, Carrinho e Botão Hambúrguer Padrão Portfólio) -->
+    <!-- ------------------------------------------------------------------------
+       Ações Mobile/Tablet (Tema, Carrinho e Menu Hambúrguer)
+       ------------------------------------------------------------------------ -->
     <div class="flex items-center gap-2 sm:gap-3 lg:hidden shrink-0">
       <!-- Botão Alternar Tema Mobile -->
       <button
@@ -460,7 +468,9 @@
   </nav>
 </header>
 
-<!-- Overlay do Menu Mobile em Tela Cheia -->
+<!-- --------------------------------------------------------------------------
+   Overlay do Menu Mobile em Tela Cheia
+   -------------------------------------------------------------------------- -->
 @if (isMenuVisible()) {
   <div
     #menuOverlay

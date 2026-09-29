@@ -1,3 +1,6 @@
+<!-- --------------------------------------------------------------------------
+   Seção: Banner de Cupom Promocional (Primeira Compra)
+   -------------------------------------------------------------------------- -->
 <section
   id="cupom-desconto"
   aria-labelledby="coupon-heading"
@@ -7,6 +10,7 @@
     <div
       class="coupon-banner-card max-w-6xl lg:max-w-7xl mx-auto bg-primary text-bg-main p-6 sm:p-8 lg:p-10 rounded-[2px] border border-primary-hover shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
     >
+      <!-- Texto Promocional e Chamada -->
       <div class="space-y-1.5 max-w-2xl">
         <h2
           id="coupon-heading"
@@ -19,6 +23,7 @@
         </p>
       </div>
 
+      <!-- Botão Copiar Cupom -->
       <button
         type="button"
         (click)="copyCoupon()"

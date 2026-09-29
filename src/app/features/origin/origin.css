@@ -1,8 +1,0 @@
-/* --------------------------------------------------------------------------
-   Estado Inicial da Seção Origem (Prevenção de FOUC / Flashes)
-   -------------------------------------------------------------------------- */
-.origin-anim {
-  opacity: 0;
-  will-change: opacity, transform;
-}
-

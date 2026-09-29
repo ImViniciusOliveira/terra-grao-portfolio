@@ -15,7 +15,7 @@ if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export interface OriginHighlight {
+export interface OurHistoryHighlight {
   readonly id: string;
   readonly icon: string;
   readonly title: string;
@@ -24,15 +24,17 @@ export interface OriginHighlight {
   readonly metricLabel: string;
 }
 
+// --------------------------------------------------------------------------
+// Componente: Nossa História
+// --------------------------------------------------------------------------
 @Component({
-  selector: 'app-origin',
-  standalone: true,
+  selector: 'app-our-history',
   imports: [],
-  templateUrl: './origin.html',
-  styleUrl: './origin.css',
+  templateUrl: './our-history.html',
+  styleUrl: './our-history.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Origin implements OnDestroy {
+export class OurHistory implements OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly elementRef = inject(ElementRef<HTMLElement>);
   private mm?: gsap.MatchMedia;
@@ -45,6 +47,9 @@ export class Origin implements OnDestroy {
     }
   }
 
+  // --------------------------------------------------------------------------
+  // Animações de Scroll com GSAP ScrollTrigger e MatchMedia
+  // --------------------------------------------------------------------------
   private initScrollAnimation(): void {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
       return;
@@ -52,11 +57,11 @@ export class Origin implements OnDestroy {
 
     this.mm = gsap.matchMedia(this.elementRef.nativeElement);
     const items =
-      this.elementRef.nativeElement.querySelectorAll('.origin-anim');
+      this.elementRef.nativeElement.querySelectorAll('.our-history-anim');
 
     if (items.length === 0) return;
 
-    // Desktop: top 70% (dispara suavemente quando o topo da secao entra na tela)
+    // Desktop: dispara a animação quando o topo da seção atinge 70% da viewport
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         items,
@@ -120,7 +125,11 @@ export class Origin implements OnDestroy {
   ngOnDestroy(): void {
     this.mm?.revert();
   }
-  readonly highlights: readonly OriginHighlight[] = [
+
+  // --------------------------------------------------------------------------
+  // Dados dos Pilares Institucionais e Métricas de Qualidade
+  // --------------------------------------------------------------------------
+  readonly highlights: readonly OurHistoryHighlight[] = [
     {
       id: 'secagem',
       icon: '☀️',

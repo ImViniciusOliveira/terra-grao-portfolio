@@ -1,0 +1,83 @@
+<!-- --------------------------------------------------------------------------
+   Seção: Nossa História
+   -------------------------------------------------------------------------- -->
+<section id="origem" aria-label="Nossa História e Origem do Café"
+  class="w-full bg-bg-secondary py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-[1728px] px-4 sm:px-6 lg:px-12">
+
+    <!-- ------------------------------------------------------------------------
+       Cabeçalho da Seção
+       ------------------------------------------------------------------------ -->
+    <div class="our-history-anim text-center max-w-3xl mx-auto space-y-4 mb-8">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-text-main">
+        Nossa História
+      </h2>
+      <p class="font-body text-base sm:text-lg text-text-secondary leading-relaxed">
+        A essência do campo em cada grão. Conheça as origens e o cuidado artesanal por trás dos nossos cafés especiais.
+      </p>
+    </div>
+
+    <!-- ------------------------------------------------------------------------
+       Conteúdo Principal em 2 Colunas
+       ------------------------------------------------------------------------ -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+      <!-- Coluna da Esquerda: Manifesto Institucional -->
+      <div
+        class="our-history-anim lg:col-span-7 flex flex-col justify-between bg-bg-main p-6 sm:p-8 lg:p-10 rounded-[2px] space-y-6">
+        <div class="space-y-4 text-text-main font-body leading-relaxed text-sm sm:text-base">
+          <h3 class="font-display text-xl sm:text-2xl font-bold tracking-tight">
+            Do Sul de Minas para o seu ritual diário
+          </h3>
+          <p>
+            Nossa jornada começou nas montanhas ensolaradas da Serra da Mantiqueira, em Minas Gerais. Cultivamos em
+            altitudes superiores a 1.100 metros, onde o clima ameno e as noites frescas proporcionam uma maturação lenta
+            dos grãos, concentrando açúcares, notas florais e uma acidez cítrica brilhante.
+          </p>
+          <p>
+            Trabalhamos lado a lado com pequenos produtores locais por meio de relações transparentes e comércio justo.
+            Cada lote é selecionado manualmente e torrado em pequenos lotes semanais para que chegue fresco à sua mesa.
+          </p>
+        </div>
+
+        <!-- Métricas Institucionais e Pontuação SCAA -->
+        <div class="pt-6 border-t border-border grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="font-display text-2xl sm:text-3xl font-bold text-primary">1.100m+</p>
+            <p class="text-xs text-text-muted mt-1 uppercase tracking-wider font-semibold">Altitude Média</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl sm:text-3xl font-bold text-primary">84+</p>
+            <p class="text-xs text-text-muted mt-1 uppercase tracking-wider font-semibold">Pontos SCAA</p>
+          </div>
+          <div>
+            <p class="font-display text-2xl sm:text-3xl font-bold text-primary">100%</p>
+            <p class="text-xs text-text-muted mt-1 uppercase tracking-wider font-semibold">Produção Artesanal</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna da Direita: Cards dos 3 Pilares -->
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        @for (item of highlights; track item.id) {
+        <div class="our-history-anim p-5 sm:p-6 rounded-[2px] bg-bg-main space-y-2">
+          <div class="flex items-center justify-between gap-4">
+            <span class="text-2xl" aria-hidden="true">{{ item.icon }}</span>
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-primary font-mono bg-bg-secondary px-2 py-1 rounded-[2px]">
+              {{ item.metric }}
+            </span>
+          </div>
+          <h4 class="font-display text-lg font-bold text-text-main pt-1">
+            {{ item.title }}
+          </h4>
+          <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+            {{ item.description }}
+          </p>
+        </div>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

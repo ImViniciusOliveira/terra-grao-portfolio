@@ -44,7 +44,7 @@ describe('SeoService', () => {
     expect(parsed['@graph'].length).toBe(5);
   });
 
-  it('deve conter schemas validos para OnlineStore/LocalBusiness, ItemList de 4 produtos, HowTo e Categorias', () => {
+  it('deve conter schemas válidos para OnlineStore/LocalBusiness, ItemList de 9 produtos, HowTo e Categorias', () => {
     service.injectStructuredData();
 
     const script = document.getElementById('schema-org-structured-data') as HTMLScriptElement;
@@ -90,7 +90,7 @@ describe('SeoService', () => {
     expect(categoriesSchema.itemListElement[0].name).toBe('Café em Grãos');
   });
 
-  it('nao deve duplicar o script caso injectStructuredData seja chamado mais de uma vez', () => {
+  it('não deve duplicar o script caso injectStructuredData seja chamado mais de uma vez', () => {
     service.injectStructuredData();
     service.injectStructuredData();
 

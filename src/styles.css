@@ -1,4 +1,6 @@
-/* Terra & Grão - Fontes Locais & Design Tokens (Tailwind CSS v4) */
+/* --------------------------------------------------------------------------
+   Fontes Locais & Design Tokens (Tailwind CSS v4)
+   -------------------------------------------------------------------------- */
 
 @import "tailwindcss";
 
@@ -164,7 +166,7 @@ section {
   }
 }
 
-/* 3. Regras Específicas do Desktop (>= 1024px) - Restaurado exatamente como aprovado */
+/* 3. Regras Específicas do Desktop (>= 1024px) */
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
     width: 8px;
@@ -245,7 +247,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
   background: var(--color-primary-hover);
   width: 22px;
   height: 22px;
-  margin-top: -8px; /* Mantem a centralizacao vertical exata (3px - 11px = -8px) sem desfoque */
+  margin-top: -8px; /* Mantém a centralização vertical exata sem causar desfoque */
   box-shadow: 0 3px 8px rgba(42, 39, 37, 0.35);
 }
 
@@ -284,7 +286,7 @@ input[type="range"]:hover::-moz-range-thumb {
 }
 
 
-/* Utility class to hide scrollbars cleanly without Angular template binding conflicts */
+/* Classe utilitária para ocultar barras de rolagem nativas de forma limpa */
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

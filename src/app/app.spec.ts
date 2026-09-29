@@ -13,7 +13,7 @@ describe('App', () => {
     seoService = TestBed.inject(SeoService);
   });
 
-  it('deve criar o componente raiz da aplicacao', () => {
+  it('deve criar o componente raiz da aplicação', () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();

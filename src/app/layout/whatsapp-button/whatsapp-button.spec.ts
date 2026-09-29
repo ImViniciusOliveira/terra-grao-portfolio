@@ -26,7 +26,7 @@ describe('WhatsAppButton', () => {
     expect(button.getAttribute('aria-label')).toBe('WhatsApp');
   });
 
-  it('deve conter o icone svg do whatsapp', () => {
+  it('deve conter o ícone svg do WhatsApp', () => {
     const svg = fixture.nativeElement.querySelector('svg');
     expect(svg).toBeTruthy();
   });

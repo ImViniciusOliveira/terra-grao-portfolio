@@ -1,10 +1,12 @@
-<!-- Secao Hero Principal: Banner Institucional & Clube de Assinatura (Full Width) -->
+<!-- --------------------------------------------------------------------------
+   Seção: Hero Principal (Banner Institucional e Clube de Assinatura)
+   -------------------------------------------------------------------------- -->
 <section
   id="hero"
   aria-label="Apresentação Terra & Grão"
   class="w-full bg-hero-bg relative overflow-hidden"
 >
-  <!-- Background de Grãos de Café: Preso no bloco central com limite amplo de 2000px para telas ultrawide -->
+  <!-- Imagem de Fundo com Grãos de Café -->
   <div class="pointer-events-none absolute inset-0 z-0 mx-auto max-w-[2000px] overflow-hidden select-none">
     <div class="absolute -right-6 sm:-right-8 lg:right-0 bottom-0 flex w-[114%] sm:w-[110%] lg:w-[54%] xl:w-[60%] justify-end translate-y-[30%]">
       <div class="w-full max-w-[1500px]">
@@ -24,10 +26,12 @@
   <div class="mx-auto max-w-[1728px] px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-20 xl:py-24 relative z-10">
     <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 xl:gap-24">
 
-      <!-- Lado Esquerdo: Textos Institucionais & Botoes de Acao (55% no Desktop) -->
+      <!-- ----------------------------------------------------------------------
+         Coluna Esquerda: Textos Institucionais e Botões de Ação
+         ---------------------------------------------------------------------- -->
       <div class="w-full lg:w-[55%] flex flex-col items-start justify-center">
         <div class="w-fit max-w-xl xl:max-w-2xl space-y-6 sm:space-y-8">
-          <!-- Titulo e Subtitulo -->
+          <!-- Título e Subtítulo -->
           <div class="space-y-4">
             <h1 class="hero-anim-title font-display text-3xl font-bold tracking-tight text-text-main sm:text-4xl lg:text-5xl xl:text-6xl leading-[1.12]">
               O melhor do café especial brasileiro na sua xícara
@@ -37,9 +41,9 @@
             </p>
           </div>
 
-          <!-- Botões de Ação (Apenas Desktop lg+) -->
+          <!-- Botões de Ação para Desktop -->
           <div class="hero-anim-buttons hidden lg:flex flex-row items-stretch gap-4 pt-2 w-full">
-            <!-- Botao Primario: Fazer Assinatura -->
+            <!-- Botão Primário: Fazer Assinatura -->
             <button
               type="button"
               (click)="scrollToSection('catalogo')"
@@ -48,7 +52,7 @@
               Fazer Assinatura
             </button>
 
-            <!-- Botao Secundario: Nossa Loja -->
+            <!-- Botão Secundário: Nossa Loja -->
             <button
               type="button"
               (click)="scrollToSection('catalogo')"
@@ -60,13 +64,15 @@
         </div>
       </div>
 
-      <!-- Lado Direito: Composição Visual com Embalagem + Xícara de Café -->
+      <!-- ----------------------------------------------------------------------
+         Coluna Direita: Composição Visual com Embalagem e Xícara de Café
+         ---------------------------------------------------------------------- -->
       <div class="w-full lg:w-[45%] flex items-center justify-center relative min-h-[260px] sm:min-h-[320px] lg:min-h-[380px]">
 
-        <!-- GRUPO PRINCIPAL: Mover os DOIS JUNTOS (Altere translate-y ou translate-x aqui para mover os dois juntos) -->
+        <!-- Grupo da Composição Visual -->
         <div class="hero-composition-group relative flex items-center justify-center translate-y-2 lg:translate-y-6">
 
-          <!-- 1. EMBALAGEM DE CAFÉ (Atrás, z-0) -->
+          <!-- Embalagem de Café -->
           <div class="hero-anim-package relative z-0">
             <img
               src="/images/hero/coffee-package.webp"
@@ -79,8 +85,7 @@
             />
           </div>
 
-          <!-- 2. XÍCARA DE CAFÉ (Na frente, z-10 | Deslocada para a esquerda e para baixo) -->
-          <!-- Altere -left-..., -bottom-... ou translate aqui para mover APENAS a xícara -->
+          <!-- Xícara de Café Sobreposta -->
           <div class="hero-anim-cup absolute -left-10 sm:-left-14 md:-left-16 -bottom-4 sm:-bottom-6 lg:-bottom-8 z-10">
             <img
               src="/images/hero/coffee-cup.webp"
@@ -96,7 +101,9 @@
 
       </div>
 
-      <!-- Botões de Ação (Mobile e Tablet: Abaixo da Imagem) -->
+      <!-- ----------------------------------------------------------------------
+         Botões de Ação para Dispositivos Móveis e Tablets
+         ---------------------------------------------------------------------- -->
       <div class="hero-anim-buttons flex lg:hidden flex-col sm:flex-row items-stretch gap-3 sm:gap-4 w-full pt-1">
         <button
           type="button"

@@ -20,7 +20,7 @@ export class Footer {
   readonly currentYear = signal<number>(new Date().getFullYear());
 
   /**
-   * Rola suavemente ate uma secao da pagina pelo ID
+   * Rola suavemente até uma seção da página pelo ID
    */
   scrollToSection(sectionId: string, event?: Event): void {
     if (event) {

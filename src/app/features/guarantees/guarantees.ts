@@ -55,7 +55,7 @@ export class Guarantees implements OnDestroy {
 
     if (items.length === 0) return;
 
-    // Desktop: top 70% (dispara suavemente quando o topo da secao entra na tela)
+    // Desktop: dispara a animação quando o topo da seção atinge 70% da viewport
     this.mm.add('(min-width: 1024px)', () => {
       gsap.fromTo(
         items,
