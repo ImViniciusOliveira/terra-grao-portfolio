@@ -7,14 +7,45 @@
    Conteúdo Principal da Landing Page
    -------------------------------------------------------------------------- -->
 <main id="main-content" class="min-h-screen bg-bg-main">
+  <!-- Hero carrega imediatamente (above fold) -->
   <app-hero />
-  <app-categories />
-  <app-coupon-banner />
-  <app-catalog />
-  <app-newsletter />
-  <app-brewing-calculator />
-  <app-our-history />
-  <app-guarantees />
+
+  <!-- Seções below-fold: hidratam somente ao entrar na viewport -->
+  @defer (on viewport) {
+    <app-categories />
+  } @placeholder {
+    <div></div>
+  }
+  @defer (on viewport) {
+    <app-coupon-banner />
+  } @placeholder {
+    <div></div>
+  }
+  @defer (on viewport) {
+    <app-catalog />
+  } @placeholder {
+    <div></div>
+  }
+  @defer (on viewport) {
+    <app-newsletter />
+  } @placeholder {
+    <div></div>
+  }
+  @defer (on viewport) {
+    <app-brewing-calculator />
+  } @placeholder {
+    <div></div>
+  }
+  @defer (on viewport) {
+    <app-our-history />
+  } @placeholder {
+    <div></div>
+  }
+  @defer (on viewport) {
+    <app-guarantees />
+  } @placeholder {
+    <div></div>
+  }
 </main>
 
 <!-- --------------------------------------------------------------------------

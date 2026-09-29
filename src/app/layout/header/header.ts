@@ -41,10 +41,16 @@ export class Header implements OnDestroy {
   private lastScrollY = 0;
 
   constructor() {
-    // Trava a rolagem da página quando o menu mobile estiver aberto
+    // Trava a rolagem da pagina quando o menu mobile estiver aberto
     effect(() => {
       if (isPlatformBrowser(this.platformId)) {
-        document.body.style.overflow = this.isMenuOpen() ? 'hidden' : '';
+        if (this.isMenuOpen()) {
+          document.documentElement.classList.add('overflow-hidden');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          document.documentElement.classList.remove('overflow-hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
       }
     });
 
@@ -76,6 +82,13 @@ export class Header implements OnDestroy {
       return;
     }
 
+    // Enquanto o menu estiver aberto, bloqueia qualquer logica de scroll
+    // e garante que o header permaneca visivel
+    if (this.isMenuOpen()) {
+      this.setHeaderHidden(false);
+      return;
+    }
+
     const currentScrollY = window.scrollY;
     this.updateScrolledState(currentScrollY);
     this.updateHeaderVisibility(currentScrollY);
@@ -91,6 +104,12 @@ export class Header implements OnDestroy {
   }
 
   private updateHeaderVisibility(currentScrollY: number): void {
+    // Quando o menu mobile está aberto, mantém o header sempre visível
+    if (this.isMenuOpen()) {
+      this.setHeaderHidden(false);
+      return;
+    }
+
     const isMobileOrTablet = window.innerWidth < 1024;
     const shouldHandleVisibility = isMobileOrTablet && currentScrollY > 80;
 
@@ -161,6 +180,10 @@ export class Header implements OnDestroy {
   openMenu(): void {
     this.isMenuVisible.set(true);
     this.isMenuOpen.set(true);
+    // Garante que o header fique visivel e reseta o lastScrollY
+    // para que ao fechar o comportamento de hide/show funcione corretamente
+    this.setHeaderHidden(false);
+    this.lastScrollY = window.scrollY;
 
     if (!isPlatformBrowser(this.platformId)) {
       return;
@@ -204,6 +227,11 @@ export class Header implements OnDestroy {
     }
 
     this.isMenuOpen.set(false);
+    // Reinicia lastScrollY com a posicao atual para que o hide-on-scroll
+    // seja recalculado a partir daqui (evita sumir imediatamente apos fechar)
+    if (isPlatformBrowser(this.platformId)) {
+      this.lastScrollY = window.scrollY;
+    }
 
     if (!isPlatformBrowser(this.platformId)) {
       this.isMenuVisible.set(false);

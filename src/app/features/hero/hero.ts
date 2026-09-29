@@ -1,4 +1,4 @@
-import { DOCUMENT, NgOptimizedImage } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,7 +7,7 @@ import {
 
 @Component({
   selector: 'app-hero',
-  imports: [NgOptimizedImage],
+  imports: [],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

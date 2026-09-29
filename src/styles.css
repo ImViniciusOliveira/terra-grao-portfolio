@@ -175,12 +175,16 @@ section {
 
 /* 3. Regras Específicas do Desktop (>= 1024px) */
 @media (min-width: 1024px) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 
-  /* Invisível por padrão quando inativo */
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-corner {
     background: transparent !important;
@@ -188,20 +192,9 @@ section {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: transparent !important;
+    background: var(--color-primary) !important;
     border-radius: 2px;
     border: none;
-    box-shadow: none;
-  }
-
-  /* Surge bege claro + terracota ao mover o mouse ou rolar a página */
-  html:hover ::-webkit-scrollbar-track,
-  html:hover ::-webkit-scrollbar-corner {
-    background: var(--color-bg-secondary) !important;
-  }
-
-  html:hover ::-webkit-scrollbar-thumb {
-    background: var(--color-primary) !important;
     box-shadow: 0 -2px 0 0 var(--color-primary), 0 2px 0 0 var(--color-primary);
   }
 

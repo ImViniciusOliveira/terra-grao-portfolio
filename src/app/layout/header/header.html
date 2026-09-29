@@ -175,7 +175,9 @@
    Cabeçalho Principal Fixo (Smart Auto-Hide no Scroll)
    -------------------------------------------------------------------------- -->
 <header
-  class="sticky top-0 z-50 w-full transform-gpu [backface-visibility:hidden]"
+  class="top-0 left-0 right-0 z-50 w-full transform-gpu [backface-visibility:hidden]"
+  [class.fixed]="isMenuOpen()"
+  [class.sticky]="!isMenuOpen()"
   [class.max-lg:-translate-y-full]="isHeaderHidden() && !isMenuOpen()"
   [class.translate-y-0]="!isHeaderHidden() || isMenuOpen()"
   [class.bg-transparent]="isMenuOpen()"
@@ -475,7 +477,7 @@
 @if (isMenuVisible()) {
   <div
     #menuOverlay
-    class="mobile-menu-overlay fixed inset-0 z-40 bg-hero-bg lg:hidden flex flex-col items-center justify-center px-6"
+    class="mobile-menu-overlay fixed inset-0 z-40 bg-hero-bg lg:hidden flex flex-col items-center justify-center px-6 touch-none overscroll-none select-none"
   >
     <nav aria-label="Navegação mobile" class="flex flex-col items-center gap-7 text-center">
       <a
