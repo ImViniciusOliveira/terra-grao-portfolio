@@ -38,7 +38,7 @@ export class SeoService {
   }
 
   /**
-   * Schema da Loja / Organização (dados cadastrais, localização e contato)
+   * Schema da Loja / Organização (dados cadastrais, localização, redes sociais e contato)
    */
   private getOrganizationSchema(): Record<string, unknown> {
     return {
@@ -51,6 +51,10 @@ export class SeoService {
         'Cafés especiais cultivados em micro-lotes de altitude nas montanhas de Minas Gerais.',
       email: 'atendimento@terraegrao.com.br',
       priceRange: 'R$ 42,90 - R$ 189,90',
+      sameAs: [
+        'https://www.instagram.com/terraegrao',
+        'https://www.facebook.com/terraegrao',
+      ],
       address: {
         '@type': 'PostalAddress',
         addressRegion: 'Minas Gerais',
@@ -63,7 +67,7 @@ export class SeoService {
   }
 
   /**
-   * Schema dos Produtos do Catálogo (para rich snippets no Google)
+   * Schema dos Produtos do Catálogo (para rich snippets no Google Search Console e Merchant Listings)
    */
   private getProductListSchema(): Record<string, unknown> {
     return {
@@ -84,8 +88,45 @@ export class SeoService {
             '@type': 'Offer',
             price: product.price.toFixed(2),
             priceCurrency: 'BRL',
+            priceValidUntil: '2026-12-31',
+            itemCondition: 'https://schema.org/NewCondition',
             availability: 'https://schema.org/InStock',
             url: 'https://terra-grao.vercel.app/#catalogo',
+            hasMerchantReturnPolicy: {
+              '@type': 'MerchantReturnPolicy',
+              applicableCountry: 'BR',
+              returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+              merchantReturnDays: 7,
+              returnMethod: 'https://schema.org/ReturnByMail',
+              returnFees: 'https://schema.org/FreeReturn',
+            },
+            shippingDetails: {
+              '@type': 'OfferShippingDetails',
+              shippingRate: {
+                '@type': 'MonetaryAmount',
+                value: '0.00',
+                currency: 'BRL',
+              },
+              shippingDestination: {
+                '@type': 'DefinedRegion',
+                addressCountry: 'BR',
+              },
+              deliveryTime: {
+                '@type': 'ShippingDeliveryTime',
+                handlingTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 1,
+                  maxValue: 2,
+                  unitCode: 'DAY',
+                },
+                transitTime: {
+                  '@type': 'QuantitativeValue',
+                  minValue: 2,
+                  maxValue: 5,
+                  unitCode: 'DAY',
+                },
+              },
+            },
           },
           aggregateRating: {
             '@type': 'AggregateRating',
@@ -165,7 +206,7 @@ export class SeoService {
   }
 
   /**
-   * Schema do WebSite (propriedades principais do site)
+   * Schema do WebSite (propriedades principais do site e caixa de busca nos Sitelinks)
    */
   private getWebSiteSchema(): Record<string, unknown> {
     return {
@@ -178,6 +219,11 @@ export class SeoService {
       inLanguage: 'pt-BR',
       publisher: {
         '@id': 'https://terra-grao.vercel.app/#organization',
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: 'https://terra-grao.vercel.app/#catalogo?q={search_term_string}',
+        'query-input': 'required name=search_term_string',
       },
     };
   }

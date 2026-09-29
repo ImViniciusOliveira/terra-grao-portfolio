@@ -1,0 +1,23 @@
+{
+  "name": "Terra & Grão — Cafés Especiais Artesanais",
+  "short_name": "Terra & Grão",
+  "description": "Cafés especiais cultivados em micro-lotes de altitude nas montanhas de Minas Gerais. 100% arábica com torra fresca semanal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#FAF8F5",
+  "icons": [
+    {
+      "src": "/images/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
