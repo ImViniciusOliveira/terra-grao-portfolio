@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "name": "Terra & Grão Cafés Especiais",
+  "description": "E-commerce e portal institucional de cafés especiais artesanais 100% arábica da Serra da Mantiqueira, Minas Gerais.",
+  "homepage": "https://terra-grao.vercel.app",
+  "documentation": {
+    "llmsTxt": "https://terra-grao.vercel.app/llms.txt"
+  },
+  "resources": [
+    {
+      "id": "catalog",
+      "name": "Catálogo de Cafés Especiais",
+      "description": "Seleção de microlotes de cafés especiais 100% arábica em grãos e moídos artesanais.",
+      "url": "https://terra-grao.vercel.app/#catalogo",
+      "type": "catalog"
+    },
+    {
+      "id": "brewing-calculator",
+      "name": "Calculadora de Extração de Café",
+      "description": "Ferramenta interativa de proporções para métodos de preparo (Hario V60, Prensa Francesa, Chemex, AeroPress).",
+      "url": "https://terra-grao.vercel.app/#calculadora",
+      "type": "tool"
+    },
+    {
+      "id": "origin",
+      "name": "Nossa História e Origem Terroir",
+      "description": "Informações sobre produtores parceiros na Serra da Mantiqueira e rastreabilidade dos grãos.",
+      "url": "https://terra-grao.vercel.app/#origem",
+      "type": "article"
+    },
+    {
+      "id": "guarantees",
+      "name": "Garantias e Política da Loja",
+      "description": "Informações sobre torra fresca semanal, envio seguro e satisfação garantida.",
+      "url": "https://terra-grao.vercel.app/#garantias",
+      "type": "documentation"
+    }
+  ]
+}
