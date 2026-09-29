@@ -31,7 +31,7 @@
 @theme {
   /* Paleta Semântica Profissional */
   --color-primary: #9E5A3C;
-  --color-primary-hover: #84482D;
+  --color-primary-hover: #A85E3E;
   --color-text-main: #2A2725;
   --color-text-secondary: #625E5A;
   --color-text-muted: #5C5650;
@@ -41,7 +41,8 @@
   --color-offer-orange: #E07A27;
   --color-discount-green: #87C116;
   --color-border: #ECE7DE;
-  --color-gold: #FFD54A;
+  --color-gold: #FFE082;
+  --color-dark-espresso: #2A2725;
 
   /* Token Exclusivo do Hero */
   --color-hero-bg: #EAA858;
@@ -96,15 +97,14 @@
   --color-text-muted: #B8B0A8;
   --color-border: #3A3532;
   --color-primary: #9E5A3C;
-  --color-primary-hover: #84482D;
+  --color-primary-hover: #A85E3E;
   --color-hero-bg: #2E1E16;
+  --color-dark-espresso: #2A2725;
 }
 
 /* Inversão perfeita de cores no Hero durante o Modo Escuro */
 .dark #hero {
   --color-hero-bg: #2E1E16;
-  --color-primary: #EAA858;
-  --color-primary-hover: #F0B86F;
 }
 
 /* --------------------------------------------------------------------------

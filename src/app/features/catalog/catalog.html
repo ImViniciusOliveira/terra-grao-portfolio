@@ -35,14 +35,14 @@
             <div class="relative aspect-[4/5] overflow-hidden bg-bg-secondary border border-border/60 mb-2">
               <!-- Badge 'EM OFERTA' (para 15% e 20% - Amarelo/Laranja em Destaque) -->
               @if (getDiscountPercentage(product)) {
-                <span class="absolute top-2 left-2 z-10 bg-offer-orange text-white text-xs sm:text-sm font-black uppercase tracking-wide px-3 py-1 sm:py-1.5 select-none shadow-md">
+                <span class="absolute top-2 left-2 z-10 bg-offer-orange text-bg-main text-xs sm:text-sm font-black uppercase tracking-wide px-3 py-1 sm:py-1.5 select-none shadow-md">
                   EM OFERTA
                 </span>
               }
 
               <!-- Badge '5% cash back' (apenas para 20% - Círculo Preto Extra Destaque) -->
               @if (getDiscountPercentage(product) && getDiscountPercentage(product)! >= 20) {
-                <div class="absolute top-2 right-2 z-10 bg-[#1A1817] text-white rounded-full w-14 h-14 sm:w-16 sm:h-16 flex flex-col items-center justify-center text-center select-none shadow-lg border border-amber-500/30">
+                <div class="absolute top-2 right-2 z-10 bg-text-main text-bg-main rounded-full w-14 h-14 sm:w-16 sm:h-16 flex flex-col items-center justify-center text-center select-none shadow-lg border border-gold/40">
                   <span class="text-[10px] sm:text-xs font-black text-amber-400 leading-tight">5% de</span>
                   <span class="text-[9px] sm:text-[10px] font-bold tracking-tight uppercase leading-none text-stone-200">cash</span>
                   <span class="text-[9px] sm:text-[10px] font-bold tracking-tight uppercase leading-none text-stone-200">back</span>
@@ -91,7 +91,7 @@
               <span class="text-xs sm:text-sm font-semibold text-text-muted font-body">
                 {{ product.rating.toFixed(1) }}
                 @if (product.reviewsCount) {
-                  <span class="font-normal text-text-muted/80">({{ product.reviewsCount }})</span>
+                  <span class="font-normal text-text-muted">({{ product.reviewsCount }})</span>
                 }
               </span>
             </div>
@@ -106,7 +106,7 @@
           <div class="flex items-center justify-between gap-2.5 mt-1">
             <!-- Bloco de Preço com Altura de Risca Reservada -->
             <div class="min-w-0">
-              <p class="text-[11px] sm:text-xs text-text-muted/60 line-through leading-none mb-0.5 min-h-[16px]">
+              <p class="text-[11px] sm:text-xs text-text-muted line-through leading-none mb-0.5 min-h-[16px]">
                 @if (getOriginalPrice(product)) {
                   R$ {{ getOriginalPrice(product) }}
                 }
@@ -116,7 +116,7 @@
                   R$ {{ getCalculatedPrice(product) }}
                 </p>
                 @if (getDiscountPercentage(product)) {
-                  <span class="bg-discount-green text-white text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 font-body leading-none select-none shrink-0 shadow-2xs">
+                  <span class="bg-discount-green text-bg-main text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 font-body leading-none select-none shrink-0 shadow-2xs">
                     -{{ getDiscountPercentage(product) }}%
                   </span>
                 }
