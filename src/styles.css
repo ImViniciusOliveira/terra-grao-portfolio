@@ -247,22 +247,18 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 2px 6px rgba(42, 39, 37, 0.25);
   cursor: grab;
   margin-top: -6px;
-  transition: width 0.15s ease, height 0.15s ease, margin-top 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="range"]:hover::-webkit-slider-thumb {
   background: var(--color-primary-hover);
-  width: 22px;
-  height: 22px;
-  margin-top: -8px; /* Mantém a centralização vertical exata sem causar desfoque */
+  transform: scale(1.22);
   box-shadow: 0 3px 8px rgba(42, 39, 37, 0.35);
 }
 
 input[type="range"]:active::-webkit-slider-thumb {
   cursor: grabbing;
-  width: 20px;
-  height: 20px;
-  margin-top: -7px;
+  transform: scale(1.11);
 }
 
 /* Trilho no Firefox */
@@ -283,13 +279,12 @@ input[type="range"]::-moz-range-thumb {
   border: none;
   box-shadow: 0 2px 6px rgba(42, 39, 37, 0.25);
   cursor: grab;
-  transition: width 0.15s ease, height 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="range"]:hover::-moz-range-thumb {
   background: var(--color-primary-hover);
-  width: 22px;
-  height: 22px;
+  transform: scale(1.22);
 }
 
 

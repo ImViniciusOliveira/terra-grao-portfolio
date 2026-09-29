@@ -186,7 +186,7 @@ export const COFFEE_PRODUCTS: readonly CoffeeProduct[] = [
     rating: 4.9,
     reviewsCount: 23,
     shortTaste: 'Cafeteira V60 Acrílica + 40 Filtros + Café Especial 250g',
-    image: '/images/brand-hero.webp',
+    image: '/images/hero/coffee-package.webp',
     category: 'kits',
     sizes: [
       { weight: 'Kit Completo', priceMultiplier: 1.0 },

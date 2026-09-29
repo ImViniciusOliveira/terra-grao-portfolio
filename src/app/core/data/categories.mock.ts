@@ -25,7 +25,7 @@ export const QUICK_CATEGORIES: readonly QuickCategory[] = [
   {
     id: 'moedores',
     name: 'Moedores & Acessórios',
-    imageUrl: '/images/brand-hero.webp',
+    imageUrl: '/images/coffees/geisha-especial.webp',
     imageAlt: 'Moedores e Acessórios',
     targetSection: 'catalogo',
   },
