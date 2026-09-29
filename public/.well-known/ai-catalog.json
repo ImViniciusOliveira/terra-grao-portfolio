@@ -1,12 +1,12 @@
 {
-  "version": "1.0.0",
+  "specVersion": "1.0.0",
   "name": "Terra & Grão Cafés Especiais",
   "description": "E-commerce e portal institucional de cafés especiais artesanais 100% arábica da Serra da Mantiqueira, Minas Gerais.",
   "homepage": "https://terra-grao.vercel.app",
   "documentation": {
     "llmsTxt": "https://terra-grao.vercel.app/llms.txt"
   },
-  "resources": [
+  "entries": [
     {
       "id": "catalog",
       "name": "Catálogo de Cafés Especiais",

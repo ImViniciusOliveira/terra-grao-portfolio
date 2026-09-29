@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
 
-# Agentic Web Discovery
-Ai-Catalog: https://terra-grao.vercel.app/.well-known/ai-catalog.json
-
 # Sitemap Oficial na Vercel
 Sitemap: https://terra-grao.vercel.app/sitemap.xml
